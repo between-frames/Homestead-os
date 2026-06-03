@@ -12,38 +12,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1814;
-    --ink-2: #4a4640;
-    --ink-3: #8a857e;
-    --ink-4: #b8b2a8;
-    --paper: #faf9f6;
-    --paper-2: #f2efe8;
-    --paper-3: #e8e3d8;
-    --border: #d4cfc4;
-    --border-light: #e4dfd4;
-    --accent: #4a6741;
-    --accent-light: #e8f0e6;
-    --warn-bg: #fdf4e0;
-    --warn-border: #d4a830;
-    --warn-text: #8a6010;
-    --radius: 10px;
-    --radius-sm: 6px;
+    --ink: #1a1814; --ink-2: #4a4640; --ink-3: #8a857e; --ink-4: #b8b2a8;
+    --paper: #faf9f6; --paper-2: #f2efe8; --paper-3: #e8e3d8;
+    --border: #d4cfc4; --border-light: #e4dfd4;
+    --accent: #4a6741; --accent-light: #e8f0e6;
+    --warn-bg: #fdf4e0; --warn-border: #d4a830; --warn-text: #8a6010;
+    --radius: 10px; --radius-sm: 6px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html { font-size: 16px; }
   body { font-family: 'EB Garamond', Georgia, serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
 
   .app-header { background: var(--paper); border-bottom: 1px solid var(--border); padding: 14px 20px 12px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .app-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); }
+  .app-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--ink); }
   .app-subtitle { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
 
-  .tab-bar { display: flex; border-bottom: 1px solid var(--border); background: var(--paper); padding: 0 16px; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tab-bar { display: flex; border-bottom: 1px solid var(--border); background: var(--paper); padding: 0 16px; overflow-x: auto; scrollbar-width: none; }
   .tab-bar::-webkit-scrollbar { display: none; }
   .tab-btn { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); border: none; background: none; padding: 10px 12px 9px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; -webkit-appearance: none; }
   .tab-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
 
   .main { padding: 20px 20px 100px; max-width: 680px; margin: 0 auto; }
-
   .inputs-panel { display: flex; flex-direction: column; gap: 16px; }
   .field-group { display: flex; flex-direction: column; gap: 6px; }
   .field-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
@@ -56,18 +44,23 @@
   select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238a857e' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  .auto-btn {
-    width: 100%; padding: 10px; background: var(--paper-2); border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm); font-family: 'Courier Prime', monospace; font-size: 12px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; -webkit-appearance: none;
+  .location-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .loc-btn {
+    padding: 10px 8px; background: var(--paper-2); border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); font-family: 'EB Garamond', serif; font-size: 14px;
+    color: var(--ink-2); cursor: pointer; text-align: left; line-height: 1.3; -webkit-appearance: none;
   }
+  .loc-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .loc-btn:active { opacity: 0.8; }
+  .loc-name { font-weight: 500; display: block; }
+  .loc-sub { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; opacity: 0.7; display: block; margin-top: 2px; }
+
+  .custom-coords { display: flex; flex-direction: column; gap: 8px; }
+
+  .auto-btn { width: 100%; padding: 10px; background: var(--paper-2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; -webkit-appearance: none; }
   .auto-btn:active { background: var(--paper-3); }
 
-  .auto-card {
-    background: var(--accent-light); border: 0.5px solid var(--accent);
-    border-radius: var(--radius-sm); padding: 12px 14px;
-    display: flex; flex-direction: column; gap: 6px;
-  }
+  .auto-card { background: var(--accent-light); border: 0.5px solid var(--accent); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
   .auto-card-title { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
   .auto-card-row { display: flex; justify-content: space-between; align-items: baseline; }
   .auto-card-val { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: var(--ink); }
@@ -75,10 +68,9 @@
 
   .status-line { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--ink-3); text-align: center; letter-spacing: 0.06em; min-height: 16px; }
 
-  .generate-btn { width: 100%; padding: 14px; background: var(--ink); border: none; border-radius: var(--radius); font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; font-style: italic; color: var(--paper); cursor: pointer; letter-spacing: 0.02em; -webkit-appearance: none; margin-top: 4px; }
+  .generate-btn { width: 100%; padding: 14px; background: var(--ink); border: none; border-radius: var(--radius); font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; font-style: italic; color: var(--paper); cursor: pointer; -webkit-appearance: none; margin-top: 4px; }
   .generate-btn:active { opacity: 0.85; }
 
-  .page-output { display: flex; flex-direction: column; gap: 0; }
   .page-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px; }
   .page-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
   .page-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; font-style: italic; line-height: 1.15; color: var(--ink); }
@@ -89,12 +81,11 @@
   .energy-block { background: var(--paper-2); border-left: 2px solid var(--border); padding: 12px 16px; margin-bottom: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
   .energy-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
   .energy-text { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--ink); }
-
   .alert-block { background: var(--warn-bg); border: 0.5px solid var(--warn-border); border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 10px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--warn-text); letter-spacing: 0.03em; }
 
   .sections { display: flex; flex-direction: column; gap: 20px; margin-top: 4px; }
   .section-header { display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid var(--border-light); padding-bottom: 6px; margin-bottom: 10px; }
-  .section-icon { font-size: 14px; color: var(--ink-3); }
+  .section-icon { font-size: 14px; }
   .section-title { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; }
 
   .task-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
@@ -117,10 +108,9 @@
 
   .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; gap: 12px; }
   .placeholder-icon { font-size: 40px; opacity: 0.3; }
-  .placeholder-text { font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic; color: var(--ink-3); max-width: 240px; line-height: 1.6; }
+  .placeholder-text { font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic; color: var(--ink-3); max-width: 260px; line-height: 1.6; }
 
   .generate-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--paper); border-top: 1px solid var(--border); padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
-
   .divider { border: none; border-top: 0.5px solid var(--border-light); margin: 4px 0; }
   .hidden { display: none !important; }
 </style>
@@ -130,7 +120,7 @@
 <div class="app-header">
   <div>
     <div class="app-title">K10 Homestead OS</div>
-    <div class="app-subtitle" id="header-sub">Warrenton, NC · Zone 8a</div>
+    <div class="app-subtitle" id="header-sub">Zone 8a</div>
   </div>
 </div>
 
@@ -145,50 +135,81 @@
   <div class="inputs-panel">
 
     <div class="field-group">
-      <div class="field-label">Date</div>
-      <input type="date" id="f-date">
-    </div>
-
-    <div class="field-group">
-      <div class="field-label">Auto-fetch everything</div>
-      <button class="auto-btn" onclick="fetchAll()">⟳ Fetch weather + moon for today</button>
-      <div class="status-line" id="fetch-status"></div>
-      <div id="auto-card-wrap" class="hidden">
-        <div class="auto-card">
-          <div class="auto-card-title">Live data pulled</div>
-          <div class="auto-card-row">
-            <div class="auto-card-sub">Moon</div>
-            <div class="auto-card-val" id="ac-moon">—</div>
+      <div class="field-label">Location</div>
+      <div class="location-grid" id="loc-grid">
+        <button class="loc-btn active" data-key="warrenton" onclick="setLocation('warrenton', this)">
+          <span class="loc-name">Warrenton, NC</span>
+          <span class="loc-sub">Zone 8a · Homestead</span>
+        </button>
+        <button class="loc-btn" data-key="omaha" onclick="setLocation('omaha', this)">
+          <span class="loc-name">Omaha, NE</span>
+          <span class="loc-sub">Zone 5b · Current</span>
+        </button>
+        <button class="loc-btn" data-key="atlanta" onclick="setLocation('atlanta', this)">
+          <span class="loc-name">Atlanta, GA</span>
+          <span class="loc-sub">Zone 7b</span>
+        </button>
+        <button class="loc-btn" data-key="custom" onclick="setLocation('custom', this)">
+          <span class="loc-name">Custom</span>
+          <span class="loc-sub">Enter coords</span>
+        </button>
+      </div>
+      <div id="custom-coords-wrap" class="custom-coords hidden">
+        <div class="row-2">
+          <div>
+            <div class="field-label" style="margin-bottom:5px">Latitude</div>
+            <input type="number" id="f-lat" placeholder="36.3982" step="0.0001">
           </div>
-          <div class="auto-card-row">
-            <div class="auto-card-sub">Illumination</div>
-            <div class="auto-card-val" id="ac-illum">—</div>
-          </div>
-          <div class="auto-card-row">
-            <div class="auto-card-sub">Temp</div>
-            <div class="auto-card-val" id="ac-temp">—</div>
-          </div>
-          <div class="auto-card-row">
-            <div class="auto-card-sub">Rain chance</div>
-            <div class="auto-card-val" id="ac-rain">—</div>
-          </div>
-          <div class="auto-card-row">
-            <div class="auto-card-sub">Recent rain</div>
-            <div class="auto-card-val" id="ac-recent">—</div>
+          <div>
+            <div class="field-label" style="margin-bottom:5px">Longitude</div>
+            <input type="number" id="f-lng" placeholder="-78.1503" step="0.0001">
           </div>
         </div>
+        <input type="text" id="f-locname" placeholder="Location name (e.g. Asheville, NC)">
+        <div>
+          <div class="field-label" style="margin-bottom:5px">USDA Zone</div>
+          <select id="f-zone-custom">
+            <option value="5a">5a</option><option value="5b">5b</option>
+            <option value="6a">6a</option><option value="6b">6b</option>
+            <option value="7a">7a</option><option value="7b">7b</option>
+            <option value="8a" selected>8a</option><option value="8b">8b</option>
+            <option value="9a">9a</option><option value="9b">9b</option>
+          </select>
+        </div>
+        <button class="auto-btn" onclick="saveCustomLocation()">Save custom location</button>
       </div>
     </div>
 
     <hr class="divider">
 
-    <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);">Or set manually</div>
+    <div class="field-group">
+      <div class="field-label">Date</div>
+      <input type="date" id="f-date">
+    </div>
+
+    <div class="field-group">
+      <button class="auto-btn" onclick="fetchAll()">⟳ Fetch weather + moon for today</button>
+      <div class="status-line" id="fetch-status"></div>
+      <div id="auto-card-wrap" class="hidden">
+        <div class="auto-card">
+          <div class="auto-card-title">Live data · <span id="ac-loc">—</span></div>
+          <div class="auto-card-row"><div class="auto-card-sub">Moon</div><div class="auto-card-val" id="ac-moon">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">Illumination</div><div class="auto-card-val" id="ac-illum">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">Temp</div><div class="auto-card-val" id="ac-temp">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">Rain chance</div><div class="auto-card-val" id="ac-rain">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">Recent rain</div><div class="auto-card-val" id="ac-recent">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="field-label" style="color:var(--ink-4)">Or set manually</div>
 
     <div class="field-group">
       <div class="field-label">Moon Phase</div>
       <select id="f-moon">
         <option value="new">🌑 New Moon</option>
-        <option value="waxing_crescent" selected>🌒 Waxing Crescent</option>
+        <option value="waxing_crescent">🌒 Waxing Crescent</option>
         <option value="first_quarter">🌓 First Quarter</option>
         <option value="waxing_gibbous">🌔 Waxing Gibbous</option>
         <option value="full">🌕 Full Moon</option>
@@ -198,14 +219,15 @@
       </select>
     </div>
 
-    <div class="field-group">
-      <div class="field-label">Moon Illumination %</div>
-      <input type="number" id="f-illum" value="22" min="0" max="100">
-    </div>
-
-    <div class="field-group">
-      <div class="field-label">Temp °F</div>
-      <input type="number" id="f-temp" value="75" min="-20" max="115">
+    <div class="row-2">
+      <div class="field-group">
+        <div class="field-label">Illumination %</div>
+        <input type="number" id="f-illum" value="22" min="0" max="100">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Temp °F</div>
+        <input type="number" id="f-temp" value="75" min="-20" max="115">
+      </div>
     </div>
 
     <div class="row-2">
@@ -222,16 +244,11 @@
     <div class="field-group">
       <div class="field-label">Season</div>
       <select id="f-season">
-        <option value="early_spring">Early Spring</option>
-        <option value="spring">Spring</option>
-        <option value="late_spring">Late Spring</option>
-        <option value="early_summer">Early Summer</option>
-        <option value="summer">Summer</option>
-        <option value="late_summer">Late Summer</option>
-        <option value="early_fall">Early Fall</option>
-        <option value="fall">Fall</option>
-        <option value="late_fall">Late Fall</option>
-        <option value="winter">Winter</option>
+        <option value="early_spring">Early Spring</option><option value="spring">Spring</option>
+        <option value="late_spring">Late Spring</option><option value="early_summer">Early Summer</option>
+        <option value="summer">Summer</option><option value="late_summer">Late Summer</option>
+        <option value="early_fall">Early Fall</option><option value="fall">Fall</option>
+        <option value="late_fall">Late Fall</option><option value="winter">Winter</option>
       </select>
     </div>
 
@@ -248,7 +265,7 @@
   <div id="page-content">
     <div class="placeholder">
       <div class="placeholder-icon">🌙</div>
-      <div class="placeholder-text">Fetch data and generate today's almanac page.</div>
+      <div class="placeholder-text">Choose a location, fetch data, and generate today's page.</div>
     </div>
   </div>
 </div>
@@ -267,35 +284,85 @@
 </div>
 
 <script>
-// ── MOON PHASE CALCULATOR (pure math, no API needed) ──
+// ── LOCATIONS ──
+const LOCATIONS = {
+  warrenton: { name: 'Warrenton, NC', zone: '8a', lat: 36.3982, lng: -78.1503, tz: 'America/New_York' },
+  omaha:     { name: 'Omaha, NE',     zone: '5b', lat: 41.2565, lng: -95.9345, tz: 'America/Chicago' },
+  atlanta:   { name: 'Atlanta, GA',   zone: '7b', lat: 33.7490, lng: -84.3880, tz: 'America/New_York' },
+};
+
+let currentLoc = LOCATIONS.warrenton;
+let currentLocKey = 'warrenton';
+
+function setLocation(key, btn) {
+  document.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentLocKey = key;
+
+  if (key === 'custom') {
+    document.getElementById('custom-coords-wrap').classList.remove('hidden');
+    // Try loading saved custom
+    const saved = localStorage.getItem('custom-loc');
+    if (saved) {
+      const c = JSON.parse(saved);
+      currentLoc = c;
+      document.getElementById('f-lat').value = c.lat;
+      document.getElementById('f-lng').value = c.lng;
+      document.getElementById('f-locname').value = c.name;
+      document.getElementById('f-zone-custom').value = c.zone;
+      updateHeader();
+    }
+  } else {
+    document.getElementById('custom-coords-wrap').classList.add('hidden');
+    currentLoc = LOCATIONS[key];
+    updateHeader();
+  }
+  // Hide old auto-card when location changes
+  document.getElementById('auto-card-wrap').classList.add('hidden');
+  document.getElementById('fetch-status').textContent = '';
+}
+
+function saveCustomLocation() {
+  const lat = parseFloat(document.getElementById('f-lat').value);
+  const lng = parseFloat(document.getElementById('f-lng').value);
+  const name = document.getElementById('f-locname').value.trim() || `${lat}, ${lng}`;
+  const zone = document.getElementById('f-zone-custom').value;
+  if (!lat || !lng) { document.getElementById('fetch-status').textContent = 'Enter lat/lng first'; return; }
+  currentLoc = { name, zone, lat, lng, tz: 'America/New_York' };
+  localStorage.setItem('custom-loc', JSON.stringify(currentLoc));
+  updateHeader();
+  document.getElementById('fetch-status').textContent = `✓ Saved: ${name}`;
+  setTimeout(() => document.getElementById('fetch-status').textContent = '', 2500);
+}
+
+function updateHeader() {
+  document.getElementById('header-sub').textContent = `${currentLoc.name} · Zone ${currentLoc.zone}`;
+}
+
+// ── MOON CALCULATOR ──
 function getMoonData(date) {
-  // Known new moon reference: Jan 6, 2000 18:14 UTC
   const known = new Date(Date.UTC(2000, 0, 6, 18, 14));
-  const synodic = 29.53058867; // days
+  const synodic = 29.53058867;
   const diff = (date - known) / (1000 * 60 * 60 * 24);
   let age = diff % synodic;
   if (age < 0) age += synodic;
-
   const illumination = Math.round(50 * (1 - Math.cos(2 * Math.PI * age / synodic)));
-
-  let phase, icon;
-  if (age < 1.85)                        { phase = 'new';             icon = '🌑'; }
-  else if (age < 7.38)                   { phase = 'waxing_crescent'; icon = '🌒'; }
-  else if (age < 9.22)                   { phase = 'first_quarter';   icon = '🌓'; }
-  else if (age < 14.77)                  { phase = 'waxing_gibbous';  icon = '🌔'; }
-  else if (age < 16.61)                  { phase = 'full';            icon = '🌕'; }
-  else if (age < 22.15)                  { phase = 'waning_gibbous';  icon = '🌖'; }
-  else if (age < 23.99)                  { phase = 'last_quarter';    icon = '🌗'; }
-  else if (age < 29.53)                  { phase = 'waning_crescent'; icon = '🌘'; }
-  else                                   { phase = 'new';             icon = '🌑'; }
-
-  return { phase, icon, illumination, age: Math.round(age * 10) / 10 };
+  let phase;
+  if (age < 1.85)       phase = 'new';
+  else if (age < 7.38)  phase = 'waxing_crescent';
+  else if (age < 9.22)  phase = 'first_quarter';
+  else if (age < 14.77) phase = 'waxing_gibbous';
+  else if (age < 16.61) phase = 'full';
+  else if (age < 22.15) phase = 'waning_gibbous';
+  else if (age < 23.99) phase = 'last_quarter';
+  else                  phase = 'waning_crescent';
+  return { phase, illumination };
 }
 
-// ── CONSTANTS ──
+const MOON_ICONS  = { new:'🌑', waxing_crescent:'🌒', first_quarter:'🌓', waxing_gibbous:'🌔', full:'🌕', waning_gibbous:'🌖', last_quarter:'🌗', waning_crescent:'🌘' };
 const MOON_LABELS = { new:'New Moon', waxing_crescent:'Waxing Crescent', first_quarter:'First Quarter', waxing_gibbous:'Waxing Gibbous', full:'Full Moon', waning_gibbous:'Waning Gibbous', last_quarter:'Last Quarter', waning_crescent:'Waning Crescent' };
 const SEASON_LABELS = { early_spring:'Early Spring', spring:'Spring', late_spring:'Late Spring', early_summer:'Early Summer', summer:'Summer', late_summer:'Late Summer', early_fall:'Early Fall', fall:'Fall', late_fall:'Late Fall', winter:'Winter' };
-const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 let lastMD = '';
@@ -306,42 +373,34 @@ function switchTab(name) {
     document.getElementById('tab-'+t).classList.toggle('active', t === name);
   });
 }
-
-function fmtDate(d) {
-  return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-}
-
-function getSeasonFromMonth(m) {
-  return { 1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter' }[m];
-}
+function fmtDate(d) { return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+function getSeasonFromMonth(m) { return {1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter'}[m]; }
 
 async function fetchAll() {
   const status = document.getElementById('fetch-status');
-  status.textContent = 'Fetching weather + calculating moon...';
+  if (currentLocKey === 'custom' && (!currentLoc.lat || !currentLoc.lng)) {
+    status.textContent = 'Save your custom location first';
+    return;
+  }
+  status.textContent = `Fetching for ${currentLoc.name}...`;
 
   const dateVal = document.getElementById('f-date').value;
   const date = dateVal ? new Date(dateVal + 'T12:00:00') : new Date();
 
-  // Moon — pure calculation
+  // Moon
   const moon = getMoonData(date);
   document.getElementById('f-moon').value = moon.phase;
   document.getElementById('f-illum').value = moon.illumination;
+  document.getElementById('f-season').value = getSeasonFromMonth(date.getMonth() + 1);
 
-  // Season — auto from month
-  const m = date.getMonth() + 1;
-  document.getElementById('f-season').value = getSeasonFromMonth(m);
-
-  // Weather — Open-Meteo free API, Warrenton NC
+  // Weather
   try {
     const dateStr = date.toISOString().split('T')[0];
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=36.3982&longitude=-78.1503&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max,windspeed_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=7&timezone=America/New_York`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${currentLoc.lat}&longitude=${currentLoc.lng}&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max&temperature_unit=fahrenheit&precipitation_unit=inch&forecast_days=7&timezone=auto`;
     const res = await fetch(url);
     const data = await res.json();
-
-    // Find the index for our date
     const idx = data.daily.time.indexOf(dateStr);
     const i = idx >= 0 ? idx : 0;
-
     const temp = Math.round(data.daily.temperature_2m_max[i]);
     const rain = Math.round(data.daily.precipitation_probability_max[i]);
     const recent = parseFloat((data.daily.precipitation_sum[i] || 0).toFixed(1));
@@ -350,105 +409,79 @@ async function fetchAll() {
     document.getElementById('f-rain').value = rain;
     document.getElementById('f-recent-rain').value = recent;
 
-    // Show auto card
-    document.getElementById('ac-moon').textContent = moon.icon + ' ' + MOON_LABELS[moon.phase];
+    document.getElementById('ac-loc').textContent = currentLoc.name;
+    document.getElementById('ac-moon').textContent = MOON_ICONS[moon.phase] + ' ' + MOON_LABELS[moon.phase];
     document.getElementById('ac-illum').textContent = moon.illumination + '%';
     document.getElementById('ac-temp').textContent = temp + '°F';
     document.getElementById('ac-rain').textContent = rain + '%';
     document.getElementById('ac-recent').textContent = recent + '"';
     document.getElementById('auto-card-wrap').classList.remove('hidden');
-
     status.textContent = '✓ All data loaded';
     setTimeout(() => status.textContent = '', 3000);
   } catch(e) {
-    // Weather failed but moon still worked
-    document.getElementById('ac-moon').textContent = moon.icon + ' ' + MOON_LABELS[moon.phase];
+    document.getElementById('ac-loc').textContent = currentLoc.name;
+    document.getElementById('ac-moon').textContent = MOON_ICONS[moon.phase] + ' ' + MOON_LABELS[moon.phase];
     document.getElementById('ac-illum').textContent = moon.illumination + '%';
     document.getElementById('ac-temp').textContent = '—';
     document.getElementById('ac-rain').textContent = '—';
     document.getElementById('ac-recent').textContent = '—';
     document.getElementById('auto-card-wrap').classList.remove('hidden');
-    status.textContent = 'Moon loaded · weather unavailable (check connection)';
+    status.textContent = 'Moon loaded · weather failed (check connection)';
   }
 }
 
 // ── RULES ENGINE ──
 function getEnergy(moon) {
-  return { new:'Rest. Intention. Quiet planning.', waxing_crescent:'Growth. Establishment. Expansion.', first_quarter:'Action. Decision. Momentum.', waxing_gibbous:'Refinement. Attention. Building toward full.', full:'Peak energy. Fruition. Harvest.', waning_gibbous:'Gratitude. Sharing. Gradual release.', last_quarter:'Clearing. Letting go. Root work.', waning_crescent:'Rest. Deep roots. Preparation.' }[moon] || 'Observe.';
+  return {new:'Rest. Intention. Quiet planning.',waxing_crescent:'Growth. Establishment. Expansion.',first_quarter:'Action. Decision. Momentum.',waxing_gibbous:'Refinement. Attention. Building toward full.',full:'Peak energy. Fruition. Harvest.',waning_gibbous:'Gratitude. Sharing. Gradual release.',last_quarter:'Clearing. Letting go. Root work.',waning_crescent:'Rest. Deep roots. Preparation.'}[moon]||'Observe.';
 }
-
 function getPlants(moon, month) {
-  let plant = [], harvest = [], roots = [];
-  if (['waxing_crescent','first_quarter','waxing_gibbous'].includes(moon)) plant = ['Kale','Spinach','Lettuce','Herbs','Transplant seedlings'];
-  if (['first_quarter','waxing_gibbous','full'].includes(moon)) { plant = [...new Set([...plant,'Tomatoes','Beans','Peppers','Cucumbers'])]; harvest = ['Tomatoes','Beans','Basil','Summer squash']; }
-  if (['waning_gibbous','last_quarter','waning_crescent'].includes(moon)) { plant = ['Garlic','Onion sets']; roots = ['Carrots','Beets','Potatoes','Onions','Garlic']; }
-  if ([7,8].includes(month)) { plant = [...new Set([...plant,'Kale','Spinach','Lettuce','Broccoli'])]; harvest = [...new Set([...harvest,'Tomatoes','Peppers','Beans','Basil'])]; }
-  if ([9,10].includes(month)) { plant = [...new Set([...plant,'Garlic','Cover crop mix'])]; harvest = [...new Set([...harvest,'Winter squash','Sweet potatoes'])]; }
-  if ([3,4].includes(month)) { plant = [...new Set([...plant,'Peas','Spinach','Arugula','Onion starts'])]; }
-  return { plant, harvest, roots };
+  let plant=[], harvest=[], roots=[];
+  if(['waxing_crescent','first_quarter','waxing_gibbous'].includes(moon)) plant=['Kale','Spinach','Lettuce','Herbs','Transplant seedlings'];
+  if(['first_quarter','waxing_gibbous','full'].includes(moon)){plant=[...new Set([...plant,'Tomatoes','Beans','Peppers','Cucumbers'])];harvest=['Tomatoes','Beans','Basil','Summer squash'];}
+  if(['waning_gibbous','last_quarter','waning_crescent'].includes(moon)){plant=['Garlic','Onion sets'];roots=['Carrots','Beets','Potatoes','Onions','Garlic'];}
+  if([7,8].includes(month)){plant=[...new Set([...plant,'Kale','Spinach','Lettuce','Broccoli'])];harvest=[...new Set([...harvest,'Tomatoes','Peppers','Beans','Basil'])];}
+  if([9,10].includes(month)){plant=[...new Set([...plant,'Garlic','Cover crop mix'])];harvest=[...new Set([...harvest,'Winter squash','Sweet potatoes'])];}
+  if([3,4].includes(month)){plant=[...new Set([...plant,'Peas','Spinach','Arugula','Onion starts'])];}
+  return {plant,harvest,roots};
 }
-
-function getWatchList(season) {
-  return { late_summer:['Squash vine borers','Tomato hornworms','Spider mites'], summer:['Aphids','Squash bugs','Japanese beetles'], early_fall:['Cabbage loopers','Slugs','Late blight'], fall:['Voles','Slugs','Root rot'], spring:['Cutworms','Aphids','Late frost'], early_spring:['Damping off','Slugs','Cold snaps'], winter:['Deer browse','Rodent damage','Frost heave'] }[season] || ['Observe general pest activity'];
-}
-
-function getOrchard(season) {
-  return { early_spring:['Apply dormant oil spray','Prune before bud break','Check for fire blight'], spring:['Thin fruit after petal fall','Fertilize with compost tea','Scout for codling moth'], late_spring:['Thin crowded fruit','Stake young trees','Mow orchard floor'], early_summer:['Water young trees deeply','Scout for aphid colonies','Mow orchard floor'], summer:['Water young trees','Check fruit drop','Prune water sprouts'], late_summer:['Water young trees','Check fruit drop','Prune damaged branches'], early_fall:['Begin harvest checks','Collect and compost drops','Reduce irrigation'], fall:['Harvest remaining fruit','Rake and compost leaves','Apply trunk guards'], late_fall:['Apply dormant spray','Wrap young trunks','Final compost application'], winter:['Major structural pruning','Check stored fruit','Plan spring grafts'] }[season] || ['Check trees','Note any damage'];
-}
-
-function getLand(season) {
-  const creek = ['late_summer','summer'].includes(season) ? 'Inspect creek flow and banks' : 'Check erosion after rain';
-  const obs = ['late_summer','summer'].includes(season) ? 'Watch for yellow jacket nests' : ['fall','early_fall'].includes(season) ? 'Stack brush for wildlife cover' : 'Note what\'s blooming';
-  return ['Walk the trails', creek, obs, 'Photograph one thing that changed'];
-}
-
-function getAlerts(temp, recentRain, rainChance) {
-  let a = [];
-  if (temp > 90) a.push('Heat: water deeply, avoid transplanting, mulch exposed beds.');
-  if (temp < 32) a.push('Frost alert: protect sensitive crops tonight.');
-  if (recentRain > 1) a.push('Recent rain: scout mushrooms, check creek flow, watch for slugs.');
-  if (rainChance > 70) a.push('Rain likely today: hold off harvesting, check drainage.');
-  return a;
-}
+function getWatchList(season){return{late_summer:['Squash vine borers','Tomato hornworms','Spider mites'],summer:['Aphids','Squash bugs','Japanese beetles'],early_fall:['Cabbage loopers','Slugs','Late blight'],fall:['Voles','Slugs','Root rot'],spring:['Cutworms','Aphids','Late frost'],early_spring:['Damping off','Slugs','Cold snaps'],winter:['Deer browse','Rodent damage','Frost heave']}[season]||['Observe general pest activity'];}
+function getOrchard(season){return{early_spring:['Apply dormant oil spray','Prune before bud break','Check for fire blight'],spring:['Thin fruit after petal fall','Fertilize with compost tea','Scout for codling moth'],late_spring:['Thin crowded fruit','Stake young trees','Mow orchard floor'],early_summer:['Water young trees deeply','Scout for aphids','Mow orchard floor'],summer:['Water young trees','Check fruit drop','Prune water sprouts'],late_summer:['Water young trees','Check fruit drop','Prune damaged branches'],early_fall:['Begin harvest checks','Collect and compost drops','Reduce irrigation'],fall:['Harvest remaining fruit','Rake and compost leaves','Apply trunk guards'],late_fall:['Apply dormant spray','Wrap young trunks','Final compost application'],winter:['Major structural pruning','Check stored fruit','Plan spring grafts']}[season]||['Check trees','Note any damage'];}
+function getLand(season){const creek=['late_summer','summer'].includes(season)?'Inspect creek flow and banks':'Check erosion after rain';const obs=['late_summer','summer'].includes(season)?'Watch for yellow jacket nests':['fall','early_fall'].includes(season)?'Stack brush for wildlife cover':'Note what\'s blooming';return['Walk the trails',creek,obs,'Photograph one thing that changed'];}
+function getAlerts(temp,recentRain,rainChance){let a=[];if(temp>90)a.push('Heat: water deeply, avoid transplanting, mulch exposed beds.');if(temp<32)a.push('Frost alert: protect sensitive crops tonight.');if(recentRain>1)a.push('Recent rain: scout mushrooms, check creek flow, watch for slugs.');if(rainChance>70)a.push('Rain likely today: hold off harvesting, check drainage.');return a;}
 
 function generatePage() {
   const dateVal = document.getElementById('f-date').value;
   const moon = document.getElementById('f-moon').value;
-  const illum = parseInt(document.getElementById('f-illum').value) || 0;
+  const illum = parseInt(document.getElementById('f-illum').value)||0;
   const season = document.getElementById('f-season').value;
-  const temp = parseInt(document.getElementById('f-temp').value) || 70;
-  const rain = parseInt(document.getElementById('f-rain').value) || 0;
-  const recentRain = parseFloat(document.getElementById('f-recent-rain').value) || 0;
+  const temp = parseInt(document.getElementById('f-temp').value)||70;
+  const rain = parseInt(document.getElementById('f-rain').value)||0;
+  const recentRain = parseFloat(document.getElementById('f-recent-rain').value)||0;
   const note = document.getElementById('f-note').value.trim();
-  const moonIcon = { new:'🌑', waxing_crescent:'🌒', first_quarter:'🌓', waxing_gibbous:'🌔', full:'🌕', waning_gibbous:'🌖', last_quarter:'🌗', waning_crescent:'🌘' }[moon];
-
-  const date = dateVal ? new Date(dateVal + 'T12:00:00') : new Date();
-  const month = date.getMonth() + 1;
-  const dateStr = dateVal || date.toISOString().split('T')[0];
+  const moonIcon = MOON_ICONS[moon];
+  const date = dateVal ? new Date(dateVal+'T12:00:00') : new Date();
+  const month = date.getMonth()+1;
 
   const energy = getEnergy(moon);
-  const { plant, harvest, roots } = getPlants(moon, month);
+  const {plant,harvest,roots} = getPlants(moon,month);
   const watchList = getWatchList(season);
   const orchardTasks = getOrchard(season);
   const landTasks = getLand(season);
-  const alerts = getAlerts(temp, recentRain, rain);
-
-  const alertsHTML = alerts.map(a => `<div class="alert-block">⚠ ${a}</div>`).join('');
+  const alerts = getAlerts(temp,recentRain,rain);
 
   const plantCols = [];
-  if (plant.length) plantCols.push({ label: 'Plant today', items: plant });
-  if (harvest.length) plantCols.push({ label: 'Harvest', items: harvest });
-  if (roots.length) plantCols.push({ label: 'Root crops', items: roots });
-  plantCols.push({ label: 'Watch for', items: watchList });
+  if(plant.length) plantCols.push({label:'Plant today',items:plant});
+  if(harvest.length) plantCols.push({label:'Harvest',items:harvest});
+  if(roots.length) plantCols.push({label:'Root crops',items:roots});
+  plantCols.push({label:'Watch for',items:watchList});
 
-  const colsHTML = plantCols.map(col =>
-    `<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`
-  ).join('');
+  const colsHTML = plantCols.map(col=>`<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('');
+  const alertsHTML = alerts.map(a=>`<div class="alert-block">⚠ ${a}</div>`).join('');
 
   document.getElementById('page-content').innerHTML = `
-    <div class="page-output">
+    <div>
       <div class="page-header">
-        <div class="page-eyebrow">Warrenton, NC · Zone 8a · ${moonIcon} ${illum}% illuminated</div>
+        <div class="page-eyebrow">${currentLoc.name} · Zone ${currentLoc.zone} · ${moonIcon} ${illum}%</div>
         <div class="page-title">${fmtDate(date)}</div>
         <div class="page-meta">
           <div class="meta-pill"><strong>${MOON_LABELS[moon]}</strong></div>
@@ -456,37 +489,16 @@ function generatePage() {
           <div class="meta-pill">${temp}°F · ${rain}% rain</div>
         </div>
       </div>
-      ${note ? `<div class="alert-block" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);">📝 ${note}</div>` : ''}
-      <div class="energy-block">
-        <div class="energy-label">Today's energy</div>
-        <div class="energy-text">${energy}</div>
-      </div>
+      ${note?`<div class="alert-block" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);">📝 ${note}</div>`:''}
+      <div class="energy-block"><div class="energy-label">Today's energy</div><div class="energy-text">${energy}</div></div>
       ${alertsHTML}
       <div class="sections">
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🌱</span><div class="section-title">Garden</div></div>
-          <div class="task-cols">${colsHTML}</div>
-        </div>
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🌳</span><div class="section-title">Orchard</div></div>
-          <ul class="simple-list">${orchardTasks.map(t=>`<li>${t}</li>`).join('')}</ul>
-        </div>
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🐔</span><div class="section-title">Animals</div></div>
-          <ul class="simple-list"><li>Egg count and record</li><li>Check all waterers</li><li>Move chicken tractor</li><li>Observe flock behavior</li></ul>
-        </div>
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🗺</span><div class="section-title">Land</div></div>
-          <ul class="simple-list">${landTasks.map(t=>`<li>${t}</li>`).join('')}</ul>
-        </div>
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🎥</span><div class="section-title">Creative</div></div>
-          <ul class="simple-list"><li>Capture 30 seconds of homestead footage</li><li>Journal one observation from the land</li><li>Note anything that surprised you today</li></ul>
-        </div>
-        <div class="section">
-          <div class="section-header"><span class="section-icon">🪵</span><div class="section-title">Build & Maintain</div></div>
-          <ul class="simple-list"><li>Split or stack wood</li><li>Check fencing for gaps</li><li>Driveway and drainage check</li></ul>
-        </div>
+        <div class="section"><div class="section-header"><span class="section-icon">🌱</span><div class="section-title">Garden</div></div><div class="task-cols">${colsHTML}</div></div>
+        <div class="section"><div class="section-header"><span class="section-icon">🌳</span><div class="section-title">Orchard</div></div><ul class="simple-list">${orchardTasks.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+        <div class="section"><div class="section-header"><span class="section-icon">🐔</span><div class="section-title">Animals</div></div><ul class="simple-list"><li>Egg count and record</li><li>Check all waterers</li><li>Move chicken tractor</li><li>Observe flock behavior</li></ul></div>
+        <div class="section"><div class="section-header"><span class="section-icon">🗺</span><div class="section-title">Land</div></div><ul class="simple-list">${landTasks.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+        <div class="section"><div class="section-header"><span class="section-icon">🎥</span><div class="section-title">Creative</div></div><ul class="simple-list"><li>Capture 30 seconds of homestead footage</li><li>Journal one observation from the land</li><li>Note anything that surprised you today</li></ul></div>
+        <div class="section"><div class="section-header"><span class="section-icon">🪵</span><div class="section-title">Build & Maintain</div></div><ul class="simple-list"><li>Split or stack wood</li><li>Check fencing for gaps</li><li>Driveway and drainage check</li></ul></div>
       </div>
       <div class="reflection-block">
         <div class="energy-label" style="margin-bottom:8px">Evening reflection</div>
@@ -495,31 +507,35 @@ function generatePage() {
       </div>
     </div>`;
 
-  lastMD = `# ${fmtDate(date)}\n*Warrenton, NC · Zone 8a*\n\n---\n\n**Moon:** ${MOON_LABELS[moon]} (${illum}%)\n**Season:** ${SEASON_LABELS[season]}\n**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"\n**Energy:** ${energy}\n${note?`\n**Note:** ${note}`:''}${alerts.length?'\n\n'+alerts.map(a=>`> ⚠ ${a}`).join('\n'):''}\n\n---\n\n## 🌱 Garden\n\n**Plant:** ${plant.join(', ')||'—'}\n**Harvest:** ${harvest.join(', ')||'—'}\n**Root crops:** ${roots.join(', ')||'—'}\n**Watch for:** ${watchList.join(', ')}\n\n## 🌳 Orchard\n\n${orchardTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🐔 Animals\n\n- Egg count and record\n- Check all waterers\n- Move chicken tractor\n- Observe flock behavior\n\n## 🗺 Land\n\n${landTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🎥 Creative\n\n- Capture 30 seconds of homestead footage\n- Journal one observation from the land\n- Note anything that surprised you today\n\n## 🪵 Build & Maintain\n\n- Split or stack wood\n- Check fencing for gaps\n- Driveway and drainage check\n\n---\n\n## Evening Reflection\n\n*What changed on the land today?*\n\n&nbsp;\n\n&nbsp;\n\n&nbsp;\n`;
+  lastMD = `# ${fmtDate(date)}\n*${currentLoc.name} · Zone ${currentLoc.zone}*\n\n---\n\n**Moon:** ${MOON_LABELS[moon]} (${illum}%)\n**Season:** ${SEASON_LABELS[season]}\n**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"\n**Energy:** ${energy}\n${note?`\n**Note:** ${note}`:''}${alerts.length?'\n\n'+alerts.map(a=>`> ⚠ ${a}`).join('\n'):''}\n\n---\n\n## 🌱 Garden\n\n**Plant:** ${plant.join(', ')||'—'}\n**Harvest:** ${harvest.join(', ')||'—'}\n**Root crops:** ${roots.join(', ')||'—'}\n**Watch for:** ${watchList.join(', ')}\n\n## 🌳 Orchard\n\n${orchardTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🐔 Animals\n\n- Egg count and record\n- Check all waterers\n- Move chicken tractor\n- Observe flock behavior\n\n## 🗺 Land\n\n${landTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🎥 Creative\n\n- Capture 30 seconds of homestead footage\n- Journal one observation from the land\n- Note anything that surprised you today\n\n## 🪵 Build & Maintain\n\n- Split or stack wood\n- Check fencing for gaps\n- Driveway and drainage check\n\n---\n\n## Evening Reflection\n\n*What changed on the land today?*\n\n&nbsp;\n\n&nbsp;\n`;
 
   document.getElementById('export-content').textContent = lastMD;
   switchTab('page');
 }
 
 function copyMarkdown() {
-  if (!lastMD) { alert('Generate a page first.'); return; }
-  navigator.clipboard.writeText(lastMD).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = '✓ Copied';
-    setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
+  if(!lastMD){alert('Generate a page first.');return;}
+  navigator.clipboard.writeText(lastMD).then(()=>{
+    const btn=document.querySelector('.copy-btn');
+    btn.textContent='✓ Copied';
+    setTimeout(()=>btn.textContent='Copy to clipboard',2000);
   });
 }
 
 // ── INIT ──
-(function() {
+(function(){
   const today = new Date();
   document.getElementById('f-date').value = today.toISOString().split('T')[0];
-  document.getElementById('f-season').value = getSeasonFromMonth(today.getMonth() + 1);
-  // Auto-calc moon on load
+  document.getElementById('f-season').value = getSeasonFromMonth(today.getMonth()+1);
   const moon = getMoonData(today);
   document.getElementById('f-moon').value = moon.phase;
   document.getElementById('f-illum').value = moon.illumination;
-  document.getElementById('header-sub').textContent = `Warrenton, NC · ${moon.icon} ${MOON_LABELS[moon.phase]}`;
+  updateHeader();
+  // Restore saved custom location if it exists
+  const saved = localStorage.getItem('custom-loc');
+  if(saved) {
+    try { LOCATIONS.custom = JSON.parse(saved); } catch(e){}
+  }
 })();
 </script>
 </body>
