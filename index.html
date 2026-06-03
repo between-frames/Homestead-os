@@ -31,345 +31,97 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html { font-size: 16px; }
-  body {
-    font-family: 'EB Garamond', Georgia, serif;
-    background: var(--paper);
-    color: var(--ink);
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
+  body { font-family: 'EB Garamond', Georgia, serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
 
-  /* ── HEADER ── */
-  .app-header {
-    background: var(--paper);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 20px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .app-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-  }
-  .app-subtitle {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-top: 1px;
-  }
-  .header-actions { display: flex; gap: 8px; }
-  .btn-icon {
-    width: 36px; height: 36px;
-    background: var(--paper-2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--ink-2);
-    -webkit-appearance: none;
-  }
-  .btn-icon:active { background: var(--paper-3); }
+  .app-header { background: var(--paper); border-bottom: 1px solid var(--border); padding: 14px 20px 12px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .app-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); }
+  .app-subtitle { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
 
-  /* ── TABS ── */
-  .tab-bar {
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    background: var(--paper);
-    padding: 0 16px;
-    gap: 4px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
+  .tab-bar { display: flex; border-bottom: 1px solid var(--border); background: var(--paper); padding: 0 16px; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .tab-bar::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    border: none;
-    background: none;
-    padding: 10px 12px 9px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    -webkit-appearance: none;
-  }
-  .tab-btn.active {
-    color: var(--ink);
-    border-bottom-color: var(--ink);
-  }
+  .tab-btn { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); border: none; background: none; padding: 10px 12px 9px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; -webkit-appearance: none; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
 
-  /* ── MAIN ── */
   .main { padding: 20px 20px 100px; max-width: 680px; margin: 0 auto; }
 
-  /* ── INPUTS PANEL ── */
   .inputs-panel { display: flex; flex-direction: column; gap: 16px; }
   .field-group { display: flex; flex-direction: column; gap: 6px; }
-  .field-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+  .field-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+
   select, input[type="date"], input[type="number"], input[type="text"] {
-    font-family: 'EB Garamond', serif;
-    font-size: 16px;
-    width: 100%;
-    padding: 10px 12px;
-    background: white;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--ink);
-    -webkit-appearance: none;
-    appearance: none;
+    font-family: 'EB Garamond', serif; font-size: 16px; width: 100%; padding: 10px 12px;
+    background: white; border: 0.5px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--ink); -webkit-appearance: none; appearance: none;
   }
   select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238a857e' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .fetch-btn {
-    width: 100%;
-    padding: 10px;
-    background: var(--paper-2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    cursor: pointer;
-    -webkit-appearance: none;
-  }
-  .fetch-btn:active { background: var(--paper-3); }
-  .generate-btn {
-    width: 100%;
-    padding: 14px;
-    background: var(--ink);
-    border: none;
-    border-radius: var(--radius);
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 600;
-    font-style: italic;
-    color: var(--paper);
-    cursor: pointer;
-    letter-spacing: 0.02em;
-    -webkit-appearance: none;
-    margin-top: 4px;
-  }
-  .generate-btn:active { opacity: 0.85; }
-  .status-line {
-    font-family: 'Courier Prime', monospace;
-    font-size: 11px;
-    color: var(--ink-3);
-    text-align: center;
-    letter-spacing: 0.06em;
-    min-height: 16px;
-  }
 
-  /* ── PAGE OUTPUT ── */
+  .auto-btn {
+    width: 100%; padding: 10px; background: var(--paper-2); border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); font-family: 'Courier Prime', monospace; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; -webkit-appearance: none;
+  }
+  .auto-btn:active { background: var(--paper-3); }
+
+  .auto-card {
+    background: var(--accent-light); border: 0.5px solid var(--accent);
+    border-radius: var(--radius-sm); padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .auto-card-title { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+  .auto-card-row { display: flex; justify-content: space-between; align-items: baseline; }
+  .auto-card-val { font-family: 'Playfair Display', serif; font-size: 15px; font-style: italic; color: var(--ink); }
+  .auto-card-sub { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--ink-3); }
+
+  .status-line { font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--ink-3); text-align: center; letter-spacing: 0.06em; min-height: 16px; }
+
+  .generate-btn { width: 100%; padding: 14px; background: var(--ink); border: none; border-radius: var(--radius); font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; font-style: italic; color: var(--paper); cursor: pointer; letter-spacing: 0.02em; -webkit-appearance: none; margin-top: 4px; }
+  .generate-btn:active { opacity: 0.85; }
+
   .page-output { display: flex; flex-direction: column; gap: 0; }
-  .page-header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-  }
-  .page-eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 6px;
-  }
-  .page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.15;
-    color: var(--ink);
-  }
-  .page-meta {
-    display: flex; flex-wrap: wrap; gap: 12px;
-    margin-top: 10px;
-  }
-  .meta-pill {
-    font-family: 'EB Garamond', serif;
-    font-size: 14px;
-    color: var(--ink-2);
-  }
+  .page-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px; }
+  .page-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; font-style: italic; line-height: 1.15; color: var(--ink); }
+  .page-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+  .meta-pill { font-family: 'EB Garamond', serif; font-size: 14px; color: var(--ink-2); }
   .meta-pill strong { color: var(--ink); font-weight: 500; }
 
-  .energy-block {
-    background: var(--paper-2);
-    border-left: 2px solid var(--border);
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  }
-  .energy-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 4px;
-  }
-  .energy-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ink);
-  }
+  .energy-block { background: var(--paper-2); border-left: 2px solid var(--border); padding: 12px 16px; margin-bottom: 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .energy-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+  .energy-text { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--ink); }
 
-  .alert-block {
-    background: var(--warn-bg);
-    border: 0.5px solid var(--warn-border);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    margin-bottom: 10px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    color: var(--warn-text);
-    letter-spacing: 0.03em;
-  }
+  .alert-block { background: var(--warn-bg); border: 0.5px solid var(--warn-border); border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 10px; font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--warn-text); letter-spacing: 0.03em; }
 
   .sections { display: flex; flex-direction: column; gap: 20px; margin-top: 4px; }
-  .section { }
-  .section-header {
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 0.5px solid var(--border-light);
-    padding-bottom: 6px;
-    margin-bottom: 10px;
-  }
+  .section-header { display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid var(--border-light); padding-bottom: 6px; margin-bottom: 10px; }
   .section-icon { font-size: 14px; color: var(--ink-3); }
-  .section-title {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    font-weight: 700;
-  }
+  .section-title { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; }
 
   .task-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-  .task-col-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-4);
-    margin-bottom: 5px;
-  }
+  .task-col-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 5px; }
   .task-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-  .task-list li {
-    font-family: 'EB Garamond', serif;
-    font-size: 16px;
-    color: var(--ink);
-    display: flex; align-items: flex-start; gap: 7px;
-    line-height: 1.35;
-  }
+  .task-list li { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--ink); display: flex; align-items: flex-start; gap: 7px; line-height: 1.35; }
   .task-list li::before { content: '—'; color: var(--ink-4); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
   .simple-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-  .simple-list li {
-    font-family: 'EB Garamond', serif;
-    font-size: 16px;
-    color: var(--ink);
-    display: flex; align-items: flex-start; gap: 8px;
-    line-height: 1.35;
-  }
+  .simple-list li { font-family: 'EB Garamond', serif; font-size: 16px; color: var(--ink); display: flex; align-items: flex-start; gap: 8px; line-height: 1.35; }
   .simple-list li::before { content: '·'; color: var(--ink-3); font-size: 20px; line-height: 1.1; flex-shrink: 0; }
 
-  .reflection-block {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .reflection-prompt {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--ink-2);
-    line-height: 1.5;
-  }
+  .reflection-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .reflection-prompt { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--ink-2); line-height: 1.5; }
   .reflection-lines { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
-  .reflection-line {
-    border-bottom: 0.5px solid var(--border-light);
-    height: 28px;
-  }
+  .reflection-line { border-bottom: 0.5px solid var(--border-light); height: 28px; }
 
-  /* ── EXPORT TAB ── */
-  .export-area {
-    background: var(--paper-2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    line-height: 1.75;
-    color: var(--ink-2);
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 200px;
-  }
-  .copy-btn {
-    width: 100%;
-    padding: 12px;
-    background: var(--paper-2);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Courier Prime', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: 12px;
-  }
+  .export-area { background: var(--paper-2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px; font-family: 'Courier Prime', monospace; font-size: 12px; line-height: 1.75; color: var(--ink-2); white-space: pre-wrap; word-break: break-word; min-height: 200px; }
+  .copy-btn { width: 100%; padding: 12px; background: var(--paper-2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; -webkit-appearance: none; margin-top: 12px; }
   .copy-btn:active { background: var(--paper-3); }
 
-  /* ── PLACEHOLDER ── */
-  .placeholder {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 60px 20px;
-    text-align: center;
-    gap: 12px;
-  }
+  .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; text-align: center; gap: 12px; }
   .placeholder-icon { font-size: 40px; opacity: 0.3; }
-  .placeholder-text {
-    font-family: 'EB Garamond', serif;
-    font-size: 17px;
-    font-style: italic;
-    color: var(--ink-3);
-    max-width: 240px;
-    line-height: 1.6;
-  }
+  .placeholder-text { font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic; color: var(--ink-3); max-width: 240px; line-height: 1.6; }
 
-  /* ── FOOTER GENERATE BAR ── */
-  .generate-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--paper);
-    border-top: 1px solid var(--border);
-    padding: 12px 20px;
-    padding-bottom: calc(12px + env(safe-area-inset-bottom));
-  }
+  .generate-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--paper); border-top: 1px solid var(--border); padding: 12px 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
 
+  .divider { border: none; border-top: 0.5px solid var(--border-light); margin: 4px 0; }
   .hidden { display: none !important; }
 </style>
 </head>
@@ -378,11 +130,7 @@
 <div class="app-header">
   <div>
     <div class="app-title">K10 Homestead OS</div>
-    <div class="app-subtitle">Warrenton, NC · Zone 8a</div>
-  </div>
-  <div class="header-actions">
-    <button class="btn-icon" onclick="switchTab('inputs')" title="Settings">⚙</button>
-    <button class="btn-icon" onclick="switchTab('export')" title="Export">↓</button>
+    <div class="app-subtitle" id="header-sub">Warrenton, NC · Zone 8a</div>
   </div>
 </div>
 
@@ -402,30 +150,39 @@
     </div>
 
     <div class="field-group">
-      <div class="field-label">Weather — auto-fetch or enter manually</div>
-      <button class="fetch-btn" onclick="fetchWeather()">⟳ Fetch live weather for Warrenton NC</button>
-      <div class="status-line" id="weather-status"></div>
-      <div class="row-2">
-        <div>
-          <div class="field-label" style="margin-bottom:5px">Temp °F</div>
-          <input type="number" id="f-temp" value="75" min="-20" max="115">
-        </div>
-        <div>
-          <div class="field-label" style="margin-bottom:5px">Rain chance %</div>
-          <input type="number" id="f-rain" value="20" min="0" max="100">
-        </div>
-      </div>
-      <div class="row-2">
-        <div>
-          <div class="field-label" style="margin-bottom:5px">Recent rain (in)</div>
-          <input type="number" id="f-recent-rain" value="0" min="0" max="10" step="0.1">
-        </div>
-        <div>
-          <div class="field-label" style="margin-bottom:5px">Wind (mph)</div>
-          <input type="number" id="f-wind" value="8" min="0" max="80">
+      <div class="field-label">Auto-fetch everything</div>
+      <button class="auto-btn" onclick="fetchAll()">⟳ Fetch weather + moon for today</button>
+      <div class="status-line" id="fetch-status"></div>
+      <div id="auto-card-wrap" class="hidden">
+        <div class="auto-card">
+          <div class="auto-card-title">Live data pulled</div>
+          <div class="auto-card-row">
+            <div class="auto-card-sub">Moon</div>
+            <div class="auto-card-val" id="ac-moon">—</div>
+          </div>
+          <div class="auto-card-row">
+            <div class="auto-card-sub">Illumination</div>
+            <div class="auto-card-val" id="ac-illum">—</div>
+          </div>
+          <div class="auto-card-row">
+            <div class="auto-card-sub">Temp</div>
+            <div class="auto-card-val" id="ac-temp">—</div>
+          </div>
+          <div class="auto-card-row">
+            <div class="auto-card-sub">Rain chance</div>
+            <div class="auto-card-val" id="ac-rain">—</div>
+          </div>
+          <div class="auto-card-row">
+            <div class="auto-card-sub">Recent rain</div>
+            <div class="auto-card-val" id="ac-recent">—</div>
+          </div>
         </div>
       </div>
     </div>
+
+    <hr class="divider">
+
+    <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-4);">Or set manually</div>
 
     <div class="field-group">
       <div class="field-label">Moon Phase</div>
@@ -447,6 +204,22 @@
     </div>
 
     <div class="field-group">
+      <div class="field-label">Temp °F</div>
+      <input type="number" id="f-temp" value="75" min="-20" max="115">
+    </div>
+
+    <div class="row-2">
+      <div class="field-group">
+        <div class="field-label">Rain chance %</div>
+        <input type="number" id="f-rain" value="20" min="0" max="100">
+      </div>
+      <div class="field-group">
+        <div class="field-label">Recent rain (in)</div>
+        <input type="number" id="f-recent-rain" value="0" min="0" max="10" step="0.1">
+      </div>
+    </div>
+
+    <div class="field-group">
       <div class="field-label">Season</div>
       <select id="f-season">
         <option value="early_spring">Early Spring</option>
@@ -454,7 +227,7 @@
         <option value="late_spring">Late Spring</option>
         <option value="early_summer">Early Summer</option>
         <option value="summer">Summer</option>
-        <option value="late_summer" selected>Late Summer</option>
+        <option value="late_summer">Late Summer</option>
         <option value="early_fall">Early Fall</option>
         <option value="fall">Fall</option>
         <option value="late_fall">Late Fall</option>
@@ -463,8 +236,8 @@
     </div>
 
     <div class="field-group">
-      <div class="field-label">Custom note for today (optional)</div>
-      <input type="text" id="f-note" placeholder="e.g. First day planting broccoli starts">
+      <div class="field-label">Note for today (optional)</div>
+      <input type="text" id="f-note" placeholder="e.g. First broccoli starts in ground">
     </div>
 
   </div>
@@ -475,7 +248,7 @@
   <div id="page-content">
     <div class="placeholder">
       <div class="placeholder-icon">🌙</div>
-      <div class="placeholder-text">Set your inputs and generate today's almanac page.</div>
+      <div class="placeholder-text">Fetch data and generate today's almanac page.</div>
     </div>
   </div>
 </div>
@@ -483,19 +256,43 @@
 <!-- EXPORT TAB -->
 <div class="main hidden" id="panel-export">
   <div style="display:flex;flex-direction:column;gap:12px;">
-    <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);">Markdown output — ready to paste into Obsidian or any .md file</div>
-    <div class="export-area" id="export-content">Generate a page first to see the markdown output.</div>
+    <div class="field-label">Markdown — paste into Obsidian or any .md file</div>
+    <div class="export-area" id="export-content">Generate a page first.</div>
     <button class="copy-btn" onclick="copyMarkdown()">Copy to clipboard</button>
   </div>
 </div>
 
-<!-- FIXED GENERATE BAR -->
 <div class="generate-bar">
   <button class="generate-btn" onclick="generatePage()">Generate Today's Page →</button>
 </div>
 
 <script>
-const MOON_ICONS = { new:'🌑', waxing_crescent:'🌒', first_quarter:'🌓', waxing_gibbous:'🌔', full:'🌕', waning_gibbous:'🌖', last_quarter:'🌗', waning_crescent:'🌘' };
+// ── MOON PHASE CALCULATOR (pure math, no API needed) ──
+function getMoonData(date) {
+  // Known new moon reference: Jan 6, 2000 18:14 UTC
+  const known = new Date(Date.UTC(2000, 0, 6, 18, 14));
+  const synodic = 29.53058867; // days
+  const diff = (date - known) / (1000 * 60 * 60 * 24);
+  let age = diff % synodic;
+  if (age < 0) age += synodic;
+
+  const illumination = Math.round(50 * (1 - Math.cos(2 * Math.PI * age / synodic)));
+
+  let phase, icon;
+  if (age < 1.85)                        { phase = 'new';             icon = '🌑'; }
+  else if (age < 7.38)                   { phase = 'waxing_crescent'; icon = '🌒'; }
+  else if (age < 9.22)                   { phase = 'first_quarter';   icon = '🌓'; }
+  else if (age < 14.77)                  { phase = 'waxing_gibbous';  icon = '🌔'; }
+  else if (age < 16.61)                  { phase = 'full';            icon = '🌕'; }
+  else if (age < 22.15)                  { phase = 'waning_gibbous';  icon = '🌖'; }
+  else if (age < 23.99)                  { phase = 'last_quarter';    icon = '🌗'; }
+  else if (age < 29.53)                  { phase = 'waning_crescent'; icon = '🌘'; }
+  else                                   { phase = 'new';             icon = '🌑'; }
+
+  return { phase, icon, illumination, age: Math.round(age * 10) / 10 };
+}
+
+// ── CONSTANTS ──
 const MOON_LABELS = { new:'New Moon', waxing_crescent:'Waxing Crescent', first_quarter:'First Quarter', waxing_gibbous:'Waxing Gibbous', full:'Full Moon', waning_gibbous:'Waning Gibbous', last_quarter:'Last Quarter', waning_crescent:'Waning Crescent' };
 const SEASON_LABELS = { early_spring:'Early Spring', spring:'Spring', late_spring:'Late Spring', early_summer:'Early Summer', summer:'Summer', late_summer:'Late Summer', early_fall:'Early Fall', fall:'Fall', late_fall:'Late Fall', winter:'Winter' };
 const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -514,26 +311,68 @@ function fmtDate(d) {
   return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 }
 
-async function fetchWeather() {
-  const status = document.getElementById('weather-status');
-  status.textContent = 'Fetching...';
+function getSeasonFromMonth(m) {
+  return { 1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter' }[m];
+}
+
+async function fetchAll() {
+  const status = document.getElementById('fetch-status');
+  status.textContent = 'Fetching weather + calculating moon...';
+
+  const dateVal = document.getElementById('f-date').value;
+  const date = dateVal ? new Date(dateVal + 'T12:00:00') : new Date();
+
+  // Moon — pure calculation
+  const moon = getMoonData(date);
+  document.getElementById('f-moon').value = moon.phase;
+  document.getElementById('f-illum').value = moon.illumination;
+
+  // Season — auto from month
+  const m = date.getMonth() + 1;
+  document.getElementById('f-season').value = getSeasonFromMonth(m);
+
+  // Weather — Open-Meteo free API, Warrenton NC
   try {
-    // Warrenton NC: 36.3982° N, 78.1503° W
-    const geoUrl = 'https://api.open-meteo.com/v1/forecast?latitude=36.3982&longitude=-78.1503&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max,windspeed_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=1&timezone=America/New_York';
-    const res = await fetch(geoUrl);
+    const dateStr = date.toISOString().split('T')[0];
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=36.3982&longitude=-78.1503&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max,windspeed_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=7&timezone=America/New_York`;
+    const res = await fetch(url);
     const data = await res.json();
-    const d = data.daily;
-    document.getElementById('f-temp').value = Math.round(d.temperature_2m_max[0]);
-    document.getElementById('f-rain').value = Math.round(d.precipitation_probability_max[0]);
-    document.getElementById('f-recent-rain').value = (d.precipitation_sum[0] || 0).toFixed(1);
-    document.getElementById('f-wind').value = Math.round(d.windspeed_10m_max[0]);
-    status.textContent = '✓ Weather updated from Open-Meteo';
+
+    // Find the index for our date
+    const idx = data.daily.time.indexOf(dateStr);
+    const i = idx >= 0 ? idx : 0;
+
+    const temp = Math.round(data.daily.temperature_2m_max[i]);
+    const rain = Math.round(data.daily.precipitation_probability_max[i]);
+    const recent = parseFloat((data.daily.precipitation_sum[i] || 0).toFixed(1));
+
+    document.getElementById('f-temp').value = temp;
+    document.getElementById('f-rain').value = rain;
+    document.getElementById('f-recent-rain').value = recent;
+
+    // Show auto card
+    document.getElementById('ac-moon').textContent = moon.icon + ' ' + MOON_LABELS[moon.phase];
+    document.getElementById('ac-illum').textContent = moon.illumination + '%';
+    document.getElementById('ac-temp').textContent = temp + '°F';
+    document.getElementById('ac-rain').textContent = rain + '%';
+    document.getElementById('ac-recent').textContent = recent + '"';
+    document.getElementById('auto-card-wrap').classList.remove('hidden');
+
+    status.textContent = '✓ All data loaded';
     setTimeout(() => status.textContent = '', 3000);
   } catch(e) {
-    status.textContent = 'Could not fetch — check connection';
+    // Weather failed but moon still worked
+    document.getElementById('ac-moon').textContent = moon.icon + ' ' + MOON_LABELS[moon.phase];
+    document.getElementById('ac-illum').textContent = moon.illumination + '%';
+    document.getElementById('ac-temp').textContent = '—';
+    document.getElementById('ac-rain').textContent = '—';
+    document.getElementById('ac-recent').textContent = '—';
+    document.getElementById('auto-card-wrap').classList.remove('hidden');
+    status.textContent = 'Moon loaded · weather unavailable (check connection)';
   }
 }
 
+// ── RULES ENGINE ──
 function getEnergy(moon) {
   return { new:'Rest. Intention. Quiet planning.', waxing_crescent:'Growth. Establishment. Expansion.', first_quarter:'Action. Decision. Momentum.', waxing_gibbous:'Refinement. Attention. Building toward full.', full:'Peak energy. Fruition. Harvest.', waning_gibbous:'Gratitude. Sharing. Gradual release.', last_quarter:'Clearing. Letting go. Root work.', waning_crescent:'Rest. Deep roots. Preparation.' }[moon] || 'Observe.';
 }
@@ -581,6 +420,7 @@ function generatePage() {
   const rain = parseInt(document.getElementById('f-rain').value) || 0;
   const recentRain = parseFloat(document.getElementById('f-recent-rain').value) || 0;
   const note = document.getElementById('f-note').value.trim();
+  const moonIcon = { new:'🌑', waxing_crescent:'🌒', first_quarter:'🌓', waxing_gibbous:'🌔', full:'🌕', waning_gibbous:'🌖', last_quarter:'🌗', waning_crescent:'🌘' }[moon];
 
   const date = dateVal ? new Date(dateVal + 'T12:00:00') : new Date();
   const month = date.getMonth() + 1;
@@ -602,13 +442,13 @@ function generatePage() {
   plantCols.push({ label: 'Watch for', items: watchList });
 
   const colsHTML = plantCols.map(col =>
-    `<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+    `<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`
   ).join('');
 
   document.getElementById('page-content').innerHTML = `
     <div class="page-output">
       <div class="page-header">
-        <div class="page-eyebrow">Warrenton, NC · Zone 8a · ${MOON_ICONS[moon]} ${illum}% illuminated</div>
+        <div class="page-eyebrow">Warrenton, NC · Zone 8a · ${moonIcon} ${illum}% illuminated</div>
         <div class="page-title">${fmtDate(date)}</div>
         <div class="page-meta">
           <div class="meta-pill"><strong>${MOON_LABELS[moon]}</strong></div>
@@ -616,16 +456,12 @@ function generatePage() {
           <div class="meta-pill">${temp}°F · ${rain}% rain</div>
         </div>
       </div>
-
       ${note ? `<div class="alert-block" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);">📝 ${note}</div>` : ''}
-
       <div class="energy-block">
         <div class="energy-label">Today's energy</div>
         <div class="energy-text">${energy}</div>
       </div>
-
       ${alertsHTML}
-
       <div class="sections">
         <div class="section">
           <div class="section-header"><span class="section-icon">🌱</span><div class="section-title">Garden</div></div>
@@ -633,7 +469,7 @@ function generatePage() {
         </div>
         <div class="section">
           <div class="section-header"><span class="section-icon">🌳</span><div class="section-title">Orchard</div></div>
-          <ul class="simple-list">${orchardTasks.map(t => `<li>${t}</li>`).join('')}</ul>
+          <ul class="simple-list">${orchardTasks.map(t=>`<li>${t}</li>`).join('')}</ul>
         </div>
         <div class="section">
           <div class="section-header"><span class="section-icon">🐔</span><div class="section-title">Animals</div></div>
@@ -641,7 +477,7 @@ function generatePage() {
         </div>
         <div class="section">
           <div class="section-header"><span class="section-icon">🗺</span><div class="section-title">Land</div></div>
-          <ul class="simple-list">${landTasks.map(t => `<li>${t}</li>`).join('')}</ul>
+          <ul class="simple-list">${landTasks.map(t=>`<li>${t}</li>`).join('')}</ul>
         </div>
         <div class="section">
           <div class="section-header"><span class="section-icon">🎥</span><div class="section-title">Creative</div></div>
@@ -652,79 +488,16 @@ function generatePage() {
           <ul class="simple-list"><li>Split or stack wood</li><li>Check fencing for gaps</li><li>Driveway and drainage check</li></ul>
         </div>
       </div>
-
       <div class="reflection-block">
         <div class="energy-label" style="margin-bottom:8px">Evening reflection</div>
         <div class="reflection-prompt">What changed on the land today?</div>
         <div class="reflection-lines"><div class="reflection-line"></div><div class="reflection-line"></div><div class="reflection-line"></div></div>
       </div>
-    </div>
-  `;
+    </div>`;
 
-  // Build markdown
-  const md = `# ${fmtDate(date)}
-*Warrenton, NC · Zone 8a*
+  lastMD = `# ${fmtDate(date)}\n*Warrenton, NC · Zone 8a*\n\n---\n\n**Moon:** ${MOON_LABELS[moon]} (${illum}%)\n**Season:** ${SEASON_LABELS[season]}\n**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"\n**Energy:** ${energy}\n${note?`\n**Note:** ${note}`:''}${alerts.length?'\n\n'+alerts.map(a=>`> ⚠ ${a}`).join('\n'):''}\n\n---\n\n## 🌱 Garden\n\n**Plant:** ${plant.join(', ')||'—'}\n**Harvest:** ${harvest.join(', ')||'—'}\n**Root crops:** ${roots.join(', ')||'—'}\n**Watch for:** ${watchList.join(', ')}\n\n## 🌳 Orchard\n\n${orchardTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🐔 Animals\n\n- Egg count and record\n- Check all waterers\n- Move chicken tractor\n- Observe flock behavior\n\n## 🗺 Land\n\n${landTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🎥 Creative\n\n- Capture 30 seconds of homestead footage\n- Journal one observation from the land\n- Note anything that surprised you today\n\n## 🪵 Build & Maintain\n\n- Split or stack wood\n- Check fencing for gaps\n- Driveway and drainage check\n\n---\n\n## Evening Reflection\n\n*What changed on the land today?*\n\n&nbsp;\n\n&nbsp;\n\n&nbsp;\n`;
 
----
-
-**Moon:** ${MOON_LABELS[moon]} (${illum}%)
-**Season:** ${SEASON_LABELS[season]}
-**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"
-**Energy:** ${energy}
-${note ? `\n**Note:** ${note}` : ''}
-${alerts.length ? '\n' + alerts.map(a => `> ⚠ ${a}`).join('\n') : ''}
-
----
-
-## 🌱 Garden
-
-**Plant:** ${plant.join(', ') || '—'}
-**Harvest:** ${harvest.join(', ') || '—'}
-**Root crops:** ${roots.join(', ') || '—'}
-**Watch for:** ${watchList.join(', ')}
-
-## 🌳 Orchard
-
-${orchardTasks.map(t => `- ${t}`).join('\n')}
-
-## 🐔 Animals
-
-- Egg count and record
-- Check all waterers
-- Move chicken tractor
-- Observe flock behavior
-
-## 🗺 Land
-
-${landTasks.map(t => `- ${t}`).join('\n')}
-
-## 🎥 Creative
-
-- Capture 30 seconds of homestead footage
-- Journal one observation from the land
-- Note anything that surprised you today
-
-## 🪵 Build & Maintain
-
-- Split or stack wood
-- Check fencing for gaps
-- Driveway and drainage check
-
----
-
-## Evening Reflection
-
-*What changed on the land today?*
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-`;
-
-  lastMD = md;
-  document.getElementById('export-content').textContent = md;
+  document.getElementById('export-content').textContent = lastMD;
   switchTab('page');
 }
 
@@ -737,13 +510,16 @@ function copyMarkdown() {
   });
 }
 
-// Init
-document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
-// Auto-detect season from month
+// ── INIT ──
 (function() {
-  const m = new Date().getMonth() + 1;
-  const map = { 1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter' };
-  document.getElementById('f-season').value = map[m] || 'summer';
+  const today = new Date();
+  document.getElementById('f-date').value = today.toISOString().split('T')[0];
+  document.getElementById('f-season').value = getSeasonFromMonth(today.getMonth() + 1);
+  // Auto-calc moon on load
+  const moon = getMoonData(today);
+  document.getElementById('f-moon').value = moon.phase;
+  document.getElementById('f-illum').value = moon.illumination;
+  document.getElementById('header-sub').textContent = `Warrenton, NC · ${moon.icon} ${MOON_LABELS[moon.phase]}`;
 })();
 </script>
 </body>
