@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Homestead OS">
+<meta name="theme-color" content="#faf9f6">
+<title>K10 Homestead OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-2: #4a4640;
+    --ink-3: #8a857e;
+    --ink-4: #b8b2a8;
+    --paper: #faf9f6;
+    --paper-2: #f2efe8;
+    --paper-3: #e8e3d8;
+    --border: #d4cfc4;
+    --border-light: #e4dfd4;
+    --accent: #4a6741;
+    --accent-light: #e8f0e6;
+    --warn-bg: #fdf4e0;
+    --warn-border: #d4a830;
+    --warn-text: #8a6010;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+
+  /* ── HEADER ── */
+  .app-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .app-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .app-subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 1px;
+  }
+  .header-actions { display: flex; gap: 8px; }
+  .btn-icon {
+    width: 36px; height: 36px;
+    background: var(--paper-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--ink-2);
+    -webkit-appearance: none;
+  }
+  .btn-icon:active { background: var(--paper-3); }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    padding: 0 16px;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: none;
+    background: none;
+    padding: 10px 12px 9px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    -webkit-appearance: none;
+  }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  /* ── MAIN ── */
+  .main { padding: 20px 20px 100px; max-width: 680px; margin: 0 auto; }
+
+  /* ── INPUTS PANEL ── */
+  .inputs-panel { display: flex; flex-direction: column; gap: 16px; }
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  .field-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  select, input[type="date"], input[type="number"], input[type="text"] {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 12px;
+    background: white;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238a857e' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fetch-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--paper-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  .fetch-btn:active { background: var(--paper-3); }
+  .generate-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--ink);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--paper);
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    -webkit-appearance: none;
+    margin-top: 4px;
+  }
+  .generate-btn:active { opacity: 0.85; }
+  .status-line {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-align: center;
+    letter-spacing: 0.06em;
+    min-height: 16px;
+  }
+
+  /* ── PAGE OUTPUT ── */
+  .page-output { display: flex; flex-direction: column; gap: 0; }
+  .page-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+  .page-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 6px;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .page-meta {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 10px;
+  }
+  .meta-pill {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .meta-pill strong { color: var(--ink); font-weight: 500; }
+
+  .energy-block {
+    background: var(--paper-2);
+    border-left: 2px solid var(--border);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .energy-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+  .energy-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .alert-block {
+    background: var(--warn-bg);
+    border: 0.5px solid var(--warn-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--warn-text);
+    letter-spacing: 0.03em;
+  }
+
+  .sections { display: flex; flex-direction: column; gap: 20px; margin-top: 4px; }
+  .section { }
+  .section-header {
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 0.5px solid var(--border-light);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .section-icon { font-size: 14px; color: var(--ink-3); }
+  .section-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 700;
+  }
+
+  .task-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .task-col-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 5px;
+  }
+  .task-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .task-list li {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--ink);
+    display: flex; align-items: flex-start; gap: 7px;
+    line-height: 1.35;
+  }
+  .task-list li::before { content: '—'; color: var(--ink-4); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+  .simple-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .simple-list li {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--ink);
+    display: flex; align-items: flex-start; gap: 8px;
+    line-height: 1.35;
+  }
+  .simple-list li::before { content: '·'; color: var(--ink-3); font-size: 20px; line-height: 1.1; flex-shrink: 0; }
+
+  .reflection-block {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .reflection-prompt {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .reflection-lines { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .reflection-line {
+    border-bottom: 0.5px solid var(--border-light);
+    height: 28px;
+  }
+
+  /* ── EXPORT TAB ── */
+  .export-area {
+    background: var(--paper-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 200px;
+  }
+  .copy-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--paper-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: 12px;
+  }
+  .copy-btn:active { background: var(--paper-3); }
+
+  /* ── PLACEHOLDER ── */
+  .placeholder {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    gap: 12px;
+  }
+  .placeholder-icon { font-size: 40px; opacity: 0.3; }
+  .placeholder-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink-3);
+    max-width: 240px;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER GENERATE BAR ── */
+  .generate-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--paper);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <div>
+    <div class="app-title">K10 Homestead OS</div>
+    <div class="app-subtitle">Warrenton, NC · Zone 8a</div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-icon" onclick="switchTab('inputs')" title="Settings">⚙</button>
+    <button class="btn-icon" onclick="switchTab('export')" title="Export">↓</button>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" id="tab-inputs" onclick="switchTab('inputs')">Inputs</button>
+  <button class="tab-btn" id="tab-page" onclick="switchTab('page')">Today's Page</button>
+  <button class="tab-btn" id="tab-export" onclick="switchTab('export')">Export .md</button>
+</div>
+
+<!-- INPUTS TAB -->
+<div class="main" id="panel-inputs">
+  <div class="inputs-panel">
+
+    <div class="field-group">
+      <div class="field-label">Date</div>
+      <input type="date" id="f-date">
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">Weather — auto-fetch or enter manually</div>
+      <button class="fetch-btn" onclick="fetchWeather()">⟳ Fetch live weather for Warrenton NC</button>
+      <div class="status-line" id="weather-status"></div>
+      <div class="row-2">
+        <div>
+          <div class="field-label" style="margin-bottom:5px">Temp °F</div>
+          <input type="number" id="f-temp" value="75" min="-20" max="115">
+        </div>
+        <div>
+          <div class="field-label" style="margin-bottom:5px">Rain chance %</div>
+          <input type="number" id="f-rain" value="20" min="0" max="100">
+        </div>
+      </div>
+      <div class="row-2">
+        <div>
+          <div class="field-label" style="margin-bottom:5px">Recent rain (in)</div>
+          <input type="number" id="f-recent-rain" value="0" min="0" max="10" step="0.1">
+        </div>
+        <div>
+          <div class="field-label" style="margin-bottom:5px">Wind (mph)</div>
+          <input type="number" id="f-wind" value="8" min="0" max="80">
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">Moon Phase</div>
+      <select id="f-moon">
+        <option value="new">🌑 New Moon</option>
+        <option value="waxing_crescent" selected>🌒 Waxing Crescent</option>
+        <option value="first_quarter">🌓 First Quarter</option>
+        <option value="waxing_gibbous">🌔 Waxing Gibbous</option>
+        <option value="full">🌕 Full Moon</option>
+        <option value="waning_gibbous">🌖 Waning Gibbous</option>
+        <option value="last_quarter">🌗 Last Quarter</option>
+        <option value="waning_crescent">🌘 Waning Crescent</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">Moon Illumination %</div>
+      <input type="number" id="f-illum" value="22" min="0" max="100">
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">Season</div>
+      <select id="f-season">
+        <option value="early_spring">Early Spring</option>
+        <option value="spring">Spring</option>
+        <option value="late_spring">Late Spring</option>
+        <option value="early_summer">Early Summer</option>
+        <option value="summer">Summer</option>
+        <option value="late_summer" selected>Late Summer</option>
+        <option value="early_fall">Early Fall</option>
+        <option value="fall">Fall</option>
+        <option value="late_fall">Late Fall</option>
+        <option value="winter">Winter</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <div class="field-label">Custom note for today (optional)</div>
+      <input type="text" id="f-note" placeholder="e.g. First day planting broccoli starts">
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE TAB -->
+<div class="main hidden" id="panel-page">
+  <div id="page-content">
+    <div class="placeholder">
+      <div class="placeholder-icon">🌙</div>
+      <div class="placeholder-text">Set your inputs and generate today's almanac page.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPORT TAB -->
+<div class="main hidden" id="panel-export">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="font-family:'Courier Prime',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);">Markdown output — ready to paste into Obsidian or any .md file</div>
+    <div class="export-area" id="export-content">Generate a page first to see the markdown output.</div>
+    <button class="copy-btn" onclick="copyMarkdown()">Copy to clipboard</button>
+  </div>
+</div>
+
+<!-- FIXED GENERATE BAR -->
+<div class="generate-bar">
+  <button class="generate-btn" onclick="generatePage()">Generate Today's Page →</button>
+</div>
+
+<script>
+const MOON_ICONS = { new:'🌑', waxing_crescent:'🌒', first_quarter:'🌓', waxing_gibbous:'🌔', full:'🌕', waning_gibbous:'🌖', last_quarter:'🌗', waning_crescent:'🌘' };
+const MOON_LABELS = { new:'New Moon', waxing_crescent:'Waxing Crescent', first_quarter:'First Quarter', waxing_gibbous:'Waxing Gibbous', full:'Full Moon', waning_gibbous:'Waning Gibbous', last_quarter:'Last Quarter', waning_crescent:'Waning Crescent' };
+const SEASON_LABELS = { early_spring:'Early Spring', spring:'Spring', late_spring:'Late Spring', early_summer:'Early Summer', summer:'Summer', late_summer:'Late Summer', early_fall:'Early Fall', fall:'Fall', late_fall:'Late Fall', winter:'Winter' };
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let lastMD = '';
+
+function switchTab(name) {
+  ['inputs','page','export'].forEach(t => {
+    document.getElementById('panel-'+t).classList.toggle('hidden', t !== name);
+    document.getElementById('tab-'+t).classList.toggle('active', t === name);
+  });
+}
+
+function fmtDate(d) {
+  return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+async function fetchWeather() {
+  const status = document.getElementById('weather-status');
+  status.textContent = 'Fetching...';
+  try {
+    // Warrenton NC: 36.3982° N, 78.1503° W
+    const geoUrl = 'https://api.open-meteo.com/v1/forecast?latitude=36.3982&longitude=-78.1503&daily=precipitation_probability_max,precipitation_sum,temperature_2m_max,windspeed_10m_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=1&timezone=America/New_York';
+    const res = await fetch(geoUrl);
+    const data = await res.json();
+    const d = data.daily;
+    document.getElementById('f-temp').value = Math.round(d.temperature_2m_max[0]);
+    document.getElementById('f-rain').value = Math.round(d.precipitation_probability_max[0]);
+    document.getElementById('f-recent-rain').value = (d.precipitation_sum[0] || 0).toFixed(1);
+    document.getElementById('f-wind').value = Math.round(d.windspeed_10m_max[0]);
+    status.textContent = '✓ Weather updated from Open-Meteo';
+    setTimeout(() => status.textContent = '', 3000);
+  } catch(e) {
+    status.textContent = 'Could not fetch — check connection';
+  }
+}
+
+function getEnergy(moon) {
+  return { new:'Rest. Intention. Quiet planning.', waxing_crescent:'Growth. Establishment. Expansion.', first_quarter:'Action. Decision. Momentum.', waxing_gibbous:'Refinement. Attention. Building toward full.', full:'Peak energy. Fruition. Harvest.', waning_gibbous:'Gratitude. Sharing. Gradual release.', last_quarter:'Clearing. Letting go. Root work.', waning_crescent:'Rest. Deep roots. Preparation.' }[moon] || 'Observe.';
+}
+
+function getPlants(moon, month) {
+  let plant = [], harvest = [], roots = [];
+  if (['waxing_crescent','first_quarter','waxing_gibbous'].includes(moon)) plant = ['Kale','Spinach','Lettuce','Herbs','Transplant seedlings'];
+  if (['first_quarter','waxing_gibbous','full'].includes(moon)) { plant = [...new Set([...plant,'Tomatoes','Beans','Peppers','Cucumbers'])]; harvest = ['Tomatoes','Beans','Basil','Summer squash']; }
+  if (['waning_gibbous','last_quarter','waning_crescent'].includes(moon)) { plant = ['Garlic','Onion sets']; roots = ['Carrots','Beets','Potatoes','Onions','Garlic']; }
+  if ([7,8].includes(month)) { plant = [...new Set([...plant,'Kale','Spinach','Lettuce','Broccoli'])]; harvest = [...new Set([...harvest,'Tomatoes','Peppers','Beans','Basil'])]; }
+  if ([9,10].includes(month)) { plant = [...new Set([...plant,'Garlic','Cover crop mix'])]; harvest = [...new Set([...harvest,'Winter squash','Sweet potatoes'])]; }
+  if ([3,4].includes(month)) { plant = [...new Set([...plant,'Peas','Spinach','Arugula','Onion starts'])]; }
+  return { plant, harvest, roots };
+}
+
+function getWatchList(season) {
+  return { late_summer:['Squash vine borers','Tomato hornworms','Spider mites'], summer:['Aphids','Squash bugs','Japanese beetles'], early_fall:['Cabbage loopers','Slugs','Late blight'], fall:['Voles','Slugs','Root rot'], spring:['Cutworms','Aphids','Late frost'], early_spring:['Damping off','Slugs','Cold snaps'], winter:['Deer browse','Rodent damage','Frost heave'] }[season] || ['Observe general pest activity'];
+}
+
+function getOrchard(season) {
+  return { early_spring:['Apply dormant oil spray','Prune before bud break','Check for fire blight'], spring:['Thin fruit after petal fall','Fertilize with compost tea','Scout for codling moth'], late_spring:['Thin crowded fruit','Stake young trees','Mow orchard floor'], early_summer:['Water young trees deeply','Scout for aphid colonies','Mow orchard floor'], summer:['Water young trees','Check fruit drop','Prune water sprouts'], late_summer:['Water young trees','Check fruit drop','Prune damaged branches'], early_fall:['Begin harvest checks','Collect and compost drops','Reduce irrigation'], fall:['Harvest remaining fruit','Rake and compost leaves','Apply trunk guards'], late_fall:['Apply dormant spray','Wrap young trunks','Final compost application'], winter:['Major structural pruning','Check stored fruit','Plan spring grafts'] }[season] || ['Check trees','Note any damage'];
+}
+
+function getLand(season) {
+  const creek = ['late_summer','summer'].includes(season) ? 'Inspect creek flow and banks' : 'Check erosion after rain';
+  const obs = ['late_summer','summer'].includes(season) ? 'Watch for yellow jacket nests' : ['fall','early_fall'].includes(season) ? 'Stack brush for wildlife cover' : 'Note what\'s blooming';
+  return ['Walk the trails', creek, obs, 'Photograph one thing that changed'];
+}
+
+function getAlerts(temp, recentRain, rainChance) {
+  let a = [];
+  if (temp > 90) a.push('Heat: water deeply, avoid transplanting, mulch exposed beds.');
+  if (temp < 32) a.push('Frost alert: protect sensitive crops tonight.');
+  if (recentRain > 1) a.push('Recent rain: scout mushrooms, check creek flow, watch for slugs.');
+  if (rainChance > 70) a.push('Rain likely today: hold off harvesting, check drainage.');
+  return a;
+}
+
+function generatePage() {
+  const dateVal = document.getElementById('f-date').value;
+  const moon = document.getElementById('f-moon').value;
+  const illum = parseInt(document.getElementById('f-illum').value) || 0;
+  const season = document.getElementById('f-season').value;
+  const temp = parseInt(document.getElementById('f-temp').value) || 70;
+  const rain = parseInt(document.getElementById('f-rain').value) || 0;
+  const recentRain = parseFloat(document.getElementById('f-recent-rain').value) || 0;
+  const note = document.getElementById('f-note').value.trim();
+
+  const date = dateVal ? new Date(dateVal + 'T12:00:00') : new Date();
+  const month = date.getMonth() + 1;
+  const dateStr = dateVal || date.toISOString().split('T')[0];
+
+  const energy = getEnergy(moon);
+  const { plant, harvest, roots } = getPlants(moon, month);
+  const watchList = getWatchList(season);
+  const orchardTasks = getOrchard(season);
+  const landTasks = getLand(season);
+  const alerts = getAlerts(temp, recentRain, rain);
+
+  const alertsHTML = alerts.map(a => `<div class="alert-block">⚠ ${a}</div>`).join('');
+
+  const plantCols = [];
+  if (plant.length) plantCols.push({ label: 'Plant today', items: plant });
+  if (harvest.length) plantCols.push({ label: 'Harvest', items: harvest });
+  if (roots.length) plantCols.push({ label: 'Root crops', items: roots });
+  plantCols.push({ label: 'Watch for', items: watchList });
+
+  const colsHTML = plantCols.map(col =>
+    `<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+  ).join('');
+
+  document.getElementById('page-content').innerHTML = `
+    <div class="page-output">
+      <div class="page-header">
+        <div class="page-eyebrow">Warrenton, NC · Zone 8a · ${MOON_ICONS[moon]} ${illum}% illuminated</div>
+        <div class="page-title">${fmtDate(date)}</div>
+        <div class="page-meta">
+          <div class="meta-pill"><strong>${MOON_LABELS[moon]}</strong></div>
+          <div class="meta-pill"><strong>${SEASON_LABELS[season]}</strong></div>
+          <div class="meta-pill">${temp}°F · ${rain}% rain</div>
+        </div>
+      </div>
+
+      ${note ? `<div class="alert-block" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);">📝 ${note}</div>` : ''}
+
+      <div class="energy-block">
+        <div class="energy-label">Today's energy</div>
+        <div class="energy-text">${energy}</div>
+      </div>
+
+      ${alertsHTML}
+
+      <div class="sections">
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🌱</span><div class="section-title">Garden</div></div>
+          <div class="task-cols">${colsHTML}</div>
+        </div>
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🌳</span><div class="section-title">Orchard</div></div>
+          <ul class="simple-list">${orchardTasks.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🐔</span><div class="section-title">Animals</div></div>
+          <ul class="simple-list"><li>Egg count and record</li><li>Check all waterers</li><li>Move chicken tractor</li><li>Observe flock behavior</li></ul>
+        </div>
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🗺</span><div class="section-title">Land</div></div>
+          <ul class="simple-list">${landTasks.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🎥</span><div class="section-title">Creative</div></div>
+          <ul class="simple-list"><li>Capture 30 seconds of homestead footage</li><li>Journal one observation from the land</li><li>Note anything that surprised you today</li></ul>
+        </div>
+        <div class="section">
+          <div class="section-header"><span class="section-icon">🪵</span><div class="section-title">Build & Maintain</div></div>
+          <ul class="simple-list"><li>Split or stack wood</li><li>Check fencing for gaps</li><li>Driveway and drainage check</li></ul>
+        </div>
+      </div>
+
+      <div class="reflection-block">
+        <div class="energy-label" style="margin-bottom:8px">Evening reflection</div>
+        <div class="reflection-prompt">What changed on the land today?</div>
+        <div class="reflection-lines"><div class="reflection-line"></div><div class="reflection-line"></div><div class="reflection-line"></div></div>
+      </div>
+    </div>
+  `;
+
+  // Build markdown
+  const md = `# ${fmtDate(date)}
+*Warrenton, NC · Zone 8a*
+
+---
+
+**Moon:** ${MOON_LABELS[moon]} (${illum}%)
+**Season:** ${SEASON_LABELS[season]}
+**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"
+**Energy:** ${energy}
+${note ? `\n**Note:** ${note}` : ''}
+${alerts.length ? '\n' + alerts.map(a => `> ⚠ ${a}`).join('\n') : ''}
+
+---
+
+## 🌱 Garden
+
+**Plant:** ${plant.join(', ') || '—'}
+**Harvest:** ${harvest.join(', ') || '—'}
+**Root crops:** ${roots.join(', ') || '—'}
+**Watch for:** ${watchList.join(', ')}
+
+## 🌳 Orchard
+
+${orchardTasks.map(t => `- ${t}`).join('\n')}
+
+## 🐔 Animals
+
+- Egg count and record
+- Check all waterers
+- Move chicken tractor
+- Observe flock behavior
+
+## 🗺 Land
+
+${landTasks.map(t => `- ${t}`).join('\n')}
+
+## 🎥 Creative
+
+- Capture 30 seconds of homestead footage
+- Journal one observation from the land
+- Note anything that surprised you today
+
+## 🪵 Build & Maintain
+
+- Split or stack wood
+- Check fencing for gaps
+- Driveway and drainage check
+
+---
+
+## Evening Reflection
+
+*What changed on the land today?*
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+`;
+
+  lastMD = md;
+  document.getElementById('export-content').textContent = md;
+  switchTab('page');
+}
+
+function copyMarkdown() {
+  if (!lastMD) { alert('Generate a page first.'); return; }
+  navigator.clipboard.writeText(lastMD).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
+  });
+}
+
+// Init
+document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+// Auto-detect season from month
+(function() {
+  const m = new Date().getMonth() + 1;
+  const map = { 1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter' };
+  document.getElementById('f-season').value = map[m] || 'summer';
+})();
+</script>
+</body>
+</html>
