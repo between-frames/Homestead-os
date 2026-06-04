@@ -534,7 +534,6 @@ select {
 
   <div class="card">
     <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
-      <button class="fetch-btn" onclick="fetchAll()">Fetch weather + moon</button>
       <div class="status-line" id="fetch-status"></div>
       <div id="auto-card-wrap" class="hidden">
         <div class="auto-card">
@@ -635,9 +634,10 @@ function setLocation(key, btn) {
   } else {
     document.getElementById('custom-coords-wrap').classList.add('hidden');
     currentLoc = LOCATIONS[key]; updateHeader();
+    document.getElementById('auto-card-wrap').classList.add('hidden');
+    document.getElementById('fetch-status').textContent = '';
+    fetchAll();
   }
-  document.getElementById('auto-card-wrap').classList.add('hidden');
-  document.getElementById('fetch-status').textContent = '';
 }
 
 function saveCustomLocation() {
@@ -863,6 +863,7 @@ function copyMarkdown() {
   document.getElementById('f-illum').value = moon.illumination;
   document.getElementById('header-moon').textContent = MOON_ICONS[moon.phase];
   updateHeader();
+  fetchAll();
 })();
 </script>
 </body>
