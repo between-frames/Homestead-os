@@ -6,431 +6,644 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Homestead OS">
-<meta name="theme-color" content="#f5f5f0">
+<meta name="theme-color" content="#e8d8a8">
 <title>K10 Homestead OS</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f5f5f0;
-  --bg-2: #eeede8;
-  --bg-3: #e5e4de;
-  --white: #ffffff;
-  --ink: #111110;
-  --ink-2: #3a3a37;
-  --ink-3: #7a7a75;
-  --ink-4: #b0b0aa;
-  --border: #d8d7d0;
-  --border-2: #c8c7c0;
-  --apple-blue:   #0077cc;
-  --apple-green:  #4caf50;
-  --apple-orange: #ff6b2b;
-  --apple-purple: #7b5ea7;
-  --apple-teal:   #00968a;
-  --blue-tint:   #e8f2fb;
-  --green-tint:  #eaf4ea;
-  --orange-tint: #fff0ea;
-  --purple-tint: #f2eef8;
-  --teal-tint:   #e5f4f2;
-  --radius-lg: 16px;
-  --radius: 10px;
-  --radius-sm: 7px;
+  --bg:       #e8d8a8;
+  --bg-2:     #dcc890;
+  --bg-3:     #d0b878;
+  --panel:    #f0e4c0;
+  --panel-2:  #ead8a8;
+  --border:   #8a6830;
+  --border-2: #6a4e20;
+  --border-hi:#a07840;
+  --ink:      #2a1a08;
+  --ink-2:    #4a3010;
+  --ink-3:    #7a5828;
+  --ink-4:    #a07840;
+  --green:    #2a6820;
+  --green-hi: #4a9030;
+  --green-bg: #d8ecc8;
+  --amber:    #8a5010;
+  --amber-hi: #c07820;
+  --amber-bg: #f0e0b0;
+  --sky:      #305890;
+  --sky-hi:   #4878b8;
+  --sky-bg:   #c8ddf0;
+  --red:      #882010;
+  --red-bg:   #f0d0c0;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html { font-size: 16px; }
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html { font-size:16px; }
 body {
-  font-family: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Press Start 2P', monospace;
   background: var(--bg);
   color: var(--ink);
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: none;
 }
 
-/* HEADER */
+/* ── PIXEL BORDER ── */
+.rpg-box {
+  background: var(--panel);
+  border: 4px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border-2), inset 2px 2px 0 var(--panel-2), inset -2px -2px 0 var(--bg-2);
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* ── HEADER ── */
 .app-header {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 20px;
-  height: 52px;
+  background: var(--panel);
+  border-bottom: 4px solid var(--border);
+  box-shadow: 0 4px 0 var(--border-2);
+  padding: 0 16px; height: 52px;
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0; z-index: 100;
 }
-.app-title { font-size: 13px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
-.app-title span { color: var(--apple-blue); }
-.header-right { display: flex; align-items: center; gap: 6px; }
-.header-loc {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.01em;
-  color: var(--ink-3); background: var(--bg-2);
-  padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border);
-}
-.header-moon { font-size: 18px; }
+.app-title { font-size: 8px; color: var(--green); letter-spacing: 0.05em; line-height: 1; }
+.app-title span { color: var(--amber); }
+.header-right { display:flex; align-items:center; gap: 10px; }
+.header-loc { font-size: 6px; color: var(--ink-3); letter-spacing: 0.05em; }
+.header-moon-char { font-size: 18px; }
 
-/* TABS */
+/* ── TABS ── */
 .tab-bar {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  display: flex; padding: 0 16px; gap: 2px;
-  overflow-x: auto; scrollbar-width: none;
+  background: var(--bg-2);
+  border-bottom: 4px solid var(--border);
+  box-shadow: 0 4px 0 var(--border-2);
+  display: flex; overflow-x: auto; scrollbar-width: none;
 }
-.tab-bar::-webkit-scrollbar { display: none; }
+.tab-bar::-webkit-scrollbar { display:none; }
 .tab-btn {
-  font-size: 12px; font-weight: 500; letter-spacing: -0.01em;
-  color: var(--ink-3); background: none; border: none;
-  padding: 12px 14px 11px; cursor: pointer;
-  border-bottom: 2px solid transparent; white-space: nowrap;
-  -webkit-appearance: none; transition: color 0.15s;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px; color: var(--ink-3);
+  background: none; border: none; border-right: 2px solid var(--border);
+  padding: 13px 16px; cursor: pointer; white-space: nowrap;
+  -webkit-appearance: none; letter-spacing: 0.05em; position: relative;
 }
-.tab-btn.active { color: var(--apple-blue); border-bottom-color: var(--apple-blue); }
-
-/* MAIN */
-.main { padding: 20px 16px 110px; max-width: 680px; margin: 0 auto; }
-
-/* CARDS */
-.card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 12px;
+.tab-btn.active {
+  color: var(--amber); background: var(--panel);
+  border-bottom: 4px solid var(--amber);
+  margin-bottom: -4px;
 }
-.card-header { padding: 14px 16px 0; }
-.card-body { padding: 14px 16px; }
-.card-label {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--ink-4); margin-bottom: 10px;
+.tab-btn.active::before {
+  content: '▶'; position: absolute; left: 3px;
+  top: 50%; transform: translateY(-50%);
+  font-size: 5px; color: var(--amber);
 }
 
-/* LOCATION */
-.location-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+/* ── PIXEL ART SCENE ── */
+.scene-wrap {
+  background: var(--panel);
+  border-bottom: 4px solid var(--border);
+  box-shadow: 0 4px 0 var(--border-2);
+  overflow: hidden;
+}
+.scene-wrap svg { display: block; }
+
+/* ── MAIN ── */
+.main { padding: 14px 12px 100px; max-width: 600px; margin: 0 auto; }
+
+/* ── BOX ── */
+.box-body { padding: 14px; }
+.box-label {
+  font-size: 7px; color: var(--amber);
+  letter-spacing: 0.08em; margin-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px; text-transform: uppercase;
+}
+
+/* ── LOCATION GRID ── */
+.location-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
 .loc-btn {
-  padding: 11px 12px; background: var(--bg);
-  border: 1.5px solid var(--border); border-radius: var(--radius);
-  text-align: left; cursor: pointer; -webkit-appearance: none; transition: all 0.15s;
+  padding: 10px 8px; background: var(--bg);
+  border: 3px solid var(--border); cursor: pointer; -webkit-appearance: none;
+  text-align: left; font-family: 'Press Start 2P', monospace;
+  transition: border-color 0.1s, background 0.1s;
+  box-shadow: 2px 2px 0 var(--border-2);
 }
-.loc-btn.active { background: var(--blue-tint); border-color: var(--apple-blue); }
-.loc-name { display: block; font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-.loc-btn.active .loc-name { color: var(--apple-blue); }
-.loc-sub { display: block; font-size: 10px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink-4); margin-top: 2px; }
-.loc-btn.active .loc-sub { color: var(--apple-blue); opacity: 0.7; }
-.custom-coords { display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px; border-top: 1px solid var(--border); }
+.loc-btn.active {
+  background: var(--amber-bg); border-color: var(--amber);
+  box-shadow: 2px 2px 0 var(--amber);
+}
+.loc-btn.active::before { content: '▶ '; color: var(--amber); font-size: 7px; }
+.loc-name { display:block; font-size: 7px; color: var(--ink); margin-bottom: 5px; line-height: 1.4; }
+.loc-btn.active .loc-name { color: var(--amber); }
+.loc-sub { display:block; font-size: 6px; color: var(--ink-3); line-height: 1.4; }
+.custom-coords {
+  display:flex; flex-direction:column; gap:10px;
+  padding: 12px 14px 14px; border-top: 3px solid var(--border);
+}
 
-/* INPUTS */
-.field-label {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--ink-4); margin-bottom: 6px; display: block;
-}
+/* ── INPUTS ── */
+.field-label { font-size: 6px; color: var(--ink-3); letter-spacing: 0.06em; margin-bottom: 6px; display:block; }
 select, input[type="date"], input[type="number"], input[type="text"], textarea {
-  font-family: 'Inter', -apple-system, Arial, sans-serif;
-  font-size: 15px; font-weight: 400; letter-spacing: -0.01em;
-  width: 100%; padding: 10px 12px;
-  background: var(--bg); border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm); color: var(--ink);
-  -webkit-appearance: none; appearance: none; transition: border-color 0.15s;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px; width: 100%; padding: 9px 10px;
+  background: var(--bg); border: 3px solid var(--border);
+  box-shadow: 2px 2px 0 var(--border-2);
+  color: var(--ink); -webkit-appearance: none; appearance: none;
 }
-textarea {
-  resize: vertical; min-height: 80px; line-height: 1.5;
-  font-size: 14px;
-}
-select:focus, input:focus, textarea:focus { outline: none; border-color: var(--apple-blue); }
+select:focus, input:focus, textarea:focus { outline: none; border-color: var(--amber); }
+textarea { resize:vertical; min-height:80px; line-height:2; font-size:7px; }
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23b0b0aa' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath fill='%238a6830' d='M0 0h8L4 6z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 10px center; padding-right:28px;
 }
-.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.row-2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
 
-/* BUTTONS */
-.fetch-btn {
-  width: 100%; padding: 12px; background: var(--apple-blue);
-  border: none; border-radius: var(--radius);
-  font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 600;
-  letter-spacing: -0.01em; color: white; cursor: pointer;
-  -webkit-appearance: none; transition: opacity 0.15s;
-}
-.fetch-btn:active { opacity: 0.8; }
+/* ── BUTTONS ── */
 .save-btn {
-  width: 100%; padding: 10px; background: var(--bg-2);
-  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-  font-family: 'Inter', Arial, sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 0.01em; color: var(--ink-2); cursor: pointer; -webkit-appearance: none;
+  width:100%; padding:10px; background: var(--bg-2);
+  border: 3px solid var(--border); box-shadow: 2px 2px 0 var(--border-2);
+  cursor:pointer; -webkit-appearance:none;
+  font-family:'Press Start 2P',monospace; font-size:7px; color:var(--ink-2);
+  letter-spacing:0.05em; text-transform:uppercase;
 }
-.save-btn:active { background: var(--bg-3); }
+.save-btn:active { box-shadow:none; transform:translate(2px,2px); }
+
 .generate-btn {
-  width: 100%; padding: 16px; background: var(--ink);
-  border: none; border-radius: var(--radius-lg);
-  font-family: 'Inter', Arial, sans-serif; font-size: 15px; font-weight: 600;
-  letter-spacing: -0.02em; color: white; cursor: pointer;
-  -webkit-appearance: none; transition: opacity 0.15s;
+  width:100%; padding:16px;
+  background: var(--green-bg);
+  border: 4px solid var(--green);
+  box-shadow: 4px 4px 0 var(--green), inset 2px 2px 0 #e8f8d8;
+  font-family:'Press Start 2P',monospace; font-size:9px;
+  color: var(--green); cursor:pointer; -webkit-appearance:none;
+  letter-spacing:0.08em; text-transform:uppercase; position:relative;
 }
-.generate-btn:active { opacity: 0.85; }
-.copy-btn {
-  width: 100%; padding: 12px; background: var(--bg-2); border: 1.5px solid var(--border);
-  border-radius: var(--radius); font-family: 'Inter', Arial, sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.01em;
-  color: var(--ink-2); cursor: pointer; -webkit-appearance: none; margin-top: 12px;
+.generate-btn::before {
+  content:'▶'; position:absolute; left:16px;
+  top:50%; transform:translateY(-50%);
+  font-size:9px; color:var(--green);
+  animation: blink 1s step-end infinite;
 }
-.copy-btn:active { background: var(--bg-3); }
-.download-btn {
-  width: 100%; padding: 12px; background: var(--apple-blue);
-  border: none; border-radius: var(--radius);
-  font-family: 'Inter', Arial, sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: -0.01em; color: white; cursor: pointer;
-  -webkit-appearance: none; margin-top: 8px; transition: opacity 0.15s;
-}
-.download-btn:active { opacity: 0.8; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.generate-btn:active { box-shadow:none; transform:translate(4px,4px); }
 
-/* STATUS */
-.status-line {
-  font-size: 11px; font-weight: 400; letter-spacing: 0.01em;
-  color: var(--ink-4); text-align: center; min-height: 16px;
+.copy-btn, .download-btn {
+  width:100%; padding:10px; background:var(--bg);
+  border: 3px solid var(--border); box-shadow:2px 2px 0 var(--border-2);
+  cursor:pointer; -webkit-appearance:none;
+  font-family:'Press Start 2P',monospace; font-size:7px;
+  color:var(--ink-3); letter-spacing:0.05em; text-transform:uppercase; margin-top:8px;
 }
+.download-btn { border-color:var(--sky); color:var(--sky); box-shadow:2px 2px 0 var(--sky); }
+.copy-btn:active, .download-btn:active { box-shadow:none; transform:translate(2px,2px); }
+
+/* ── AUTO CARD ── */
+.status-line { font-size:7px; color:var(--ink-3); text-align:center; min-height:14px; letter-spacing:0.05em; }
 .auto-card {
-  background: var(--green-tint); border: 1.5px solid var(--apple-green);
-  border-radius: var(--radius); padding: 14px 16px;
-  display: flex; flex-direction: column; gap: 8px;
+  background: var(--green-bg); border: 3px solid var(--green);
+  box-shadow: 2px 2px 0 var(--green);
+  padding:12px 14px; display:flex; flex-direction:column; gap:8px;
 }
-.auto-card-title { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--apple-green); }
-.auto-card-row { display: flex; justify-content: space-between; align-items: baseline; }
-.auto-card-val { font-size: 15px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
-.auto-card-sub { font-size: 11px; font-weight: 400; letter-spacing: 0.01em; color: var(--ink-3); }
+.auto-card-title { font-size:7px; color:var(--green); letter-spacing:0.06em; }
+.auto-card-row { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.auto-card-val { font-size:10px; color:var(--ink); }
+.auto-card-sub { font-size:6px; color:var(--ink-3); }
 
-/* PAGE OUTPUT */
-.page-hero {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 24px 20px 20px;
-  margin-bottom: 12px; text-align: center;
+/* ── PAGE HERO MOON CANVAS ── */
+.moon-canvas-wrap {
+  display:flex; flex-direction:column; align-items:center;
+  padding: 20px 20px 16px;
+  background: var(--panel-2);
+  border-bottom: 3px solid var(--border);
 }
-.hero-location { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 14px; }
-.hero-moon { font-size: 56px; line-height: 1; margin-bottom: 12px; display: block; }
-.hero-date { font-size: 26px; font-weight: 300; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 12px; }
-.hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
+.moon-canvas-wrap canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
+.hero-date { font-size:9px; color:var(--ink); margin-top:14px; letter-spacing:0.05em; line-height:1.8; text-align:center; }
+.hero-location { font-size:6px; color:var(--ink-3); margin-top:6px; letter-spacing:0.08em; text-align:center; }
+.hero-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; margin-top:10px; }
 .hero-pill {
-  font-size: 12px; font-weight: 500; letter-spacing: -0.01em;
-  padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border);
-  background: var(--bg); color: var(--ink-2);
+  font-size:6px; padding:5px 8px;
+  border: 2px solid var(--border); background:var(--bg); color:var(--ink-3);
+  box-shadow:2px 2px 0 var(--border-2);
 }
+.hero-pill.accent-pill { border-color:var(--amber); color:var(--amber); background:var(--amber-bg); box-shadow:2px 2px 0 var(--amber); }
+
+/* ── PHASE BADGE ── */
+.phase-badge {
+  display:inline-block; font-size:6px;
+  padding:5px 10px; border:2px solid var(--sky);
+  background:var(--sky-bg); color:var(--sky);
+  box-shadow:2px 2px 0 var(--sky);
+  letter-spacing:0.05em; margin-bottom:12px; text-transform:uppercase;
+}
+
+/* ── ENERGY CARD ── */
 .energy-card {
-  border-radius: var(--radius-lg); padding: 18px 20px; margin-bottom: 12px;
-  background: var(--purple-tint); border: 1px solid rgba(123,94,167,0.25);
+  background:var(--amber-bg);
+  border: 3px solid var(--amber); box-shadow:3px 3px 0 var(--amber);
+  padding:14px; margin-bottom:10px;
 }
-.energy-kicker { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-purple); margin-bottom: 6px; }
-.energy-text { font-size: 20px; font-weight: 300; letter-spacing: -0.03em; color: var(--ink); }
+.energy-kicker { font-size:6px; color:var(--amber); margin-bottom:8px; letter-spacing:0.08em; }
+.energy-text { font-size:8px; color:var(--ink); line-height:2.2; }
+
+/* ── ALERTS ── */
 .alert-card {
-  background: var(--orange-tint); border: 1px solid rgba(255,107,43,0.3);
-  border-radius: var(--radius); padding: 11px 14px; margin-bottom: 8px;
-  font-size: 13px; font-weight: 500; letter-spacing: -0.01em; color: var(--apple-orange);
+  background:var(--red-bg); border:3px solid var(--red); box-shadow:2px 2px 0 var(--red);
+  padding:10px; margin-bottom:8px;
+  font-size:7px; color:var(--red); line-height:2;
 }
 .note-card {
-  background: var(--teal-tint); border: 1px solid rgba(0,150,138,0.25);
-  border-radius: var(--radius); padding: 11px 14px; margin-bottom: 12px;
-  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--apple-teal);
+  background:var(--sky-bg); border:3px solid var(--sky); box-shadow:2px 2px 0 var(--sky);
+  padding:10px; margin-bottom:10px; font-size:7px; color:var(--sky); line-height:2;
 }
 
-/* SECTION CARDS */
+/* ── SECTION CARDS ── */
 .section-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 16px; margin-bottom: 10px;
+  background:var(--panel); border:3px solid var(--border);
+  box-shadow:3px 3px 0 var(--border-2); margin-bottom:8px; overflow:hidden;
 }
 .section-head {
-  display: flex; align-items: center; gap: 8px;
-  margin-bottom: 14px; padding-bottom: 12px;
-  border-bottom: 1px solid var(--bg-2);
+  display:flex; align-items:center; gap:8px;
+  padding:10px 12px; border-bottom:3px solid var(--border);
+  background:var(--panel-2);
 }
-.section-emoji { font-size: 16px; }
-.section-name { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-.section-count { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--ink-4); background: var(--bg-2); padding: 2px 8px; border-radius: 10px; }
-.task-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 14px; }
-.task-col-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 7px; }
-.task-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.section-bar { width:4px; height:12px; flex-shrink:0; }
+.section-emoji { font-size:12px; }
+.section-name { font-size:7px; color:var(--ink-2); letter-spacing:0.07em; text-transform:uppercase; }
+.section-body { padding:12px; }
+
+.task-cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:14px; }
+.task-col-label { font-size:6px; color:var(--amber); letter-spacing:0.08em; margin-bottom:8px; text-transform:uppercase; }
+.task-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
 .task-list li {
-  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink-2);
-  display: flex; align-items: flex-start; gap: 7px; line-height: 1.4;
+  font-size:7px; color:var(--ink-2);
+  display:flex; align-items:flex-start; gap:7px; line-height:1.8;
 }
-.task-list li::before {
-  content: ''; width: 5px; height: 5px; background: var(--apple-green);
-  border-radius: 50%; margin-top: 5px; flex-shrink: 0;
-}
-.plain-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.task-list li::before { content:'■'; font-size:6px; color:var(--green); margin-top:1px; flex-shrink:0; }
+.plain-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
 .plain-list li {
-  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink-2);
-  display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
+  font-size:7px; color:var(--ink-2);
+  display:flex; align-items:flex-start; gap:7px; line-height:1.8;
 }
-.plain-list li::before {
-  content: ''; width: 5px; height: 5px; background: var(--border-2);
-  border-radius: 50%; margin-top: 5px; flex-shrink: 0;
-}
+.plain-list li::before { content:'▸'; font-size:6px; color:var(--ink-3); flex-shrink:0; margin-top:1px; }
 
-/* REFLECTION */
+/* ── REFLECTION ── */
 .reflection-card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 20px; margin-top: 4px;
+  background:var(--panel); border:3px solid var(--border);
+  box-shadow:3px 3px 0 var(--border-2); padding:14px; margin-top:4px;
 }
-.reflection-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 10px; }
-.reflection-q { font-size: 18px; font-weight: 300; letter-spacing: -0.03em; color: var(--ink-2); line-height: 1.4; margin-bottom: 14px; }
+.reflection-kicker { font-size:6px; color:var(--amber); letter-spacing:0.08em; margin-bottom:10px; text-transform:uppercase; }
+.reflection-q { font-size:8px; color:var(--ink-2); line-height:2.2; margin-bottom:14px; }
 
-/* PHASE BADGE */
-.phase-badge {
-  display: inline-block; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 3px 9px; border-radius: 10px;
-  background: var(--blue-tint); color: var(--apple-blue);
-  margin-bottom: 10px;
-}
-
-/* EXPORT */
+/* ── EXPORT ── */
 .export-area {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 16px;
-  font-family: 'SF Mono', 'Menlo', monospace;
-  font-size: 11px; line-height: 1.8; color: var(--ink-3);
-  white-space: pre-wrap; word-break: break-word; min-height: 200px;
+  background:var(--bg); border:3px solid var(--border); box-shadow:2px 2px 0 var(--border-2);
+  padding:14px; font-family:'Press Start 2P',monospace;
+  font-size:7px; line-height:2.2; color:var(--ink-3);
+  white-space:pre-wrap; word-break:break-word; min-height:200px;
 }
 
-/* PLACEHOLDER */
+/* ── PLACEHOLDER ── */
 .placeholder {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 80px 20px; gap: 12px; text-align: center;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; padding:60px 20px; gap:16px; text-align:center;
 }
-.placeholder-moon { font-size: 48px; opacity: 0.25; }
-.placeholder-text { font-size: 16px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink-4); max-width: 220px; line-height: 1.5; }
+.placeholder-moon { font-size:40px; opacity:0.3; }
+.placeholder-text { font-size:8px; color:var(--ink-3); max-width:200px; line-height:2.2; }
 
-/* GENERATE BAR */
+/* ── GENERATE BAR ── */
 .generate-bar {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: var(--bg); border-top: 1px solid var(--border);
-  padding: 12px 16px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  position:fixed; bottom:0; left:0; right:0;
+  background:var(--panel);
+  border-top:4px solid var(--border);
+  box-shadow:0 -4px 0 var(--border-2);
+  padding:12px 16px;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom));
 }
 
-.hidden { display: none !important; }
+.hidden { display:none !important; }
 </style>
 </head>
 <body>
 
 <div class="app-header">
-  <div class="app-title">K10 <span>Homestead</span> OS</div>
+  <div class="app-title">K10 · <span>HOMESTEAD</span> OS</div>
   <div class="header-right">
-    <div class="header-loc" id="header-loc">Warrenton, NC</div>
-    <div class="header-moon" id="header-moon">🌙</div>
+    <div class="header-loc" id="header-loc">WARRENTON NC</div>
+    <div class="header-moon-char" id="header-moon">🌙</div>
   </div>
 </div>
 
 <div class="tab-bar">
-  <button class="tab-btn active" id="tab-inputs" onclick="switchTab('inputs')">Inputs</button>
-  <button class="tab-btn" id="tab-page" onclick="switchTab('page')">Today's Page</button>
-  <button class="tab-btn" id="tab-export" onclick="switchTab('export')">Export .md</button>
+  <button class="tab-btn active" id="tab-inputs" onclick="switchTab('inputs')">INPUTS</button>
+  <button class="tab-btn" id="tab-page" onclick="switchTab('page')">TODAY</button>
+  <button class="tab-btn" id="tab-export" onclick="switchTab('export')">EXPORT</button>
+</div>
+
+<!-- PIXEL ART SCENE -->
+<div class="scene-wrap">
+<svg viewBox="0 0 680 220" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>K10 Homestead pixel art scene</title>
+<desc>Pixel art of a yurt with garden beds, chickens, and trees</desc>
+<rect x="0" y="0" width="680" height="140" fill="#a8cce0"/>
+<rect x="0" y="0" width="680" height="32" fill="#98bcd4"/>
+<rect x="0" y="32" width="680" height="50" fill="#a8cce0"/>
+<rect x="0" y="82" width="680" height="58" fill="#b8dcea"/>
+<rect x="0" y="136" width="680" height="84" fill="#c8a850"/>
+<rect x="0" y="136" width="680" height="6" fill="#a88830"/>
+<rect x="0" y="150" width="680" height="4" fill="#c0a048"/>
+<rect x="0" y="170" width="680" height="4" fill="#c0a048"/>
+<rect x="0" y="190" width="680" height="4" fill="#b89040"/>
+<rect x="0" y="210" width="680" height="4" fill="#a88030"/>
+<rect x="548" y="18" width="8" height="8" fill="#f8d840"/>
+<rect x="556" y="14" width="8" height="8" fill="#f8d840"/>
+<rect x="540" y="14" width="8" height="8" fill="#f8d840"/>
+<rect x="560" y="22" width="8" height="8" fill="#f8d840"/>
+<rect x="532" y="22" width="8" height="8" fill="#f8d840"/>
+<rect x="540" y="30" width="24" height="14" fill="#f8f050"/>
+<rect x="556" y="30" width="8" height="8" fill="#f8d840"/>
+<rect x="74" y="22" width="40" height="6" fill="#e0eef8"/>
+<rect x="66" y="28" width="56" height="6" fill="#e0eef8"/>
+<rect x="74" y="34" width="40" height="6" fill="#e0eef8"/>
+<rect x="390" y="16" width="48" height="6" fill="#e0eef8"/>
+<rect x="382" y="22" width="64" height="6" fill="#e0eef8"/>
+<rect x="390" y="28" width="48" height="6" fill="#e0eef8"/>
+<rect x="84" y="86" width="8" height="50" fill="#5a3010"/>
+<rect x="80" y="104" width="16" height="6" fill="#5a3010"/>
+<rect x="64" y="52" width="48" height="10" fill="#2a6018"/>
+<rect x="56" y="62" width="64" height="10" fill="#3a7828"/>
+<rect x="52" y="72" width="72" height="10" fill="#4a8830"/>
+<rect x="56" y="82" width="64" height="12" fill="#3a7828"/>
+<rect x="64" y="94" width="48" height="8" fill="#2a6018"/>
+<rect x="76" y="58" width="20" height="6" fill="#225015"/>
+<rect x="580" y="90" width="8" height="46" fill="#5a3010"/>
+<rect x="576" y="108" width="16" height="6" fill="#5a3010"/>
+<rect x="560" y="56" width="48" height="10" fill="#2a6018"/>
+<rect x="552" y="66" width="64" height="10" fill="#3a7828"/>
+<rect x="548" y="76" width="72" height="10" fill="#4a8830"/>
+<rect x="552" y="86" width="64" height="12" fill="#3a7828"/>
+<rect x="560" y="98" width="48" height="8" fill="#2a6018"/>
+<rect x="572" y="62" width="20" height="6" fill="#225015"/>
+<rect x="156" y="122" width="8" height="10" fill="#4a8830"/>
+<rect x="148" y="118" width="24" height="8" fill="#3a7828"/>
+<rect x="152" y="114" width="16" height="8" fill="#4a9030"/>
+<rect x="192" y="126" width="8" height="8" fill="#4a8830"/>
+<rect x="188" y="122" width="16" height="8" fill="#3a7828"/>
+<rect x="500" y="124" width="8" height="10" fill="#4a8830"/>
+<rect x="492" y="120" width="24" height="8" fill="#3a7828"/>
+<rect x="496" y="116" width="16" height="8" fill="#4a9030"/>
+<rect x="524" y="126" width="8" height="8" fill="#4a8830"/>
+<rect x="520" y="122" width="16" height="8" fill="#3a7828"/>
+<rect x="314" y="30" width="52" height="6" fill="#6a4820"/>
+<rect x="306" y="36" width="68" height="6" fill="#8a6030"/>
+<rect x="298" y="42" width="84" height="6" fill="#9a7040"/>
+<rect x="290" y="48" width="100" height="6" fill="#8a6030"/>
+<rect x="282" y="54" width="116" height="6" fill="#9a7040"/>
+<rect x="274" y="60" width="132" height="6" fill="#8a6030"/>
+<rect x="266" y="66" width="148" height="6" fill="#9a7040"/>
+<rect x="258" y="72" width="164" height="6" fill="#7a5828"/>
+<rect x="314" y="30" width="14" height="44" fill="#a88040"/>
+<rect x="330" y="26" width="20" height="6" fill="#6a4820"/>
+<rect x="334" y="20" width="12" height="8" fill="#8a6030"/>
+<rect x="258" y="78" width="164" height="58" fill="#e0c898"/>
+<rect x="258" y="78" width="10" height="58" fill="#c8b080"/>
+<rect x="412" y="78" width="10" height="58" fill="#c8b080"/>
+<rect x="258" y="88" width="164" height="3" fill="#c0a870"/>
+<rect x="258" y="108" width="164" height="3" fill="#c0a870"/>
+<rect x="258" y="122" width="164" height="3" fill="#c0a870"/>
+<rect x="274" y="78" width="132" height="4" fill="#ead8a8"/>
+<rect x="318" y="100" width="44" height="36" fill="#6a4820"/>
+<rect x="322" y="104" width="36" height="32" fill="#7a5828"/>
+<rect x="314" y="100" width="4" height="36" fill="#5a3818"/>
+<rect x="362" y="100" width="4" height="36" fill="#5a3818"/>
+<rect x="314" y="96" width="52" height="4" fill="#5a3818"/>
+<rect x="354" y="120" width="4" height="8" fill="#d4a030"/>
+<rect x="276" y="88" width="24" height="18" fill="#90b8c8"/>
+<rect x="276" y="88" width="24" height="3" fill="#5a3818"/>
+<rect x="276" y="88" width="3" height="18" fill="#5a3818"/>
+<rect x="297" y="88" width="3" height="18" fill="#5a3818"/>
+<rect x="276" y="103" width="24" height="3" fill="#5a3818"/>
+<rect x="284" y="88" width="4" height="18" fill="#5a3818"/>
+<rect x="380" y="88" width="24" height="18" fill="#90b8c8"/>
+<rect x="380" y="88" width="24" height="3" fill="#5a3818"/>
+<rect x="380" y="88" width="3" height="18" fill="#5a3818"/>
+<rect x="401" y="88" width="3" height="18" fill="#5a3818"/>
+<rect x="380" y="103" width="24" height="3" fill="#5a3818"/>
+<rect x="388" y="88" width="4" height="18" fill="#5a3818"/>
+<rect x="254" y="136" width="172" height="6" fill="#a88040"/>
+<rect x="250" y="140" width="180" height="4" fill="#8a6830"/>
+<rect x="148" y="152" width="96" height="40" fill="#5a3010"/>
+<rect x="152" y="156" width="88" height="32" fill="#6a3818"/>
+<rect x="156" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="172" y="164" width="8" height="4" fill="#7a4820"/>
+<rect x="188" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="204" y="164" width="8" height="4" fill="#7a4820"/>
+<rect x="220" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="148" y="148" width="96" height="4" fill="#8a5020"/>
+<rect x="148" y="192" width="96" height="4" fill="#8a5020"/>
+<rect x="148" y="148" width="4" height="48" fill="#8a5020"/>
+<rect x="240" y="148" width="4" height="48" fill="#8a5020"/>
+<rect x="156" y="140" width="8" height="12" fill="#3a8828"/>
+<rect x="152" y="144" width="16" height="8" fill="#4a9830"/>
+<rect x="156" y="136" width="8" height="8" fill="#60b040"/>
+<rect x="156" y="132" width="8" height="6" fill="#d84030"/>
+<rect x="172" y="142" width="8" height="10" fill="#3a8828"/>
+<rect x="168" y="146" width="16" height="8" fill="#4a9830"/>
+<rect x="188" y="140" width="8" height="12" fill="#3a8828"/>
+<rect x="184" y="144" width="16" height="8" fill="#4a9830"/>
+<rect x="188" y="136" width="8" height="6" fill="#60b040"/>
+<rect x="188" y="130" width="8" height="6" fill="#f0c030"/>
+<rect x="204" y="142" width="8" height="10" fill="#3a8828"/>
+<rect x="200" y="146" width="16" height="8" fill="#4a9830"/>
+<rect x="220" y="138" width="8" height="14" fill="#3a8828"/>
+<rect x="216" y="142" width="16" height="8" fill="#4a9830"/>
+<rect x="220" y="134" width="8" height="6" fill="#60b040"/>
+<rect x="220" y="128" width="8" height="6" fill="#d84030"/>
+<rect x="436" y="152" width="96" height="40" fill="#5a3010"/>
+<rect x="440" y="156" width="88" height="32" fill="#6a3818"/>
+<rect x="444" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="460" y="164" width="8" height="4" fill="#7a4820"/>
+<rect x="476" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="492" y="164" width="8" height="4" fill="#7a4820"/>
+<rect x="508" y="160" width="8" height="4" fill="#7a4820"/>
+<rect x="436" y="148" width="96" height="4" fill="#8a5020"/>
+<rect x="436" y="192" width="96" height="4" fill="#8a5020"/>
+<rect x="436" y="148" width="4" height="48" fill="#8a5020"/>
+<rect x="528" y="148" width="4" height="48" fill="#8a5020"/>
+<rect x="444" y="138" width="8" height="14" fill="#3a8828"/>
+<rect x="440" y="142" width="16" height="8" fill="#4a9830"/>
+<rect x="444" y="134" width="8" height="8" fill="#60b040"/>
+<rect x="444" y="128" width="8" height="6" fill="#f0c030"/>
+<rect x="460" y="140" width="8" height="12" fill="#3a8828"/>
+<rect x="456" y="144" width="16" height="8" fill="#4a9830"/>
+<rect x="476" y="138" width="8" height="14" fill="#3a8828"/>
+<rect x="472" y="142" width="16" height="8" fill="#4a9830"/>
+<rect x="476" y="134" width="8" height="8" fill="#60b040"/>
+<rect x="476" y="128" width="8" height="6" fill="#d84030"/>
+<rect x="492" y="142" width="8" height="10" fill="#3a8828"/>
+<rect x="488" y="146" width="16" height="8" fill="#4a9830"/>
+<rect x="508" y="140" width="8" height="12" fill="#3a8828"/>
+<rect x="504" y="144" width="16" height="8" fill="#4a9830"/>
+<rect x="508" y="136" width="8" height="8" fill="#60b040"/>
+<rect x="508" y="130" width="8" height="6" fill="#d84030"/>
+<rect x="244" y="148" width="6" height="40" fill="#b09048"/>
+<rect x="430" y="148" width="6" height="40" fill="#b09048"/>
+<rect x="236" y="128" width="16" height="8" fill="#e8e0c0"/>
+<rect x="248" y="122" width="8" height="8" fill="#e8e0c0"/>
+<rect x="256" y="126" width="4" height="4" fill="#d4a030"/>
+<rect x="248" y="120" width="4" height="4" fill="#cc3030"/>
+<rect x="240" y="136" width="4" height="8" fill="#d4a030"/>
+<rect x="248" y="136" width="4" height="8" fill="#d4a030"/>
+<rect x="236" y="142" width="8" height="4" fill="#d4a030"/>
+<rect x="244" y="142" width="8" height="4" fill="#d4a030"/>
+<rect x="252" y="124" width="4" height="4" fill="#1a1010"/>
+<rect x="232" y="124" width="4" height="4" fill="#c8b890"/>
+<rect x="228" y="122" width="4" height="8" fill="#c8b890"/>
+<rect x="424" y="130" width="16" height="8" fill="#c8c0a0"/>
+<rect x="424" y="124" width="8" height="8" fill="#c8c0a0"/>
+<rect x="420" y="128" width="4" height="4" fill="#d4a030"/>
+<rect x="432" y="122" width="4" height="4" fill="#cc3030"/>
+<rect x="428" y="138" width="4" height="8" fill="#d4a030"/>
+<rect x="436" y="138" width="4" height="8" fill="#d4a030"/>
+<rect x="424" y="144" width="8" height="4" fill="#d4a030"/>
+<rect x="432" y="144" width="8" height="4" fill="#d4a030"/>
+<rect x="424" y="126" width="4" height="4" fill="#1a1010"/>
+<rect x="440" y="126" width="4" height="4" fill="#b0a880"/>
+<rect x="444" y="124" width="4" height="8" fill="#b0a880"/>
+<rect x="148" y="204" width="4" height="16" fill="#7a5020"/>
+<rect x="196" y="204" width="4" height="16" fill="#7a5020"/>
+<rect x="148" y="210" width="52" height="4" fill="#9a7030"/>
+<rect x="148" y="216" width="52" height="4" fill="#9a7030"/>
+<rect x="480" y="204" width="4" height="16" fill="#7a5020"/>
+<rect x="528" y="204" width="4" height="16" fill="#7a5020"/>
+<rect x="480" y="210" width="52" height="4" fill="#9a7030"/>
+<rect x="480" y="216" width="52" height="4" fill="#9a7030"/>
+<rect x="152" y="130" width="4" height="8" fill="#5a8030"/>
+<rect x="148" y="126" width="12" height="4" fill="#cc3030"/>
+<rect x="152" y="122" width="4" height="6" fill="#f0c040"/>
+<rect x="524" y="132" width="4" height="8" fill="#5a8030"/>
+<rect x="520" y="128" width="12" height="4" fill="#9858c8"/>
+<rect x="524" y="124" width="4" height="6" fill="#f0c040"/>
+<rect x="356" y="172" width="4" height="10" fill="#5a8030"/>
+<rect x="352" y="168" width="12" height="4" fill="#f0c040"/>
+<rect x="308" y="174" width="4" height="10" fill="#5a8030"/>
+<rect x="304" y="170" width="12" height="4" fill="#cc3030"/>
+<rect x="0" y="218" width="680" height="2" fill="#8a6830"/>
+</svg>
 </div>
 
 <!-- INPUTS -->
 <div class="main" id="panel-inputs">
 
-  <div class="card">
-    <div class="card-body">
-      <div class="card-label">Location</div>
+  <div class="rpg-box">
+    <div class="box-body">
+      <div class="box-label">▸ LOCATION</div>
       <div class="location-grid" id="loc-grid">
         <button class="loc-btn active" data-key="warrenton" onclick="setLocation('warrenton',this)">
-          <span class="loc-name">Warrenton, NC</span>
-          <span class="loc-sub">Zone 8a · Homestead</span>
+          <span class="loc-name">WARRENTON NC</span>
+          <span class="loc-sub">ZONE 8A · HOME</span>
         </button>
         <button class="loc-btn" data-key="omaha" onclick="setLocation('omaha',this)">
-          <span class="loc-name">Omaha, NE</span>
-          <span class="loc-sub">Zone 5b · Current base</span>
+          <span class="loc-name">OMAHA NE</span>
+          <span class="loc-sub">ZONE 5B · BASE</span>
         </button>
         <button class="loc-btn" data-key="mulberry" onclick="setLocation('mulberry',this)">
-          <span class="loc-name">Mulberry, NC</span>
-          <span class="loc-sub">Zone 7a · Caldwell Co.</span>
+          <span class="loc-name">MULBERRY NC</span>
+          <span class="loc-sub">ZONE 7A</span>
         </button>
         <button class="loc-btn" data-key="custom" onclick="setLocation('custom',this)">
-          <span class="loc-name">Custom</span>
-          <span class="loc-sub">Enter coords</span>
+          <span class="loc-name">CUSTOM</span>
+          <span class="loc-sub">ENTER COORDS</span>
         </button>
       </div>
     </div>
     <div id="custom-coords-wrap" class="custom-coords hidden">
       <div class="row-2">
-        <div><label class="field-label">Latitude</label><input type="number" id="f-lat" placeholder="36.3982" step="0.0001"></div>
-        <div><label class="field-label">Longitude</label><input type="number" id="f-lng" placeholder="-78.1503" step="0.0001"></div>
+        <div><label class="field-label">LATITUDE</label><input type="number" id="f-lat" placeholder="36.3982" step="0.0001"></div>
+        <div><label class="field-label">LONGITUDE</label><input type="number" id="f-lng" placeholder="-78.1503" step="0.0001"></div>
       </div>
-      <input type="text" id="f-locname" placeholder="Location name">
-      <div><label class="field-label">USDA Zone</label>
+      <input type="text" id="f-locname" placeholder="LOCATION NAME">
+      <div><label class="field-label">USDA ZONE</label>
         <select id="f-zone-custom">
-          <option value="5a">5a</option><option value="5b">5b</option><option value="6a">6a</option><option value="6b">6b</option>
-          <option value="7a">7a</option><option value="7b">7b</option><option value="8a" selected>8a</option><option value="8b">8b</option>
-          <option value="9a">9a</option><option value="9b">9b</option>
+          <option value="5a">5A</option><option value="5b">5B</option>
+          <option value="6a">6A</option><option value="6b">6B</option>
+          <option value="7a">7A</option><option value="7b">7B</option>
+          <option value="8a" selected>8A</option><option value="8b">8B</option>
+          <option value="9a">9A</option><option value="9b">9B</option>
         </select>
       </div>
-      <button class="save-btn" onclick="saveCustomLocation()">Save location</button>
+      <button class="save-btn" onclick="saveCustomLocation()">SAVE LOCATION</button>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-body">
-      <div class="card-label">Date</div>
+  <div class="rpg-box">
+    <div class="box-body">
+      <div class="box-label">▸ DATE</div>
       <input type="date" id="f-date">
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+  <div class="rpg-box">
+    <div class="box-body" style="display:flex;flex-direction:column;gap:10px;">
       <div class="status-line" id="fetch-status"></div>
       <div id="auto-card-wrap" class="hidden">
         <div class="auto-card">
-          <div class="auto-card-title">✓ Loaded · <span id="ac-loc">—</span></div>
-          <div class="auto-card-row"><div class="auto-card-sub">Moon</div><div class="auto-card-val" id="ac-moon">—</div></div>
-          <div class="auto-card-row"><div class="auto-card-sub">Illumination</div><div class="auto-card-val" id="ac-illum">—</div></div>
-          <div class="auto-card-row"><div class="auto-card-sub">Temp</div><div class="auto-card-val" id="ac-temp">—</div></div>
-          <div class="auto-card-row"><div class="auto-card-sub">Rain chance</div><div class="auto-card-val" id="ac-rain">—</div></div>
-          <div class="auto-card-row"><div class="auto-card-sub">Recent rain</div><div class="auto-card-val" id="ac-recent">—</div></div>
+          <div class="auto-card-title">✓ LOADED · <span id="ac-loc">—</span></div>
+          <div class="auto-card-row"><div class="auto-card-sub">MOON</div><div class="auto-card-val" id="ac-moon">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">ILLUM</div><div class="auto-card-val" id="ac-illum">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">TEMP</div><div class="auto-card-val" id="ac-temp">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">RAIN%</div><div class="auto-card-val" id="ac-rain">—</div></div>
+          <div class="auto-card-row"><div class="auto-card-sub">RECENT</div><div class="auto-card-val" id="ac-recent">—</div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
-      <div class="card-label">Manual override</div>
+  <div class="rpg-box">
+    <div class="box-body" style="display:flex;flex-direction:column;gap:12px;">
+      <div class="box-label">▸ MANUAL OVERRIDE</div>
       <div>
-        <label class="field-label">Moon Phase</label>
+        <label class="field-label">MOON PHASE</label>
         <select id="f-moon">
-          <option value="new">🌑  New Moon</option>
-          <option value="waxing_crescent">🌒  Waxing Crescent</option>
-          <option value="first_quarter">🌓  First Quarter</option>
-          <option value="waxing_gibbous">🌔  Waxing Gibbous</option>
-          <option value="full">🌕  Full Moon</option>
-          <option value="waning_gibbous">🌖  Waning Gibbous</option>
-          <option value="last_quarter">🌗  Last Quarter</option>
-          <option value="waning_crescent">🌘  Waning Crescent</option>
+          <option value="new">NEW MOON</option>
+          <option value="waxing_crescent">WAXING CRESCENT</option>
+          <option value="first_quarter">FIRST QUARTER</option>
+          <option value="waxing_gibbous">WAXING GIBBOUS</option>
+          <option value="full">FULL MOON</option>
+          <option value="waning_gibbous">WANING GIBBOUS</option>
+          <option value="last_quarter">LAST QUARTER</option>
+          <option value="waning_crescent">WANING CRESCENT</option>
         </select>
       </div>
       <div class="row-2">
-        <div><label class="field-label">Illumination %</label><input type="number" id="f-illum" value="22" min="0" max="100"></div>
-        <div><label class="field-label">Temp °F</label><input type="number" id="f-temp" value="75" min="-20" max="115"></div>
+        <div><label class="field-label">ILLUM %</label><input type="number" id="f-illum" value="22" min="0" max="100"></div>
+        <div><label class="field-label">TEMP °F</label><input type="number" id="f-temp" value="75" min="-20" max="115"></div>
       </div>
       <div class="row-2">
-        <div><label class="field-label">Rain chance %</label><input type="number" id="f-rain" value="20" min="0" max="100"></div>
-        <div><label class="field-label">Recent rain (in)</label><input type="number" id="f-recent-rain" value="0" min="0" max="10" step="0.1"></div>
+        <div><label class="field-label">RAIN %</label><input type="number" id="f-rain" value="20" min="0" max="100"></div>
+        <div><label class="field-label">RECENT IN</label><input type="number" id="f-recent-rain" value="0" min="0" max="10" step="0.1"></div>
       </div>
       <div>
-        <label class="field-label">Season</label>
+        <label class="field-label">SEASON</label>
         <select id="f-season">
-          <option value="early_spring">Early Spring</option><option value="spring">Spring</option>
-          <option value="late_spring">Late Spring</option><option value="early_summer">Early Summer</option>
-          <option value="summer">Summer</option><option value="late_summer">Late Summer</option>
-          <option value="early_fall">Early Fall</option><option value="fall">Fall</option>
-          <option value="late_fall">Late Fall</option><option value="winter">Winter</option>
+          <option value="early_spring">EARLY SPRING</option><option value="spring">SPRING</option>
+          <option value="late_spring">LATE SPRING</option><option value="early_summer">EARLY SUMMER</option>
+          <option value="summer">SUMMER</option><option value="late_summer">LATE SUMMER</option>
+          <option value="early_fall">EARLY FALL</option><option value="fall">FALL</option>
+          <option value="late_fall">LATE FALL</option><option value="winter">WINTER</option>
         </select>
       </div>
       <div>
-        <label class="field-label">Homestead phase</label>
+        <label class="field-label">HOMESTEAD PHASE</label>
         <select id="f-phase">
-          <option value="phase1">Phase 1 — Reading the Land</option>
-          <option value="phase2">Phase 2 — Long-Game Plants & Ground Systems</option>
-          <option value="phase3">Phase 3 — Bare-Root Orchard</option>
-          <option value="phase4">Phase 4 — Herbs, Fiber & First Animals</option>
-          <option value="phase5">Phase 5 — First Yields</option>
-          <option value="phase6">Phase 6 — Perennial Economy</option>
-          <option value="phase7">Phase 7 — Self-Sustaining</option>
+          <option value="phase1">PHASE 1 — READING THE LAND</option>
+          <option value="phase2">PHASE 2 — LONG GAME PLANTS</option>
+          <option value="phase3">PHASE 3 — BARE ROOT ORCHARD</option>
+          <option value="phase4">PHASE 4 — HERBS &amp; ANIMALS</option>
+          <option value="phase5">PHASE 5 — FIRST YIELDS</option>
+          <option value="phase6">PHASE 6 — PERENNIAL ECONOMY</option>
+          <option value="phase7">PHASE 7 — SELF SUSTAINING</option>
         </select>
       </div>
       <div>
-        <label class="field-label">Morning note</label>
-        <input type="text" id="f-note" placeholder="e.g. Planted chamomile in Bed 2">
+        <label class="field-label">MORNING NOTE</label>
+        <input type="text" id="f-note" placeholder="E.G. PLANTED CHAMOMILE">
       </div>
     </div>
   </div>
@@ -442,23 +655,23 @@ select {
   <div id="page-content">
     <div class="placeholder">
       <div class="placeholder-moon">🌱</div>
-      <div class="placeholder-text">Fetch today's data and generate your almanac page.</div>
+      <div class="placeholder-text">FETCH DATA AND GENERATE YOUR ALMANAC PAGE</div>
     </div>
   </div>
 </div>
 
 <!-- EXPORT -->
 <div class="main hidden" id="panel-export">
-  <div style="display:flex;flex-direction:column;gap:12px;">
-    <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-4)">Markdown output</div>
-    <div class="export-area" id="export-content">Generate a page first.</div>
-    <button class="copy-btn" onclick="copyMarkdown()">Copy to clipboard</button>
-    <button class="download-btn" onclick="downloadMarkdown()">↓ Download .md</button>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div style="font-size:7px;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;">▸ MARKDOWN OUTPUT</div>
+    <div class="export-area" id="export-content">GENERATE A PAGE FIRST.</div>
+    <button class="copy-btn" onclick="copyMarkdown()">COPY TO CLIPBOARD</button>
+    <button class="download-btn" onclick="downloadMarkdown()">▼ DOWNLOAD .MD</button>
   </div>
 </div>
 
 <div class="generate-bar">
-  <button class="generate-btn" onclick="generatePage()">Generate Today's Page</button>
+  <button class="generate-btn" onclick="generatePage()">GENERATE TODAY'S PAGE</button>
 </div>
 
 <script>
@@ -817,25 +1030,24 @@ function fmtDate(d) {
 }
 
 const SECTION_COLORS = {
-  garden:  { dot:'#4caf50', bg:'#eaf4ea', border:'rgba(76,175,80,0.25)'   },
-  orchard: { dot:'#ff9800', bg:'#fff8e8', border:'rgba(255,152,0,0.25)'   },
-  animals: { dot:'#ff6b2b', bg:'#fff0ea', border:'rgba(255,107,43,0.25)'  },
-  land:    { dot:'#0077cc', bg:'#e8f2fb', border:'rgba(0,119,204,0.25)'   },
-  creative:{ dot:'#7b5ea7', bg:'#f2eef8', border:'rgba(123,94,167,0.25)'  },
-  build:   { dot:'#00968a', bg:'#e5f4f2', border:'rgba(0,150,138,0.25)'   },
-  fiber:   { dot:'#7b5ea7', bg:'#f2eef8', border:'rgba(123,94,167,0.25)'  },
-  mushroom:{ dot:'#8b6914', bg:'#fdf5e8', border:'rgba(139,105,20,0.25)'  },
+  garden:  { bar:'#2a6820' },
+  orchard: { bar:'#8a5010' },
+  animals: { bar:'#882010' },
+  land:    { bar:'#305890' },
+  creative:{ bar:'#602890' },
+  build:   { bar:'#6a4010' },
+  fiber:   { bar:'#802878' },
+  mushroom:{ bar:'#6a4808' },
 };
 
 function sectionCard(emoji, name, key, listHTML) {
   const c = SECTION_COLORS[key];
-  return `<div class="section-card" style="background:${c.bg};border-color:${c.border}">
-    <div class="section-head" style="border-bottom-color:${c.border}">
-      <span class="section-emoji">${emoji}</span>
-      <div class="section-name" style="color:${c.dot}">${name}</div>
-    </div>
-    ${listHTML}
-  </div>`;
+  return '<div class="section-card">' +
+    '<div class="section-head">' +
+    '<div class="section-bar" style="background:' + c.bar + '"></div>' +
+    '<span class="section-emoji">' + emoji + '</span>' +
+    '<div class="section-name">' + name.toUpperCase() + '</div>' +
+    '</div><div class="section-body">' + listHTML + '</div></div>';
 }
 
 function ul(items, cls='plain-list') {
@@ -844,6 +1056,36 @@ function ul(items, cls='plain-list') {
 
 function taskCols(cols) {
   return `<div class="task-cols">${cols.map(c=>`<div><div class="task-col-label">${c.label}</div><ul class="task-list">${c.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`;
+}
+
+
+const MOON_PIXELS = {
+  new: [[0,0,0,0,0,0,0,0],[0,0,0,1,1,0,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],[0,0,0,1,1,0,0,0],[0,0,0,0,0,0,0,0]],
+  waxing_crescent: [[0,0,0,0,0,0,0,0],[0,0,0,1,0,0,0,0],[0,0,1,1,0,0,0,0],[0,1,1,1,0,0,0,0],[0,1,1,1,0,0,0,0],[0,0,1,1,0,0,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,0]],
+  first_quarter: [[0,0,0,0,0,0,0,0],[0,0,0,1,1,0,0,0],[0,0,1,1,1,0,0,0],[0,1,1,1,1,0,0,0],[0,1,1,1,1,0,0,0],[0,0,1,1,1,0,0,0],[0,0,0,1,1,0,0,0],[0,0,0,0,0,0,0,0]],
+  waxing_gibbous: [[0,0,0,0,0,0,0,0],[0,0,0,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,0,0],[0,1,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0]],
+  full: [[0,0,0,0,0,0,0,0],[0,0,1,1,1,1,0,0],[0,1,2,2,2,2,1,0],[0,1,2,2,2,2,1,0],[0,1,2,2,2,2,1,0],[0,1,2,2,2,2,1,0],[0,0,1,1,1,1,0,0],[0,0,0,0,0,0,0,0]],
+  waning_gibbous: [[0,0,0,0,0,0,0,0],[0,0,1,1,1,0,0,0],[0,0,1,1,1,1,0,0],[0,0,1,1,1,1,1,0],[0,0,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],[0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,0]],
+  last_quarter: [[0,0,0,0,0,0,0,0],[0,0,1,1,0,0,0,0],[0,0,1,1,1,0,0,0],[0,0,1,1,1,1,0,0],[0,0,1,1,1,1,0,0],[0,0,1,1,1,0,0,0],[0,0,1,1,0,0,0,0],[0,0,0,0,0,0,0,0]],
+  waning_crescent: [[0,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,1,1,0,0],[0,0,0,0,1,1,1,0],[0,0,0,0,1,1,1,0],[0,0,0,0,1,1,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,0]],
+};
+
+function drawPixelMoon(canvasId, phase) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const grid = MOON_PIXELS[phase] || MOON_PIXELS['new'];
+  const size = 12;
+  canvas.width = 8 * size; canvas.height = 8 * size;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let r = 0; r < 8; r++) {
+    for (let c = 0; c < 8; c++) {
+      const v = grid[r][c];
+      if (v === 0) continue;
+      ctx.fillStyle = v === 2 ? '#f8f0c0' : '#c8a030';
+      ctx.fillRect(c * size, r * size, size, size);
+    }
+  }
 }
 
 // ── GENERATE ───────────────────────────────────────────────────────────────
@@ -864,6 +1106,7 @@ function generatePage() {
   const dateStr = date.toISOString().split('T')[0];
 
   document.getElementById('header-moon').textContent = moonIcon;
+
 
   const energy      = getEnergy(moon);
   const {plant,harvest,roots} = getPlants(moon, month);
@@ -887,14 +1130,16 @@ function generatePage() {
   // Page HTML
   document.getElementById('page-content').innerHTML = `
     <div>
-      <div class="page-hero">
-        <div class="hero-location">${currentLoc.name} · Zone ${currentLoc.zone}</div>
-        <span class="hero-moon">${moonIcon}</span>
-        <div class="hero-date">${fmtDate(date)}</div>
-        <div class="hero-meta">
-          <div class="hero-pill">${MOON_LABELS[moon]} · ${illum}%</div>
-          <div class="hero-pill">${SEASON_LABELS[season]}</div>
-          <div class="hero-pill">${temp}°F · ${rain}% rain</div>
+      <div class="rpg-box" style="margin-bottom:12px;">
+        <div class="moon-canvas-wrap">
+          <canvas id="moon-canvas" width="96" height="96" style="width:96px;height:96px;"></canvas>
+          <div class="hero-date">${fmtDate(date)}</div>
+          <div class="hero-location">${currentLoc.name.toUpperCase()} · ZONE ${currentLoc.zone.toUpperCase()}</div>
+          <div class="hero-pills">
+            <div class="hero-pill accent-pill">${MOON_LABELS[moon].toUpperCase()} · ${illum}%</div>
+            <div class="hero-pill">${SEASON_LABELS[season].toUpperCase()}</div>
+            <div class="hero-pill">${temp}°F · ${rain}% RAIN</div>
+          </div>
         </div>
       </div>
 
@@ -932,7 +1177,7 @@ function generatePage() {
       <div class="reflection-card">
         <div class="reflection-kicker">Evening reflection</div>
         <div class="reflection-q">What changed on the land today?</div>
-        <textarea id="f-reflection" placeholder="Write what happened today — observations, tasks completed, anything that stood out..." style="margin-top:12px;width:100%;min-height:100px;font-size:14px;"></textarea>
+        <textarea id="f-reflection" placeholder="Write what happened today — observations, tasks completed, anything that stood out..." style="margin-top:12px;width:100%;min-height:100px;"></textarea>
         <button class="copy-btn" style="margin-top:10px;" onclick="exportWithReflection()">Update .md with reflection & go to Export</button>
       </div>
     </div>`;
@@ -941,6 +1186,7 @@ function generatePage() {
   buildMD(date, moon, illum, season, phase, temp, rain, recentRain, note, alerts, plant, harvest, roots, watchList, orchardTasks, animals, landTasks, fiberTasks, mushroomT, buildTasks, phaseTasks, '');
 
   document.getElementById('export-content').textContent = lastMD;
+  drawPixelMoon('moon-canvas', moon);
   switchTab('page');
 }
 
