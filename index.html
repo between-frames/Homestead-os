@@ -21,20 +21,16 @@
   --ink-4: #b0b0aa;
   --border: #d8d7d0;
   --border-2: #c8c7c0;
-
-  /* G3-era fun colors */
   --apple-blue:   #0077cc;
   --apple-green:  #4caf50;
   --apple-orange: #ff6b2b;
   --apple-purple: #7b5ea7;
   --apple-teal:   #00968a;
-
   --blue-tint:   #e8f2fb;
   --green-tint:  #eaf4ea;
   --orange-tint: #fff0ea;
   --purple-tint: #f2eef8;
   --teal-tint:   #e5f4f2;
-
   --radius-lg: 16px;
   --radius: 10px;
   --radius-sm: 7px;
@@ -50,7 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── HEADER ── */
+/* HEADER */
 .app-header {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -59,407 +55,245 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0; z-index: 100;
 }
-.app-title {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-}
-.app-title span {
-  color: var(--apple-blue);
-}
-.header-right {
-  display: flex; align-items: center; gap: 6px;
-}
+.app-title { font-size: 13px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); }
+.app-title span { color: var(--apple-blue); }
+.header-right { display: flex; align-items: center; gap: 6px; }
 .header-loc {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--ink-3);
-  background: var(--bg-2);
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.01em;
+  color: var(--ink-3); background: var(--bg-2);
+  padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border);
 }
 .header-moon { font-size: 18px; }
 
-/* ── TABS ── */
+/* TABS */
 .tab-bar {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  padding: 0 16px;
-  gap: 2px;
+  display: flex; padding: 0 16px; gap: 2px;
   overflow-x: auto; scrollbar-width: none;
 }
 .tab-bar::-webkit-scrollbar { display: none; }
 .tab-btn {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink-3);
-  background: none; border: none;
-  padding: 12px 14px 11px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  -webkit-appearance: none;
-  transition: color 0.15s;
+  font-size: 12px; font-weight: 500; letter-spacing: -0.01em;
+  color: var(--ink-3); background: none; border: none;
+  padding: 12px 14px 11px; cursor: pointer;
+  border-bottom: 2px solid transparent; white-space: nowrap;
+  -webkit-appearance: none; transition: color 0.15s;
 }
-.tab-btn.active {
-  color: var(--apple-blue);
-  border-bottom-color: var(--apple-blue);
-}
+.tab-btn.active { color: var(--apple-blue); border-bottom-color: var(--apple-blue); }
 
-/* ── MAIN ── */
+/* MAIN */
 .main { padding: 20px 16px 110px; max-width: 680px; margin: 0 auto; }
 
-/* ── CARDS ── */
+/* CARDS */
 .card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-bottom: 12px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 12px;
 }
-.card-header {
-  padding: 14px 16px 0;
-}
-.card-body {
-  padding: 14px 16px;
-}
+.card-header { padding: 14px 16px 0; }
+.card-body { padding: 14px 16px; }
 .card-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 10px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-4); margin-bottom: 10px;
 }
 
-/* ── LOCATION GRID ── */
+/* LOCATION */
 .location-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
 .loc-btn {
-  padding: 11px 12px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  text-align: left; cursor: pointer;
-  -webkit-appearance: none;
-  transition: all 0.15s;
+  padding: 11px 12px; background: var(--bg);
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+  text-align: left; cursor: pointer; -webkit-appearance: none; transition: all 0.15s;
 }
-.loc-btn.active {
-  background: var(--blue-tint);
-  border-color: var(--apple-blue);
-}
-.loc-name {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
+.loc-btn.active { background: var(--blue-tint); border-color: var(--apple-blue); }
+.loc-name { display: block; font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 .loc-btn.active .loc-name { color: var(--apple-blue); }
-.loc-sub {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--ink-4);
-  margin-top: 2px;
-}
+.loc-sub { display: block; font-size: 10px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink-4); margin-top: 2px; }
 .loc-btn.active .loc-sub { color: var(--apple-blue); opacity: 0.7; }
-
 .custom-coords { display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px; border-top: 1px solid var(--border); }
 
-/* ── INPUTS ── */
+/* INPUTS */
 .field-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  margin-bottom: 6px;
-  display: block;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink-4); margin-bottom: 6px; display: block;
 }
-
-select, input[type="date"], input[type="number"], input[type="text"] {
+select, input[type="date"], input[type="number"], input[type="text"], textarea {
   font-family: 'Inter', -apple-system, Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  width: 100%;
-  padding: 10px 12px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--ink);
-  -webkit-appearance: none; appearance: none;
-  transition: border-color 0.15s;
+  font-size: 15px; font-weight: 400; letter-spacing: -0.01em;
+  width: 100%; padding: 10px 12px;
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--ink);
+  -webkit-appearance: none; appearance: none; transition: border-color 0.15s;
 }
-select:focus, input:focus { outline: none; border-color: var(--apple-blue); }
+textarea {
+  resize: vertical; min-height: 80px; line-height: 1.5;
+  font-size: 14px;
+}
+select:focus, input:focus, textarea:focus { outline: none; border-color: var(--apple-blue); }
 select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23b0b0aa' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
 }
 .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-/* ── BUTTONS ── */
+/* BUTTONS */
 .fetch-btn {
-  width: 100%; padding: 12px;
-  background: var(--apple-blue);
+  width: 100%; padding: 12px; background: var(--apple-blue);
   border: none; border-radius: var(--radius);
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 13px; font-weight: 600;
-  letter-spacing: -0.01em;
-  color: white; cursor: pointer;
-  -webkit-appearance: none;
-  transition: opacity 0.15s;
+  font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: -0.01em; color: white; cursor: pointer;
+  -webkit-appearance: none; transition: opacity 0.15s;
 }
 .fetch-btn:active { opacity: 0.8; }
-
 .save-btn {
-  width: 100%; padding: 10px;
-  background: var(--bg-2);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ink-2); cursor: pointer;
-  -webkit-appearance: none;
+  width: 100%; padding: 10px; background: var(--bg-2);
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-family: 'Inter', Arial, sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.01em; color: var(--ink-2); cursor: pointer; -webkit-appearance: none;
 }
 .save-btn:active { background: var(--bg-3); }
-
 .generate-btn {
-  width: 100%; padding: 16px;
-  background: var(--ink);
+  width: 100%; padding: 16px; background: var(--ink);
   border: none; border-radius: var(--radius-lg);
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 15px; font-weight: 600;
-  letter-spacing: -0.02em;
-  color: white; cursor: pointer;
-  -webkit-appearance: none;
-  transition: opacity 0.15s;
+  font-family: 'Inter', Arial, sans-serif; font-size: 15px; font-weight: 600;
+  letter-spacing: -0.02em; color: white; cursor: pointer;
+  -webkit-appearance: none; transition: opacity 0.15s;
 }
 .generate-btn:active { opacity: 0.85; }
-
 .copy-btn {
-  width: 100%; padding: 12px;
-  background: var(--bg-2); border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ink-2); cursor: pointer;
-  -webkit-appearance: none; margin-top: 12px;
+  width: 100%; padding: 12px; background: var(--bg-2); border: 1.5px solid var(--border);
+  border-radius: var(--radius); font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.01em;
+  color: var(--ink-2); cursor: pointer; -webkit-appearance: none; margin-top: 12px;
 }
 .copy-btn:active { background: var(--bg-3); }
+.download-btn {
+  width: 100%; padding: 12px; background: var(--apple-blue);
+  border: none; border-radius: var(--radius);
+  font-family: 'Inter', Arial, sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: -0.01em; color: white; cursor: pointer;
+  -webkit-appearance: none; margin-top: 8px; transition: opacity 0.15s;
+}
+.download-btn:active { opacity: 0.8; }
 
-/* ── STATUS + AUTO CARD ── */
+/* STATUS */
 .status-line {
   font-size: 11px; font-weight: 400; letter-spacing: 0.01em;
   color: var(--ink-4); text-align: center; min-height: 16px;
 }
 .auto-card {
-  background: var(--green-tint);
-  border: 1.5px solid var(--apple-green);
-  border-radius: var(--radius);
-  padding: 14px 16px;
+  background: var(--green-tint); border: 1.5px solid var(--apple-green);
+  border-radius: var(--radius); padding: 14px 16px;
   display: flex; flex-direction: column; gap: 8px;
 }
-.auto-card-title {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--apple-green);
-}
+.auto-card-title { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--apple-green); }
 .auto-card-row { display: flex; justify-content: space-between; align-items: baseline; }
 .auto-card-val { font-size: 15px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
 .auto-card-sub { font-size: 11px; font-weight: 400; letter-spacing: 0.01em; color: var(--ink-3); }
 
-/* ── PAGE OUTPUT ── */
+/* PAGE OUTPUT */
 .page-hero {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 24px 20px 20px;
-  margin-bottom: 12px;
-  text-align: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px 20px 20px;
+  margin-bottom: 12px; text-align: center;
 }
-.hero-location {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--ink-4); margin-bottom: 14px;
-}
+.hero-location { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 14px; }
 .hero-moon { font-size: 56px; line-height: 1; margin-bottom: 12px; display: block; }
-.hero-date {
-  font-size: 26px; font-weight: 300;
-  letter-spacing: -0.04em;
-  color: var(--ink); margin-bottom: 12px;
-}
-.hero-meta {
-  display: flex; justify-content: center;
-  flex-wrap: wrap; gap: 6px;
-}
+.hero-date { font-size: 26px; font-weight: 300; letter-spacing: -0.04em; color: var(--ink); margin-bottom: 12px; }
+.hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
 .hero-pill {
-  font-size: 12px; font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--ink-2);
+  font-size: 12px; font-weight: 500; letter-spacing: -0.01em;
+  padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--ink-2);
 }
-
 .energy-card {
-  border-radius: var(--radius-lg);
-  padding: 18px 20px;
-  margin-bottom: 12px;
-  background: var(--purple-tint);
-  border: 1px solid rgba(123,94,167,0.25);
+  border-radius: var(--radius-lg); padding: 18px 20px; margin-bottom: 12px;
+  background: var(--purple-tint); border: 1px solid rgba(123,94,167,0.25);
 }
-.energy-kicker {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--apple-purple); margin-bottom: 6px;
-}
-.energy-text {
-  font-size: 20px; font-weight: 300;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-}
-
+.energy-kicker { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-purple); margin-bottom: 6px; }
+.energy-text { font-size: 20px; font-weight: 300; letter-spacing: -0.03em; color: var(--ink); }
 .alert-card {
-  background: var(--orange-tint);
-  border: 1px solid rgba(255,107,43,0.3);
-  border-radius: var(--radius);
-  padding: 11px 14px; margin-bottom: 8px;
-  font-size: 13px; font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--apple-orange);
+  background: var(--orange-tint); border: 1px solid rgba(255,107,43,0.3);
+  border-radius: var(--radius); padding: 11px 14px; margin-bottom: 8px;
+  font-size: 13px; font-weight: 500; letter-spacing: -0.01em; color: var(--apple-orange);
 }
 .note-card {
-  background: var(--teal-tint);
-  border: 1px solid rgba(0,150,138,0.25);
-  border-radius: var(--radius);
-  padding: 11px 14px; margin-bottom: 12px;
-  font-size: 14px; font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--apple-teal);
+  background: var(--teal-tint); border: 1px solid rgba(0,150,138,0.25);
+  border-radius: var(--radius); padding: 11px 14px; margin-bottom: 12px;
+  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--apple-teal);
 }
 
-/* ── SECTION CARDS ── */
+/* SECTION CARDS */
 .section-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  margin-bottom: 10px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px; margin-bottom: 10px;
 }
 .section-head {
   display: flex; align-items: center; gap: 8px;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
+  margin-bottom: 14px; padding-bottom: 12px;
   border-bottom: 1px solid var(--bg-2);
 }
 .section-emoji { font-size: 16px; }
-.section-name {
-  font-size: 12px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--ink-3);
-}
-.section-count {
-  margin-left: auto;
-  font-size: 11px; font-weight: 600;
-  color: var(--ink-4);
-  background: var(--bg-2);
-  padding: 2px 8px; border-radius: 10px;
-}
-
+.section-name { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.section-count { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--ink-4); background: var(--bg-2); padding: 2px 8px; border-radius: 10px; }
 .task-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 14px; }
-.task-col-label {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--ink-4); margin-bottom: 7px;
-}
+.task-col-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 7px; }
 .task-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
 .task-list li {
-  font-size: 14px; font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ink-2);
+  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink-2);
   display: flex; align-items: flex-start; gap: 7px; line-height: 1.4;
 }
 .task-list li::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: var(--apple-green);
-  border-radius: 50%;
-  margin-top: 5px; flex-shrink: 0;
+  content: ''; width: 5px; height: 5px; background: var(--apple-green);
+  border-radius: 50%; margin-top: 5px; flex-shrink: 0;
 }
 .plain-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .plain-list li {
-  font-size: 14px; font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ink-2);
+  font-size: 14px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink-2);
   display: flex; align-items: flex-start; gap: 8px; line-height: 1.4;
 }
 .plain-list li::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: var(--border-2);
-  border-radius: 50%;
-  margin-top: 5px; flex-shrink: 0;
+  content: ''; width: 5px; height: 5px; background: var(--border-2);
+  border-radius: 50%; margin-top: 5px; flex-shrink: 0;
 }
 
+/* REFLECTION */
 .reflection-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  margin-top: 4px;
-  text-align: center;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px; margin-top: 4px;
 }
-.reflection-kicker {
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--ink-4); margin-bottom: 10px;
-}
-.reflection-q {
-  font-size: 18px; font-weight: 300;
-  letter-spacing: -0.03em;
-  color: var(--ink-2); line-height: 1.4;
-}
-.reflection-lines { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
-.reflection-line { border-bottom: 1px solid var(--bg-3); height: 26px; }
+.reflection-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 10px; }
+.reflection-q { font-size: 18px; font-weight: 300; letter-spacing: -0.03em; color: var(--ink-2); line-height: 1.4; margin-bottom: 14px; }
 
-/* ── EXPORT ── */
+/* PHASE BADGE */
+.phase-badge {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 10px;
+  background: var(--blue-tint); color: var(--apple-blue);
+  margin-bottom: 10px;
+}
+
+/* EXPORT */
 .export-area {
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 16px;
   font-family: 'SF Mono', 'Menlo', monospace;
-  font-size: 11px; line-height: 1.8;
-  color: var(--ink-3); white-space: pre-wrap; word-break: break-word;
-  min-height: 200px;
+  font-size: 11px; line-height: 1.8; color: var(--ink-3);
+  white-space: pre-wrap; word-break: break-word; min-height: 200px;
 }
 
-/* ── PLACEHOLDER ── */
+/* PLACEHOLDER */
 .placeholder {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: 80px 20px; gap: 12px; text-align: center;
 }
 .placeholder-moon { font-size: 48px; opacity: 0.25; }
-.placeholder-text {
-  font-size: 16px; font-weight: 300;
-  letter-spacing: -0.02em;
-  color: var(--ink-4); max-width: 220px; line-height: 1.5;
-}
+.placeholder-text { font-size: 16px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink-4); max-width: 220px; line-height: 1.5; }
 
-/* ── GENERATE BAR ── */
+/* GENERATE BAR */
 .generate-bar {
   position: fixed; bottom: 0; left: 0; right: 0;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
+  background: var(--bg); border-top: 1px solid var(--border);
   padding: 12px 16px;
   padding-bottom: calc(12px + env(safe-area-inset-bottom));
 }
@@ -496,7 +330,7 @@ select {
         </button>
         <button class="loc-btn" data-key="omaha" onclick="setLocation('omaha',this)">
           <span class="loc-name">Omaha, NE</span>
-          <span class="loc-sub">Zone 5b · Current</span>
+          <span class="loc-sub">Zone 5b · Current base</span>
         </button>
         <button class="loc-btn" data-key="mulberry" onclick="setLocation('mulberry',this)">
           <span class="loc-name">Mulberry, NC</span>
@@ -583,8 +417,20 @@ select {
         </select>
       </div>
       <div>
-        <label class="field-label">Note for today</label>
-        <input type="text" id="f-note" placeholder="e.g. First broccoli starts in ground">
+        <label class="field-label">Homestead phase</label>
+        <select id="f-phase">
+          <option value="phase1">Phase 1 — Reading the Land</option>
+          <option value="phase2">Phase 2 — Long-Game Plants & Ground Systems</option>
+          <option value="phase3">Phase 3 — Bare-Root Orchard</option>
+          <option value="phase4">Phase 4 — Herbs, Fiber & First Animals</option>
+          <option value="phase5">Phase 5 — First Yields</option>
+          <option value="phase6">Phase 6 — Perennial Economy</option>
+          <option value="phase7">Phase 7 — Self-Sustaining</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Morning note</label>
+        <input type="text" id="f-note" placeholder="e.g. Planted chamomile in Bed 2">
       </div>
     </div>
   </div>
@@ -607,6 +453,7 @@ select {
     <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-4)">Markdown output</div>
     <div class="export-area" id="export-content">Generate a page first.</div>
     <button class="copy-btn" onclick="copyMarkdown()">Copy to clipboard</button>
+    <button class="download-btn" onclick="downloadMarkdown()">↓ Download .md</button>
   </div>
 </div>
 
@@ -622,15 +469,244 @@ const LOCATIONS = {
 };
 let currentLoc = LOCATIONS.warrenton;
 let currentLocKey = 'warrenton';
+let lastMD = '';
+
+// ── INVENTORY ──────────────────────────────────────────────────────────────
+
+const LIVESTOCK = {
+  chickens:  { label:'Chickens', count:'12–15 hens', tasks: { daily:['Collect eggs','Refresh water and feed','Visual health check','Move chicken tractor if scheduled'], weekly:['Deep clean waterers','Check for mites or respiratory issues'] } },
+  ducks:     { label:'Ducks', count:'10–12', tasks: { daily:['Collect duck eggs','Refresh pond basin or stock tank','Check for slugs along duck path'], weekly:['Clean basin or tank','Rotate foraging zone'] } },
+  goats_dairy:{ label:'Dairy Goats', count:'Nubian × 4, Nigerian Dwarf × 2–4', tasks: { daily:['Morning milking','Refresh water and hay','Visual check — udder, hoof, eyes'], weekly:['Rotate paddock','Check hoof condition','Record milk yield'] } },
+  goats_angora:{ label:'Angora Goats', count:'4–6', tasks: { daily:['Check water and hay','Visual health check'], seasonal:['Shear spring and fall — harvest mohair','Check for fiber breaks after stress events'] } },
+  sheep:     { label:'Sheep', count:'Merino × 4, Rambouillet × 4', tasks: { daily:['Check water and pasture','Visual health check — eyes, gait, coat'], weekly:['Rotate paddock — break parasite cycle','Note which breed is thriving in heat'], seasonal:['Shear March before NC heat','Check for parasite load'] } },
+  rabbits:   { label:'Angora Rabbits', count:'6–8', tasks: { daily:['Refresh water and hay','Check hutch temp'], monthly:['Gentle comb harvest every 3–4 months'] } },
+  donkeys:   { label:'Donkeys', count:'× 2', tasks: { daily:['Refresh water','Check fencing — donkeys patrol perimeter'], weekly:['Hoof check','Observe interaction with flock'] } },
+  guineas:   { label:'Guinea Fowl', count:'10–12', tasks: { daily:['Let out at dawn — tick patrol','Close up at dusk'] } },
+  turkeys:   { label:'Turkeys & Peacock', count:'1 pair + 1–2', tasks: { daily:['Check roost and water'], seasonal:['Monitor nesting season'] } },
+  bees:      { label:'Bees', count:'2–4 hives', tasks: { weekly:['Visual hive check — activity at entrance'], monthly:['Full inspection — brood, queen, stores'], seasonal:['Spring: add supers · Fall: winterize · Extract honey late summer'] } },
+};
+
+const ORCHARD = {
+  summer:  ['Peach × 2','Plum × 2','Fig × 2','Blueberry × 6','Blackberry × 12 canes','Mulberry (forage/establish)','Wineberry (forage)'],
+  fall:    ['Apple × 2 (Stayman Winesap + Arkansas Black)','Pear × 2 (Kieffer / Moonglow)','Persimmon × 2','Pawpaw × 2 (grafted)','Muscadine × 3','Norton + Chambourcin wine grape'],
+  nuts:    ['Chestnut × 2','Pecan × 2','Hazelnut × 2','Black Walnut (check existing)'],
+  guild:   ['Comfrey (plant at every tree)','Borage','Yarrow','White clover understory','Mycorrhizal inoculant at planting'],
+};
+
+const HERBS = {
+  tea:     ['Chamomile (Roman + German)','Tulsi / Holy Basil × 4–6 varieties','Lemon balm','Spearmint + Peppermint','Roselle hibiscus','Elderberry × 2','Rose hips (rugosa)','Nettle','Passionflower','Lemon verbena'],
+  medicinal:['Echinacea (purpurea + angustifolia)','Valerian','St. John\'s Wort','Calendula','Ashwagandha','Skullcap','Black cohosh'],
+  dye:     ['Weld (yellow)','Woad (blue)','Japanese indigo (blue/teal)','Madder (red/orange)','Goldenrod (gold)','Black-eyed Susan'],
+};
+
+const MUSHROOMS = {
+  varieties:['Lion\'s Mane (oak logs — Apr, May, Oct)','Shiitake (oak logs — most reliable)','Reishi (oak logs — medicinal, slow)','Turkey Tail (fallen hardwood — free)','Wine Cap (wood chip paths — Year 1)','Oyster (straw or logs — fastest)'],
+};
+
+const WATER = {
+  pond:    ['Catfish','Bluegill','Largemouth Bass','Crappie','Tilapia (seasonal)'],
+  aquaponics:['Tilapia or Catfish in greenhouse system','Fish waste feeds citrus + tropicals','Plants filter water back to fish'],
+};
+
+const PHASE_LABELS = {
+  phase1:'Phase 1 — Reading the Land',
+  phase2:'Phase 2 — Long-Game Plants & Ground Systems',
+  phase3:'Phase 3 — Bare-Root Orchard',
+  phase4:'Phase 4 — Herbs, Fiber & First Animals',
+  phase5:'Phase 5 — First Yields',
+  phase6:'Phase 6 — Perennial Economy',
+  phase7:'Phase 7 — Self-Sustaining',
+};
+
+const PHASE_TASKS = {
+  phase1:['Walk the land after every rain — map water flow','Mark the natural low point (future pond)','Soil test 4–5 zones — send to NC Dept of Ag ($4–20)','Broadcast winter rye + crimson clover on bare ground','Begin LiDAR topographic survey of the property','Plant willow cuttings in wet areas — root in days','Direct sow echinacea (needs winter cold to germinate)','Plant comfrey crowns where future trees will go'],
+  phase2:['Plant garlic — October window closes soon','Order bare-root trees for January delivery (Edible Landscaping, Afton VA)','Build 3-bin compost system before animals arrive','Sheet mulch future herb beds with cardboard + wood chips','Set up rain barrels and downspout diverters','Install deer and rabbit fencing perimeter','Plant elderberry cuttings','Establish willow coppice — 12+ plants'],
+  phase3:['Bare-root season open — plant summer producers first (peach, plum, fig, blueberry, blackberry)','Plant comfrey guild around every tree immediately after planting','Fall trees before bud break in March (apple, pear, persimmon, pawpaw, muscadine, wine grape)','Inoculate mushroom logs — oak, 4–6 in diameter, 12mm holes, seal with wax','Plant nut trees (chestnut, pecan, hazelnut) — long-game, plant now'],
+  phase4:['Start tulsi, chamomile, roselle indoors under lights — 6–8 weeks before last frost','After Apr 1: transplant herb starts outside','Establish herb beds — tea and medicinal zones','First animals arrive: chickens and ducks first','Set up fiber studio space','Inoculate wine cap mushroom spawn in wood chip paths','Check willow coppice — first weaving material available'],
+  phase5:['Harvest blueberries, blackberries, figs as they come','First herb harvests — dry and process for storage and market','First wool shearing — Merino and Rambouillet, Angora goats','Begin goat milking routine — Nubian and Nigerian Dwarf','First basket material harvested from established willows','Farmers market prep — package teas, dried herbs, eggs'],
+  phase6:['Stone fruits and apples producing — process and preserve surplus','Tincture medicinals from established root crops (echinacea year 3+)','Wicker fence panels replacing utility fencing on paddock edges','OS daily rhythm fully dialed — under 4 hrs most days','Pond established and stocked','Aquaponics system running in greenhouse'],
+  phase7:['Compost loop closed — animal manure → compost → orchard','Grapevine trimmings going to basket material — no waste','Willow propagating itself from coppice cuts','OS running on ESP32 sensor data — real-time soil + weather','Retreat cabins operational','Co-op store open — MJ leading community operations','Nonprofit and university partnership active'],
+};
+
+// ── RULES ENGINE ───────────────────────────────────────────────────────────
+
+const MOON_ICONS  = {new:'🌑',waxing_crescent:'🌒',first_quarter:'🌓',waxing_gibbous:'🌔',full:'🌕',waning_gibbous:'🌖',last_quarter:'🌗',waning_crescent:'🌘'};
+const MOON_LABELS = {new:'New Moon',waxing_crescent:'Waxing Crescent',first_quarter:'First Quarter',waxing_gibbous:'Waxing Gibbous',full:'Full Moon',waning_gibbous:'Waning Gibbous',last_quarter:'Last Quarter',waning_crescent:'Waning Crescent'};
+const SEASON_LABELS = {early_spring:'Early Spring',spring:'Spring',late_spring:'Late Spring',early_summer:'Early Summer',summer:'Summer',late_summer:'Late Summer',early_fall:'Early Fall',fall:'Fall',late_fall:'Late Fall',winter:'Winter'};
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function getEnergy(moon) {
+  return {
+    new:'Rest. Intention. Quiet planning.',
+    waxing_crescent:'Growth. Establishment. Expansion.',
+    first_quarter:'Action. Decision. Momentum.',
+    waxing_gibbous:'Refinement. Attention. Building toward full.',
+    full:'Peak energy. Fruition. Harvest.',
+    waning_gibbous:'Gratitude. Sharing. Gradual release.',
+    last_quarter:'Clearing. Letting go. Root work.',
+    waning_crescent:'Rest. Deep roots. Preparation.',
+  }[moon] || 'Observe.';
+}
+
+function getPlants(moon, month) {
+  let plant=[], harvest=[], roots=[];
+  // Moon phase logic
+  if(['waxing_crescent','first_quarter','waxing_gibbous'].includes(moon))
+    plant=['Kale','Spinach','Lettuce','Chamomile','Tulsi','Lemon balm','Transplant herb starts'];
+  if(['first_quarter','waxing_gibbous','full'].includes(moon)) {
+    plant=[...new Set([...plant,'Tomatoes','Beans','Peppers','Cucumbers','Roselle hibiscus'])];
+    harvest=['Tomatoes','Beans','Basil','Tulsi','Chamomile flowers','Summer squash','Blueberries','Blackberries'];
+  }
+  if(['waning_gibbous','last_quarter','waning_crescent'].includes(moon)) {
+    plant=['Garlic','Onion sets','Echinacea (direct sow)','Comfrey crowns'];
+    roots=['Potatoes','Sweet potatoes','Beets','Carrots','Onions','Garlic','Echinacea root (harvest Yr 3+)'];
+  }
+  if(moon === 'new') plant=['Leafy greens','Herbs from seed','Passionflower','Nettle'];
+  // Season overrides
+  if([7,8].includes(month)) {
+    plant=[...new Set([...plant,'Kale','Spinach','Broccoli (fall starts)'])];
+    harvest=[...new Set([...harvest,'Tomatoes','Peppers','Peaches','Figs','Roselle calyxes','Elderberries'])];
+  }
+  if([9,10].includes(month)) {
+    plant=[...new Set([...plant,'Garlic','Winter rye cover crop','Crimson clover'])];
+    harvest=[...new Set([...harvest,'Apple','Pear','Muscadine','Wine grape','Persimmon (late Oct)','Pawpaw','Sweet potatoes','Potatoes'])];
+  }
+  if([3,4].includes(month)) {
+    plant=[...new Set([...plant,'Peas','Spinach','Arugula','Onion starts','Potatoes (first crop)','Tulsi (start indoors)','Chamomile (start indoors)'])];
+  }
+  if([1,2].includes(month)) {
+    plant=['Bare-root trees (open season)','Garlic (overwintering)'];
+    roots=[...roots,'Valerian root check','Echinacea establish'];
+  }
+  if([11,12].includes(month)) {
+    plant=['Garlic (if not yet planted)','Cover crops'];
+    harvest=[...harvest,'Persimmon (after frost sweetens)','Pawpaw (check for final drop)'];
+  }
+  return {plant, harvest, roots};
+}
+
+function getWatchList(season) {
+  return {
+    late_summer:['Squash vine borers','Tomato hornworms','Spider mites','Sheep heat stress','Goat water intake'],
+    summer:['Aphids on elderberry','Squash bugs','Japanese beetles in orchard','Merino sheep in heat — shade and water'],
+    early_fall:['Cabbage loopers','Slugs (watch duck foraging zones)','Late blight','Harvest timing for pawpaw'],
+    fall:['Voles near tree roots','Slugs','Root rot in wet zones','Mushroom log check — reishi and shiitake'],
+    spring:['Cutworms','Aphids','Late frost — protect citrus in greenhouse','Goat kidding season watch'],
+    early_spring:['Damping off in herb starts','Slugs','Cold snaps — check bee hive activity'],
+    winter:['Deer browse on young trees — check guards','Rodent damage near grain storage','Frost heave around newly planted trees','Hive winter cluster — don\'t open below 50°F'],
+  }[season] || ['Observe general pest and animal activity'];
+}
+
+function getOrchard(season) {
+  return {
+    early_spring:['Apply dormant oil spray before bud break','Structural pruning — remove crossing branches','Check for fire blight on apple and pear','Plant guild plants around any bare root trees just in','Chop and drop comfrey around all established trees'],
+    spring:['Thin fruit after petal fall (peach, plum, apple)','Fertilize with compost tea','Scout for codling moth on apple','Water young trees deeply (newly planted bare-root)','Mow orchard floor — leave clippings'],
+    late_spring:['Thin crowded fruit clusters','Stake young trees if needed','Train muscadine and wine grape on trellis','Mow orchard floor'],
+    early_summer:['Water young trees 2–3x per week','Scout for aphids on elderberry','First fig check — Brown Turkey ripens early','Blueberry harvest beginning'],
+    summer:['Water young trees deeply','Peach and plum harvest — process immediately','Fig harvest daily — they drop fast','Blackberry + blueberry peak — pick every 2 days','Check muscadine vine progress'],
+    late_summer:['Apple and pear beginning to color','Elderberry harvest — flowers and berries','Wine grape veraison — color change beginning','Collect and compost any drops to reduce pest pressure'],
+    early_fall:['Apple + pear harvest — 'Arkansas Black' last','Muscadine + wine grape harvest','Persimmon wait until after first frost for sweetness','Pawpaw — check daily, drops when ripe','Rake and compost leaves'],
+    fall:['Final fruit harvest and preservation push','Pecan and chestnut harvest','Plant garlic in orchard understory','Apply trunk guards for vole protection','Reduce irrigation'],
+    late_fall:['Apply dormant spray','Wrap young trunks','Final compost layer around tree drip lines','Order bare-root trees for January'],
+    winter:['Major structural pruning — dormant season','Check stored fruit (root cellar)','Plan spring grafts','Inoculate mushroom logs (oak logs available from pruning)'],
+  }[season] || ['Walk orchard — note any damage or changes','Photograph tree progress'];
+}
+
+function getLand(season) {
+  const water = ['late_summer','summer'].includes(season)
+    ? 'Check pond water level — add if low' : 'Inspect creek flow and swale drainage after rain';
+  const obs = ['late_summer','summer'].includes(season)
+    ? 'Check aquaponics — fish behavior and plant growth'
+    : ['fall','early_fall'].includes(season)
+    ? 'Stack brush for wildlife cover along Zone 5 margin'
+    : 'Note what\'s blooming — photograph one thing that changed';
+  const fence = 'Check wicker fencing and paddock boundaries for gaps';
+  const compost = 'Turn compost — add manure from morning animal round';
+  return ['Walk all zones — trail check', water, obs, fence, compost];
+}
+
+function getAnimals(season) {
+  const daily = [
+    'Eggs — collect chicken and duck eggs, record count',
+    'Water — refresh all troughs, basins, and rabbit hutches',
+    'Feed — hay, grain, and forage check for all livestock',
+    'Milking — Nubian and Nigerian Dwarf morning milk, record yield',
+    'Visual health — scan each species for anything off',
+    'Chicken tractor — move to fresh ground if scheduled',
+    'Guinea fowl — let out at dawn for tick patrol, close at dusk',
+    'Donkeys — check fencing perimeter they patrol overnight',
+  ];
+  const seasonal = {
+    spring: ['Bee hive inspection — brood, queen, stores','Goat watch — kidding season','Add super if nectar flow strong'],
+    summer: ['Shade and water critical for Merino sheep — check twice','Bee water source — make sure it\'s full','Angora rabbit hutch ventilation check'],
+    fall:   ['Angora goat shearing — fall mohair harvest','Bee winterize prep — check honey stores','Rabbit fiber harvest — gentle comb if 3–4 months since last'],
+    winter: ['Bee hive — do not open below 50°F, check entrance for ice','Sheep wool check — good winter insulation','Livestock water heater if freezing temps expected'],
+  };
+  const skey = ['spring','late_spring'].includes(season) ? 'spring'
+    : ['early_summer','summer','late_summer'].includes(season) ? 'summer'
+    : ['early_fall','fall','late_fall'].includes(season) ? 'fall' : 'winter';
+  return { daily, seasonal: seasonal[skey] || [] };
+}
+
+function getFiber(season) {
+  if(['winter','late_fall'].includes(season))
+    return ['Wicker weaving season — active panel and basket work','Soak willow rods overnight before weaving','Wool processing — card and spin from spring shearing stores','Natural dye session — mordant + dye plant prep','Loom or knitting project — use yarn from processed fleece'];
+  if(['spring','early_spring'].includes(season))
+    return ['Merino and Rambouillet shearing — March before heat','Angora goat shearing — mohair harvest','Fleece skirting, washing, and drying rack setup','Send best fleece to small-batch mill if volume is high','Willow coppice cut — harvest new rods for weaving'];
+  if(['summer','late_summer','early_summer'].includes(season))
+    return ['Harvest honeysuckle vine for basket material','Grapevine trimmings for weaving (Year 3+)','Angora rabbit fiber comb harvest if due','Natural dye — fresh plant harvest (goldenrod, weld, black-eyed Susan)','Dry dye plants for winter processing'];
+  return ['Basket and wicker work — active season','Spin and ply from stored fiber batts','Weave on rigid heddle or floor loom','Catalog fiber inventory — wool, mohair, rabbit, reed'];
+}
+
+function getMushrooms(season) {
+  if(['fall','early_fall','late_fall'].includes(season))
+    return ['Lion\'s Mane — prime fruiting season, check logs daily','Shiitake — fall flush, harvest before caps flatten','Inoculate new oak logs this season (best time)','Turkey Tail — harvest and dry for tea blends','Wine Cap — end of outdoor season, harvest remaining'];
+  if(['spring','early_spring'].includes(season))
+    return ['Shiitake spring flush — check inoculated logs','Lion\'s Mane — spring fruiting (April–May)','Inoculate new oak logs — second best time','Wine Cap — plant spawn in fresh wood chip paths'];
+  if(['summer','late_summer','early_summer'].includes(season))
+    return ['Oyster mushrooms — indoor straw bags if growing','Keep mushroom log yard moist during dry spells','Harvest and dry any summer varieties','Check wine cap beds after rain'];
+  return ['Mushroom logs — winter rest, minimal care','Plan inoculation schedule for spring','Source fresh oak logs from winter pruning'];
+}
+
+function getBuild(season) {
+  if(['winter','late_fall'].includes(season))
+    return ['Major wicker fence panel project — best weaving season','Barn and shelter winterization check','ESP32 weather station build (if hardware on hand)','Root cellar organization — rotate stored produce','Tool maintenance and sharpening'];
+  if(['spring','early_spring'].includes(season))
+    return ['Greenhouse ventilation prep for summer','Swale and drainage inspection after winter','Check irrigation lines before season','Drip irrigation install or repair in herb beds','Compost bin expansion if needed'];
+  if(['summer','late_summer','early_summer'].includes(season))
+    return ['Fencing check — livestock pressure highest in summer','Irrigation system maintenance','Shade structure for sheep shelter','Aquaponics pump and filter check','Harvest and storage area organization'];
+  return ['Fence and paddock boundary check','Compost structure check','Tool shed organization','Plan retreat cabin build if in Phase 6+'];
+}
+
+function getAlerts(temp, recentRain, rainChance) {
+  let a = [];
+  if(temp > 90) a.push('Heat: water all livestock twice, move Merino sheep to shade, check aquaponics temp, avoid transplanting.');
+  if(temp > 95) a.push('Extreme heat: Angora goats and rabbits at risk — ensure maximum ventilation in hutches and shelter.');
+  if(temp < 32) a.push('Frost alert: protect citrus and tropicals in greenhouse, check bee hive entrance, cover tender herb starts.');
+  if(temp < 20) a.push('Hard freeze: do not open bee hive, ensure livestock water isn\'t frozen, check barn insulation.');
+  if(recentRain > 1) a.push('Recent rain: check swales and drainage, scout mushroom logs, watch for slugs near duck zones, inspect pond level.');
+  if(rainChance > 70) a.push('Rain likely: hold off harvesting herbs, check drainage on low zones, good day for indoor fiber work.');
+  return a;
+}
+
+// ── LOCATION & HEADER ──────────────────────────────────────────────────────
 
 function setLocation(key, btn) {
   document.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   currentLocKey = key;
-  if (key === 'custom') {
+  if(key === 'custom') {
     document.getElementById('custom-coords-wrap').classList.remove('hidden');
     const saved = localStorage.getItem('custom-loc');
-    if (saved) { const c = JSON.parse(saved); currentLoc = c; document.getElementById('f-lat').value = c.lat; document.getElementById('f-lng').value = c.lng; document.getElementById('f-locname').value = c.name; document.getElementById('f-zone-custom').value = c.zone; updateHeader(); }
+    if(saved) {
+      const c = JSON.parse(saved); currentLoc = c;
+      document.getElementById('f-lat').value = c.lat;
+      document.getElementById('f-lng').value = c.lng;
+      document.getElementById('f-locname').value = c.name;
+      document.getElementById('f-zone-custom').value = c.zone;
+      updateHeader();
+    }
   } else {
     document.getElementById('custom-coords-wrap').classList.add('hidden');
     currentLoc = LOCATIONS[key]; updateHeader();
@@ -645,7 +721,7 @@ function saveCustomLocation() {
   const lng = parseFloat(document.getElementById('f-lng').value);
   const name = document.getElementById('f-locname').value.trim() || `${lat}, ${lng}`;
   const zone = document.getElementById('f-zone-custom').value;
-  if (!lat || !lng) { document.getElementById('fetch-status').textContent = 'Enter lat/lng first'; return; }
+  if(!lat || !lng) { document.getElementById('fetch-status').textContent = 'Enter lat/lng first'; return; }
   currentLoc = { name, zone, lat, lng };
   localStorage.setItem('custom-loc', JSON.stringify(currentLoc));
   updateHeader();
@@ -653,47 +729,41 @@ function saveCustomLocation() {
   setTimeout(() => document.getElementById('fetch-status').textContent = '', 2500);
 }
 
-function updateHeader() {
-  document.getElementById('header-loc').textContent = currentLoc.name;
-}
+function updateHeader() { document.getElementById('header-loc').textContent = currentLoc.name; }
+
+// ── MOON ───────────────────────────────────────────────────────────────────
 
 function getMoonData(date) {
   const known = new Date(Date.UTC(2000,0,6,18,14));
   const synodic = 29.53058867;
   let age = ((date - known) / 86400000) % synodic;
-  if (age < 0) age += synodic;
+  if(age < 0) age += synodic;
   const illumination = Math.round(50 * (1 - Math.cos(2 * Math.PI * age / synodic)));
   let phase;
-  if (age < 1.85) phase = 'new';
-  else if (age < 7.38) phase = 'waxing_crescent';
-  else if (age < 9.22) phase = 'first_quarter';
-  else if (age < 14.77) phase = 'waxing_gibbous';
-  else if (age < 16.61) phase = 'full';
-  else if (age < 22.15) phase = 'waning_gibbous';
-  else if (age < 23.99) phase = 'last_quarter';
+  if(age < 1.85) phase = 'new';
+  else if(age < 7.38) phase = 'waxing_crescent';
+  else if(age < 9.22) phase = 'first_quarter';
+  else if(age < 14.77) phase = 'waxing_gibbous';
+  else if(age < 16.61) phase = 'full';
+  else if(age < 22.15) phase = 'waning_gibbous';
+  else if(age < 23.99) phase = 'last_quarter';
   else phase = 'waning_crescent';
   return { phase, illumination };
 }
 
-const MOON_ICONS  = {new:'🌑',waxing_crescent:'🌒',first_quarter:'🌓',waxing_gibbous:'🌔',full:'🌕',waning_gibbous:'🌖',last_quarter:'🌗',waning_crescent:'🌘'};
-const MOON_LABELS = {new:'New Moon',waxing_crescent:'Waxing Crescent',first_quarter:'First Quarter',waxing_gibbous:'Waxing Gibbous',full:'Full Moon',waning_gibbous:'Waning Gibbous',last_quarter:'Last Quarter',waning_crescent:'Waning Crescent'};
-const SEASON_LABELS = {early_spring:'Early Spring',spring:'Spring',late_spring:'Late Spring',early_summer:'Early Summer',summer:'Summer',late_summer:'Late Summer',early_fall:'Early Fall',fall:'Fall',late_fall:'Late Fall',winter:'Winter'};
-const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-let lastMD = '';
+// ── FETCH ──────────────────────────────────────────────────────────────────
 
-function switchTab(name) {
-  ['inputs','page','export'].forEach(t => {
-    document.getElementById('panel-'+t).classList.toggle('hidden', t !== name);
-    document.getElementById('tab-'+t).classList.toggle('active', t === name);
-  });
+function getSeasonFromMonth(m) {
+  return {1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',
+          6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',
+          10:'fall',11:'late_fall',12:'winter'}[m];
 }
-function fmtDate(d) { return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
-function getSeasonFromMonth(m) { return {1:'winter',2:'winter',3:'early_spring',4:'spring',5:'late_spring',6:'early_summer',7:'summer',8:'late_summer',9:'early_fall',10:'fall',11:'late_fall',12:'winter'}[m]; }
 
 async function fetchAll() {
   const status = document.getElementById('fetch-status');
-  if (currentLocKey === 'custom' && (!currentLoc.lat || !currentLoc.lng)) { status.textContent = 'Save your custom location first'; return; }
+  if(currentLocKey === 'custom' && (!currentLoc.lat || !currentLoc.lng)) {
+    status.textContent = 'Save your custom location first'; return;
+  }
   status.textContent = `Fetching for ${currentLoc.name}…`;
   const dateVal = document.getElementById('f-date').value;
   const date = dateVal ? new Date(dateVal+'T12:00:00') : new Date();
@@ -733,29 +803,28 @@ async function fetchAll() {
   }
 }
 
-function getEnergy(moon) { return {new:'Rest. Intention. Quiet planning.',waxing_crescent:'Growth. Establishment. Expansion.',first_quarter:'Action. Decision. Momentum.',waxing_gibbous:'Refinement. Attention. Building toward full.',full:'Peak energy. Fruition. Harvest.',waning_gibbous:'Gratitude. Sharing. Gradual release.',last_quarter:'Clearing. Letting go. Root work.',waning_crescent:'Rest. Deep roots. Preparation.'}[moon]||'Observe.'; }
-function getPlants(moon,month) {
-  let plant=[],harvest=[],roots=[];
-  if(['waxing_crescent','first_quarter','waxing_gibbous'].includes(moon)) plant=['Kale','Spinach','Lettuce','Herbs','Transplant seedlings'];
-  if(['first_quarter','waxing_gibbous','full'].includes(moon)){plant=[...new Set([...plant,'Tomatoes','Beans','Peppers','Cucumbers'])];harvest=['Tomatoes','Beans','Basil','Summer squash'];}
-  if(['waning_gibbous','last_quarter','waning_crescent'].includes(moon)){plant=['Garlic','Onion sets'];roots=['Carrots','Beets','Potatoes','Onions','Garlic'];}
-  if([7,8].includes(month)){plant=[...new Set([...plant,'Kale','Spinach','Lettuce','Broccoli'])];harvest=[...new Set([...harvest,'Tomatoes','Peppers','Beans','Basil'])];}
-  if([9,10].includes(month)){plant=[...new Set([...plant,'Garlic','Cover crop mix'])];harvest=[...new Set([...harvest,'Winter squash','Sweet potatoes'])];}
-  if([3,4].includes(month)){plant=[...new Set([...plant,'Peas','Spinach','Arugula','Onion starts'])];}
-  return {plant,harvest,roots};
+// ── UI HELPERS ─────────────────────────────────────────────────────────────
+
+function switchTab(name) {
+  ['inputs','page','export'].forEach(t => {
+    document.getElementById('panel-'+t).classList.toggle('hidden', t !== name);
+    document.getElementById('tab-'+t).classList.toggle('active', t === name);
+  });
 }
-function getWatchList(season){return{late_summer:['Squash vine borers','Tomato hornworms','Spider mites'],summer:['Aphids','Squash bugs','Japanese beetles'],early_fall:['Cabbage loopers','Slugs','Late blight'],fall:['Voles','Slugs','Root rot'],spring:['Cutworms','Aphids','Late frost'],early_spring:['Damping off','Slugs','Cold snaps'],winter:['Deer browse','Rodent damage','Frost heave']}[season]||['Observe general pest activity'];}
-function getOrchard(season){return{early_spring:['Apply dormant oil spray','Prune before bud break','Check for fire blight'],spring:['Thin fruit after petal fall','Fertilize with compost tea','Scout for codling moth'],late_spring:['Thin crowded fruit','Stake young trees','Mow orchard floor'],early_summer:['Water young trees deeply','Scout for aphids','Mow orchard floor'],summer:['Water young trees','Check fruit drop','Prune water sprouts'],late_summer:['Water young trees','Check fruit drop','Prune damaged branches'],early_fall:['Begin harvest checks','Collect and compost drops','Reduce irrigation'],fall:['Harvest remaining fruit','Rake and compost leaves','Apply trunk guards'],late_fall:['Apply dormant spray','Wrap young trunks','Final compost application'],winter:['Major structural pruning','Check stored fruit','Plan spring grafts']}[season]||['Check trees','Note any damage'];}
-function getLand(season){const creek=['late_summer','summer'].includes(season)?'Inspect creek flow and banks':'Check erosion after rain';const obs=['late_summer','summer'].includes(season)?'Watch for yellow jacket nests':['fall','early_fall'].includes(season)?'Stack brush for wildlife cover':'Note what\'s blooming';return['Walk the trails',creek,obs,'Photograph one thing that changed'];}
-function getAlerts(temp,recentRain,rainChance){let a=[];if(temp>90)a.push('Heat: water deeply, avoid transplanting, mulch exposed beds.');if(temp<32)a.push('Frost alert: protect sensitive crops tonight.');if(recentRain>1)a.push('Recent rain: scout mushrooms, check creek flow, watch for slugs.');if(rainChance>70)a.push('Rain likely: hold off harvesting, check drainage.');return a;}
+
+function fmtDate(d) {
+  return DAYS[d.getDay()] + ', ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
 
 const SECTION_COLORS = {
-  garden:  { dot: '#4caf50', bg: '#eaf4ea', border: 'rgba(76,175,80,0.25)'  },
-  orchard: { dot: '#ff9800', bg: '#fff8e8', border: 'rgba(255,152,0,0.25)'  },
-  animals: { dot: '#ff6b2b', bg: '#fff0ea', border: 'rgba(255,107,43,0.25)' },
-  land:    { dot: '#0077cc', bg: '#e8f2fb', border: 'rgba(0,119,204,0.25)'  },
-  creative:{ dot: '#7b5ea7', bg: '#f2eef8', border: 'rgba(123,94,167,0.25)' },
-  build:   { dot: '#00968a', bg: '#e5f4f2', border: 'rgba(0,150,138,0.25)'  },
+  garden:  { dot:'#4caf50', bg:'#eaf4ea', border:'rgba(76,175,80,0.25)'   },
+  orchard: { dot:'#ff9800', bg:'#fff8e8', border:'rgba(255,152,0,0.25)'   },
+  animals: { dot:'#ff6b2b', bg:'#fff0ea', border:'rgba(255,107,43,0.25)'  },
+  land:    { dot:'#0077cc', bg:'#e8f2fb', border:'rgba(0,119,204,0.25)'   },
+  creative:{ dot:'#7b5ea7', bg:'#f2eef8', border:'rgba(123,94,167,0.25)'  },
+  build:   { dot:'#00968a', bg:'#e5f4f2', border:'rgba(0,150,138,0.25)'   },
+  fiber:   { dot:'#7b5ea7', bg:'#f2eef8', border:'rgba(123,94,167,0.25)'  },
+  mushroom:{ dot:'#8b6914', bg:'#fdf5e8', border:'rgba(139,105,20,0.25)'  },
 };
 
 function sectionCard(emoji, name, key, listHTML) {
@@ -769,40 +838,53 @@ function sectionCard(emoji, name, key, listHTML) {
   </div>`;
 }
 
-function dotList(items, dotColor, cls='plain-list') {
-  return `<ul class="${cls}">${items.map(i=>`<li style="--dot:${dotColor}">${i}</li>`).join('')}</ul>`;
+function ul(items, cls='plain-list') {
+  return `<ul class="${cls}">${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
 }
+
+function taskCols(cols) {
+  return `<div class="task-cols">${cols.map(c=>`<div><div class="task-col-label">${c.label}</div><ul class="task-list">${c.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`;
+}
+
+// ── GENERATE ───────────────────────────────────────────────────────────────
 
 function generatePage() {
   const dateVal = document.getElementById('f-date').value;
-  const moon = document.getElementById('f-moon').value;
-  const illum = parseInt(document.getElementById('f-illum').value)||0;
-  const season = document.getElementById('f-season').value;
-  const temp = parseInt(document.getElementById('f-temp').value)||70;
-  const rain = parseInt(document.getElementById('f-rain').value)||0;
+  const moon    = document.getElementById('f-moon').value;
+  const illum   = parseInt(document.getElementById('f-illum').value)||0;
+  const season  = document.getElementById('f-season').value;
+  const phase   = document.getElementById('f-phase').value;
+  const temp    = parseInt(document.getElementById('f-temp').value)||70;
+  const rain    = parseInt(document.getElementById('f-rain').value)||0;
   const recentRain = parseFloat(document.getElementById('f-recent-rain').value)||0;
-  const note = document.getElementById('f-note').value.trim();
+  const note    = document.getElementById('f-note').value.trim();
   const moonIcon = MOON_ICONS[moon];
-  const date = dateVal ? new Date(dateVal+'T12:00:00') : new Date();
-  const month = date.getMonth()+1;
+  const date    = dateVal ? new Date(dateVal+'T12:00:00') : new Date();
+  const month   = date.getMonth()+1;
+  const dateStr = date.toISOString().split('T')[0];
 
   document.getElementById('header-moon').textContent = moonIcon;
 
-  const energy = getEnergy(moon);
-  const {plant,harvest,roots} = getPlants(moon,month);
-  const watchList = getWatchList(season);
-  const orchardTasks = getOrchard(season);
-  const landTasks = getLand(season);
-  const alerts = getAlerts(temp,recentRain,rain);
+  const energy      = getEnergy(moon);
+  const {plant,harvest,roots} = getPlants(moon, month);
+  const watchList   = getWatchList(season);
+  const orchardTasks= getOrchard(season);
+  const landTasks   = getLand(season);
+  const animals     = getAnimals(season);
+  const fiberTasks  = getFiber(season);
+  const mushroomT   = getMushrooms(season);
+  const buildTasks  = getBuild(season);
+  const phaseTasks  = PHASE_TASKS[phase] || [];
+  const alerts      = getAlerts(temp, recentRain, rain);
 
-  const plantCols = [];
-  if(plant.length) plantCols.push({label:'Plant',items:plant});
-  if(harvest.length) plantCols.push({label:'Harvest',items:harvest});
-  if(roots.length) plantCols.push({label:'Root crops',items:roots});
-  plantCols.push({label:'Watch for',items:watchList});
+  // Garden columns
+  const gardenCols = [];
+  if(plant.length)   gardenCols.push({label:'Plant',items:plant});
+  if(harvest.length) gardenCols.push({label:'Harvest',items:harvest});
+  if(roots.length)   gardenCols.push({label:'Root crops',items:roots});
+  gardenCols.push({label:'Watch for',items:watchList});
 
-  const gardenHTML = `<div class="task-cols">${plantCols.map(col=>`<div><div class="task-col-label">${col.label}</div><ul class="task-list">${col.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}</div>`;
-
+  // Page HTML
   document.getElementById('page-content').innerHTML = `
     <div>
       <div class="page-hero">
@@ -816,7 +898,9 @@ function generatePage() {
         </div>
       </div>
 
-      ${note?`<div class="note-card">📝 ${note}</div>`:''}
+      <div class="phase-badge">${PHASE_LABELS[phase]}</div>
+
+      ${note ? `<div class="note-card">📝 ${note}</div>` : ''}
 
       <div class="energy-card">
         <div class="energy-kicker">Today's energy</div>
@@ -825,34 +909,198 @@ function generatePage() {
 
       ${alerts.map(a=>`<div class="alert-card">⚠ ${a}</div>`).join('')}
 
-      ${sectionCard('🌱','Garden','garden', gardenHTML)}
-      ${sectionCard('🌳','Orchard','orchard', `<ul class="plain-list">${orchardTasks.map(t=>`<li>${t}</li>`).join('')}</ul>`)}
-      ${sectionCard('🐔','Animals','animals', `<ul class="plain-list"><li>Egg count and record</li><li>Check all waterers</li><li>Move chicken tractor</li><li>Observe flock behavior</li></ul>`)}
-      ${sectionCard('🗺','Land','land', `<ul class="plain-list">${landTasks.map(t=>`<li>${t}</li>`).join('')}</ul>`)}
-      ${sectionCard('🎥','Creative','creative', `<ul class="plain-list"><li>Capture 30 seconds of homestead footage</li><li>Journal one observation from the land</li><li>Note anything that surprised you today</li></ul>`)}
-      ${sectionCard('🪵','Build & Maintain','build', `<ul class="plain-list"><li>Split or stack wood</li><li>Check fencing for gaps</li><li>Driveway and drainage check</li></ul>`)}
+      ${phaseTasks.length ? sectionCard('📍','Phase Focus','land',ul(phaseTasks)) : ''}
+
+      ${sectionCard('🌱','Garden','garden', taskCols(gardenCols))}
+      ${sectionCard('🌳','Orchard','orchard', ul(orchardTasks))}
+      ${sectionCard('🐑','Animals','animals', `
+        <div class="task-col-label" style="margin-bottom:8px">Daily</div>
+        ${ul(animals.daily)}
+        ${animals.seasonal.length ? `<div class="task-col-label" style="margin-top:12px;margin-bottom:8px">Seasonal</div>${ul(animals.seasonal)}` : ''}
+      `)}
+      ${sectionCard('🗺','Land & Water','land', ul(landTasks))}
+      ${sectionCard('🧺','Fiber & Craft','fiber', ul(fiberTasks))}
+      ${sectionCard('🍄','Mushrooms','mushroom', ul(mushroomT))}
+      ${sectionCard('🎥','Creative','creative', ul([
+        'Capture 30 seconds of homestead footage',
+        'Journal one observation from the land',
+        'Note anything that surprised you today',
+        'Kenny Produces: check remote client work window',
+      ]))}
+      ${sectionCard('🪵','Build & Maintain','build', ul(buildTasks))}
 
       <div class="reflection-card">
         <div class="reflection-kicker">Evening reflection</div>
         <div class="reflection-q">What changed on the land today?</div>
-        <div class="reflection-lines"><div class="reflection-line"></div><div class="reflection-line"></div><div class="reflection-line"></div></div>
+        <textarea id="f-reflection" placeholder="Write what happened today — observations, tasks completed, anything that stood out..." style="margin-top:12px;width:100%;min-height:100px;font-size:14px;"></textarea>
+        <button class="copy-btn" style="margin-top:10px;" onclick="exportWithReflection()">Update .md with reflection & go to Export</button>
       </div>
     </div>`;
 
-  lastMD = `# ${fmtDate(date)}\n*${currentLoc.name} · Zone ${currentLoc.zone}*\n\n---\n\n**Moon:** ${MOON_LABELS[moon]} (${illum}%)\n**Season:** ${SEASON_LABELS[season]}\n**Weather:** ${temp}°F · ${rain}% rain · Recent: ${recentRain}"\n**Energy:** ${energy}\n${note?`\n**Note:** ${note}`:''}${alerts.length?'\n\n'+alerts.map(a=>`> ⚠ ${a}`).join('\n'):''}\n\n---\n\n## 🌱 Garden\n\n**Plant:** ${plant.join(', ')||'—'}\n**Harvest:** ${harvest.join(', ')||'—'}\n**Root crops:** ${roots.join(', ')||'—'}\n**Watch for:** ${watchList.join(', ')}\n\n## 🌳 Orchard\n\n${orchardTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🐔 Animals\n\n- Egg count and record\n- Check all waterers\n- Move chicken tractor\n- Observe flock behavior\n\n## 🗺 Land\n\n${landTasks.map(t=>`- ${t}`).join('\n')}\n\n## 🎥 Creative\n\n- Capture 30 seconds of homestead footage\n- Journal one observation from the land\n- Note anything that surprised you today\n\n## 🪵 Build & Maintain\n\n- Split or stack wood\n- Check fencing for gaps\n- Driveway and drainage check\n\n---\n\n## Evening Reflection\n\n*What changed on the land today?*\n\n&nbsp;\n\n&nbsp;\n`;
+  // Build MD — initial version without reflection
+  buildMD(date, moon, illum, season, phase, temp, rain, recentRain, note, alerts, plant, harvest, roots, watchList, orchardTasks, animals, landTasks, fiberTasks, mushroomT, buildTasks, phaseTasks, '');
 
   document.getElementById('export-content').textContent = lastMD;
   switchTab('page');
 }
 
-function copyMarkdown() {
-  if(!lastMD){alert('Generate a page first.');return;}
-  navigator.clipboard.writeText(lastMD).then(()=>{
-    const btn=document.querySelector('.copy-btn');
-    btn.textContent='✓ Copied';
-    setTimeout(()=>btn.textContent='Copy to clipboard',2000);
-  });
+function exportWithReflection() {
+  const reflection = document.getElementById('f-reflection') ? document.getElementById('f-reflection').value.trim() : '';
+  const dateVal = document.getElementById('f-date').value;
+  const date = dateVal ? new Date(dateVal+'T12:00:00') : new Date();
+  const moon = document.getElementById('f-moon').value;
+  const illum = parseInt(document.getElementById('f-illum').value)||0;
+  const season = document.getElementById('f-season').value;
+  const phase = document.getElementById('f-phase').value;
+  const temp = parseInt(document.getElementById('f-temp').value)||70;
+  const rain = parseInt(document.getElementById('f-rain').value)||0;
+  const recentRain = parseFloat(document.getElementById('f-recent-rain').value)||0;
+  const note = document.getElementById('f-note').value.trim();
+  const alerts = getAlerts(temp, recentRain, rain);
+  const month = date.getMonth()+1;
+  const {plant,harvest,roots} = getPlants(moon,month);
+  const watchList = getWatchList(season);
+  const orchardTasks = getOrchard(season);
+  const animals = getAnimals(season);
+  const landTasks = getLand(season);
+  const fiberTasks = getFiber(season);
+  const mushroomT = getMushrooms(season);
+  const buildTasks = getBuild(season);
+  const phaseTasks = PHASE_TASKS[phase]||[];
+  buildMD(date, moon, illum, season, phase, temp, rain, recentRain, note, alerts, plant, harvest, roots, watchList, orchardTasks, animals, landTasks, fiberTasks, mushroomT, buildTasks, phaseTasks, reflection);
+  document.getElementById('export-content').textContent = lastMD;
+  switchTab('export');
 }
+
+function buildMD(date, moon, illum, season, phase, temp, rain, recentRain, note, alerts, plant, harvest, roots, watchList, orchardTasks, animals, landTasks, fiberTasks, mushroomT, buildTasks, phaseTasks, reflection) {
+  const dateStr = date.toISOString().split('T')[0];
+  lastMD =
+`# ${fmtDate(date)}
+*${currentLoc.name} · Zone ${currentLoc.zone}*
+
+---
+
+## Conditions
+
+- **Moon:** ${MOON_LABELS[moon]} (${illum}%)
+- **Season:** ${SEASON_LABELS[season]}
+- **Phase:** ${PHASE_LABELS[phase]}
+- **Weather:** ${temp}°F · ${rain}% chance of rain · Recent: ${recentRain}"
+- **Energy:** ${getEnergy(moon)}
+${note ? `- **Note:** ${note}` : ''}
+${alerts.length ? '\n## Alerts\n\n'+alerts.map(a=>`> ⚠ ${a}`).join('\n') : ''}
+
+---
+
+## Phase Focus
+
+${phaseTasks.map(t=>`- ${t}`).join('\n')||'—'}
+
+---
+
+## 🌱 Garden
+
+**Plant:** ${plant.join(', ')||'—'}
+**Harvest:** ${harvest.join(', ')||'—'}
+**Root crops:** ${roots.join(', ')||'—'}
+**Watch for:** ${watchList.join(', ')}
+
+---
+
+## 🌳 Orchard
+
+${orchardTasks.map(t=>`- ${t}`).join('\n')}
+
+---
+
+## 🐑 Animals
+
+### Daily
+${animals.daily.map(t=>`- ${t}`).join('\n')}
+${animals.seasonal.length ? '\n### Seasonal\n'+animals.seasonal.map(t=>`- ${t}`).join('\n') : ''}
+
+---
+
+## 🗺 Land & Water
+
+${landTasks.map(t=>`- ${t}`).join('\n')}
+
+---
+
+## 🧺 Fiber & Craft
+
+${fiberTasks.map(t=>`- ${t}`).join('\n')}
+
+---
+
+## 🍄 Mushrooms
+
+${mushroomT.map(t=>`- ${t}`).join('\n')}
+
+---
+
+## 🎥 Creative
+
+- Capture 30 seconds of homestead footage
+- Journal one observation from the land
+- Note anything that surprised you today
+- Kenny Produces: check remote client work window
+
+---
+
+## 🪵 Build & Maintain
+
+${buildTasks.map(t=>`- ${t}`).join('\n')}
+
+---
+
+## Evening Reflection
+
+*What changed on the land today?*
+
+${reflection || '&nbsp;'}
+
+`;
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────────────────
+
+function copyMarkdown() {
+  if(!lastMD) { alert('Generate a page first.'); return; }
+  if(navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(lastMD).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied';
+      setTimeout(() => btn.textContent = orig, 2000);
+    });
+  } else {
+    // Fallback for mobile Safari
+    const ta = document.createElement('textarea');
+    ta.value = lastMD;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+}
+
+function downloadMarkdown() {
+  if(!lastMD) { alert('Generate a page first.'); return; }
+  const dateVal = document.getElementById('f-date').value || new Date().toISOString().split('T')[0];
+  const filename = dateVal + '-homestead.md';
+  const blob = new Blob([lastMD], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
 
 (function(){
   const today = new Date();
